@@ -17,3 +17,5 @@ npm-debug.log*
 .claude/
 # Netlify CLI local cache
 .netlify/
+# Local-only docs (do not publish)
+docs/
