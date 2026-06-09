@@ -1,5 +1,49 @@
 @import "tailwindcss";
 
+/* Class-based dark mode (Tailwind v4 idiom — ADR-003). Toggling the `dark`
+   class on <html> re-resolves every semantic token below, so a theme switch is
+   a single class flip rather than per-component variants. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Semantic design tokens (ADR-003). Components reference these through the
+   utilities mapped in @theme inline — never raw color literals — so the whole
+   page re-themes from here. Dark is a soft near-black, not pure black (ADR-001).
+   The accent is a per-theme pair: cobalt darkened for AA on white, lightened
+   for AA on the dark base (both verified in task_08). */
+:root {
+  --bg: #ffffff;
+  --fg: #0f172a;
+  --muted: #475569;
+  --accent: #1d4ed8;
+  --border: #e2e8f0;
+}
+
+.dark {
+  --bg: #0f1115;
+  --fg: #e7e7ea;
+  --muted: #a1a1aa;
+  --accent: #60a5fa;
+  --border: #26262b;
+}
+
+/* Map tokens to Tailwind utilities. `inline` makes each utility reference the
+   live custom property (e.g. text-accent → color: var(--accent)), so utilities
+   follow the .dark override above. Font token names are registered here; the
+   actual faces are self-hosted in task_02 (--font-sans stays a system stack). */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+}
+
 /* Base layer: site-wide defaults that utility classes build on (ADR-005).
    Kept intentionally small so the purged production stylesheet stays tiny. */
 @layer base {
