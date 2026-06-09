@@ -103,3 +103,61 @@ body::before {
   background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='160'%20height='160'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.8'%20numOctaves='2'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20type='saturate'%20values='0'/%3E%3C/filter%3E%3Crect%20width='160'%20height='160'%20filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
 }
+
+/* Quiet micro-interactions (ADR-001), CSS-only — no JS beyond the theme toggle.
+   Every effect below is gated on `prefers-reduced-motion: no-preference`, so a
+   reduced-motion visitor gets NO movement and content in its plain visible state.
+   The reveal also requires `@supports (animation-timeline: view())`, so where
+   scroll-driven animation is unsupported the content simply shows (progressive
+   enhancement). The keyframes default to the visible end-state being the resting
+   style — `.reveal` has no base rule, so without the animation it is fully shown. */
+@keyframes reveal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Reveal-on-scroll for the content sections (the hero stays static, above fold). */
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 55%;
+    }
+  }
+
+  /* Smooth theme transition: fade the themed surfaces when .dark toggles.
+     Interactive elements (links/button) fade via their own transition-colors. */
+  body,
+  body section,
+  body h1,
+  body h2,
+  body h3,
+  body p {
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  /* Animated underline: grows from the left under the link label on hover/focus.
+     background-origin: content-box keeps it under the text, not the pill edge. */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-origin: content-box;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0 1px;
+    transition: background-size 0.25s ease;
+  }
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+  }
+}
