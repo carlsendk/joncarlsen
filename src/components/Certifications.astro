@@ -1,0 +1,19 @@
+---
+// Certifications, networks, and associations for the full CV.
+// Reads cvData.certifications.
+interface Props {
+  /** Certifications, networks, and associations. */
+  certifications: string[];
+}
+
+const { certifications } = Astro.props;
+---
+
+<section aria-labelledby="certifications-heading" class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14">
+  <h2 id="certifications-heading" class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
+    Certifications & Networks
+  </h2>
+  <ul class="mt-8 space-y-2 leading-relaxed text-muted">
+    {certifications.map((item) => <li>{item}</li>)}
+  </ul>
+</section>

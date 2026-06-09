@@ -1,0 +1,16 @@
+---
+// Professional summary for the full CV (/cv). Reads cvData.summary.
+interface Props {
+  /** 3-4 line professional summary. */
+  summary: string;
+}
+
+const { summary } = Astro.props;
+---
+
+<section aria-labelledby="summary-heading" class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14">
+  <h2 id="summary-heading" class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
+    Summary
+  </h2>
+  <p class="mt-8 max-w-prose text-lg leading-relaxed text-fg">{summary}</p>
+</section>

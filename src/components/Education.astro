@@ -1,0 +1,28 @@
+---
+// Education for the full CV. Reads cvData.education (newest first).
+import type { Education } from "../data/cv.ts";
+
+interface Props {
+  /** Degrees, newest first. */
+  education: Education[];
+}
+
+const { education } = Astro.props;
+---
+
+<section aria-labelledby="education-heading" class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14">
+  <h2 id="education-heading" class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
+    Education
+  </h2>
+  <ul class="mt-8 space-y-6">
+    {
+      education.map((entry) => (
+        <li>
+          <h3 class="font-display text-lg font-semibold tracking-tight text-fg">{entry.degree}</h3>
+          <p class="mt-0.5 text-base text-fg">{entry.institution}</p>
+          <p class="mt-1 font-mono text-xs uppercase tracking-wider text-muted">{entry.start} – {entry.end}</p>
+        </li>
+      ))
+    }
+  </ul>
+</section>

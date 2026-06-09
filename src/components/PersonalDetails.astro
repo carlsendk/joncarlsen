@@ -1,0 +1,33 @@
+---
+// Personal details for the full CV (Danish CV norm). Reads cvData.personalDetails.
+// The PersonalDetails type carries no contact field, so no email/phone can be
+// rendered here (ADR-002).
+import type { PersonalDetails } from "../data/cv.ts";
+
+interface Props {
+  /** Date of birth, nationality, marital status. */
+  details: PersonalDetails;
+}
+
+const { details } = Astro.props;
+---
+
+<section aria-labelledby="personal-heading" class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14">
+  <h2 id="personal-heading" class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
+    Personal Details
+  </h2>
+  <dl class="mt-8 space-y-2">
+    <div class="flex gap-3">
+      <dt class="w-28 shrink-0 font-mono text-xs uppercase tracking-wider text-muted">Born</dt>
+      <dd class="text-fg">{details.dob}</dd>
+    </div>
+    <div class="flex gap-3">
+      <dt class="w-28 shrink-0 font-mono text-xs uppercase tracking-wider text-muted">Nationality</dt>
+      <dd class="text-fg">{details.nationality}</dd>
+    </div>
+    <div class="flex gap-3">
+      <dt class="w-28 shrink-0 font-mono text-xs uppercase tracking-wider text-muted">Status</dt>
+      <dd class="text-fg">{details.maritalStatus}</dd>
+    </div>
+  </dl>
+</section>
