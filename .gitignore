@@ -15,3 +15,5 @@ npm-debug.log*
 .lighthouseci/
 # Claude Code local state
 .claude/
+# Netlify CLI local cache
+.netlify/
