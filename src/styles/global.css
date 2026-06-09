@@ -87,3 +87,19 @@
     border-radius: 2px;
   }
 }
+
+/* Subtle film grain (ADR-004): a fixed, neutral (desaturated) SVG-noise overlay
+   rendered behind content (z-index: -1) and above the token background. CSS-only
+   via an inline data URI — no image request. ~4% opacity preserves text contrast
+   in both themes; pointer-events: none keeps all content interactive/selectable.
+   The noise tile is stitched (no visible seams) and grayscale (feColorMatrix). */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='160'%20height='160'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.8'%20numOctaves='2'%20stitchTiles='stitch'/%3E%3CfeColorMatrix%20type='saturate'%20values='0'/%3E%3C/filter%3E%3Crect%20width='160'%20height='160'%20filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
