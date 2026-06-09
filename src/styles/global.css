@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+/* Base layer: site-wide defaults that utility classes build on (ADR-005).
+   Kept intentionally small so the purged production stylesheet stays tiny. */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Guaranteed visible keyboard-focus indicator on every interactive element
+     (WCAG 2.4.7). blue-700 (#1d4ed8) clears AA contrast on the white page.
+     Styled components add their own focus-visible utilities on top; this is
+     the safety net so no link can ever lack a visible focus state. */
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid #1d4ed8;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}

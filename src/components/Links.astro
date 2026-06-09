@@ -1,0 +1,54 @@
+---
+// Renders outbound profile links and an optional PDF résumé download. This is
+// the only path off the page (ADR-001). No contact form or contact details
+// (ADR-002) — outbound profile links only.
+import type { ProfileLink } from "../data/cv.ts";
+
+interface Props {
+  /** Outbound profile links. */
+  links: ProfileLink[];
+  /** Optional path to a downloadable résumé under public/; omit to hide the download. */
+  resumePdf?: string;
+}
+
+const { links, resumePdf } = Astro.props;
+
+/** External links open in a new tab and need rel="noopener" for security. */
+const isExternal = (url: string) => /^https?:\/\//i.test(url) || url.startsWith("//");
+---
+
+<section aria-labelledby="links-heading" class="mx-auto max-w-2xl border-t border-slate-100 px-6 py-12">
+  <h2 id="links-heading" class="text-sm font-semibold uppercase tracking-wider text-slate-500">
+    Links
+  </h2>
+  <ul class="mt-6 flex flex-wrap gap-3">
+    {
+      links.map((link) => (
+        <li>
+          <a
+            href={link.url}
+            class="inline-flex items-center rounded-full border border-slate-300 px-4 py-2 text-base font-medium text-slate-900 transition-colors hover:border-slate-900 hover:bg-slate-900 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+            {...(isExternal(link.url)
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  {
+    resumePdf && (
+      <p class="mt-6">
+        <a
+          href={resumePdf}
+          download
+          class="inline-flex items-center rounded-full bg-slate-900 px-5 py-2.5 text-base font-semibold text-white transition-colors hover:bg-slate-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700"
+        >
+          Download résumé (PDF)
+        </a>
+      </p>
+    )
+  }
+</section>

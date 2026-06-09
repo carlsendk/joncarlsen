@@ -1,0 +1,30 @@
+---
+// Renders the chronological experience timeline: one entry per role
+// (company, position, dates, team scope). Maps to PRD "Experience timeline".
+import type { Role } from "../data/cv.ts";
+
+interface Props {
+  /** Roles, newest first. */
+  roles: Role[];
+}
+
+const { roles } = Astro.props;
+---
+
+<section aria-labelledby="experience-heading" class="mx-auto max-w-2xl border-t border-slate-100 px-6 py-12">
+  <h2 id="experience-heading" class="text-sm font-semibold uppercase tracking-wider text-slate-500">
+    Experience
+  </h2>
+  <ol class="mt-6 space-y-8">
+    {
+      roles.map((role) => (
+        <li class="border-l-2 border-slate-200 pl-4">
+          <h3 class="text-lg font-semibold text-slate-900">{role.position}</h3>
+          <p class="text-base text-slate-700">{role.company}</p>
+          <p class="mt-0.5 text-sm text-slate-600">{role.start} – {role.end}</p>
+          <p class="mt-2 text-base leading-relaxed text-slate-600">{role.scope}</p>
+        </li>
+      ))
+    }
+  </ol>
+</section>

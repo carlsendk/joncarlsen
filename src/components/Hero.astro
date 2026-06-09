@@ -1,0 +1,20 @@
+---
+// Renders the hero/summary: name, current title, and one-line value proposition.
+// Above-the-fold banner for the page (ADR-001). Owns the single <h1>.
+interface Props {
+  /** Full name. */
+  name: string;
+  /** Current role/title. */
+  title: string;
+  /** One-line positioning statement. */
+  valueProp: string;
+}
+
+const { name, title, valueProp } = Astro.props;
+---
+
+<header class="mx-auto max-w-2xl px-6 pt-14 pb-10 sm:pt-20">
+  <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">{name}</h1>
+  <p class="mt-2 text-lg font-medium text-slate-700 sm:text-xl">{title}</p>
+  <p class="mt-4 max-w-prose text-base leading-relaxed text-slate-600">{valueProp}</p>
+</header>

@@ -1,0 +1,21 @@
+---
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import Timeline from "../components/Timeline.astro";
+import Impact from "../components/Impact.astro";
+import Links from "../components/Links.astro";
+import { cvData } from "../data/cv.ts";
+
+// Metadata is single-sourced from cvData so the owner edits one file (ADR-003).
+const title = `${cvData.name} — CV`;
+const description = cvData.valueProp;
+---
+
+<Base title={title} description={description}>
+  <Hero name={cvData.name} title={cvData.title} valueProp={cvData.valueProp} />
+  <main>
+    <Timeline roles={cvData.roles} />
+    <Impact highlights={cvData.impact} />
+    <Links links={cvData.links} resumePdf={cvData.resumePdf} />
+  </main>
+</Base>

@@ -1,0 +1,17 @@
+# build output
+dist/
+# generated types
+.astro/
+# dependencies
+node_modules/
+# logs
+npm-debug.log*
+# macOS
+.DS_Store
+# environment
+.env
+.env.production
+# Lighthouse CI local reports
+.lighthouseci/
+# Claude Code local state
+.claude/
