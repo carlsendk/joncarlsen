@@ -1,0 +1,45 @@
+---
+// The full CV (/cv) — the deep-evaluation tier of the hub-and-spoke structure
+// (ADR-001). Composes the complete CV from the single cvData source: identity
+// header, summary, full experience (with bullets), highlights, expertise,
+// education, certifications, publications, personal details, and outbound links.
+// Reachable in one click from the frontpage; its own shareable URL.
+import Base from "../layouts/Base.astro";
+import Hero from "../components/Hero.astro";
+import Summary from "../components/Summary.astro";
+import Timeline from "../components/Timeline.astro";
+import Impact from "../components/Impact.astro";
+import Expertise from "../components/Expertise.astro";
+import Education from "../components/Education.astro";
+import Certifications from "../components/Certifications.astro";
+import Publications from "../components/Publications.astro";
+import PersonalDetails from "../components/PersonalDetails.astro";
+import Links from "../components/Links.astro";
+import { cvData } from "../data/cv.ts";
+
+const title = `Full CV · ${cvData.name}`;
+const description = cvData.valueProp;
+---
+
+<Base title={title} description={description}>
+  <nav class="mx-auto max-w-2xl px-6 pt-6">
+    <a
+      href="/"
+      class="link-underline font-mono text-xs uppercase tracking-wider text-muted motion-safe:transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+    >
+      ← Overview
+    </a>
+  </nav>
+  <Hero name={cvData.name} title={cvData.title} valueProp={cvData.valueProp} />
+  <main>
+    <Summary summary={cvData.summary} />
+    <Timeline roles={cvData.roles} variant="full" />
+    <Impact highlights={cvData.impact} />
+    <Expertise expertise={cvData.expertise} />
+    <Education education={cvData.education} />
+    <Certifications certifications={cvData.certifications} />
+    <Publications publications={cvData.publications} />
+    <PersonalDetails details={cvData.personalDetails} />
+    <Links links={cvData.links} resumePdf={cvData.resumePdf} />
+  </main>
+</Base>
