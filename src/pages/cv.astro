@@ -14,6 +14,7 @@ import Education from "../components/Education.astro";
 import Certifications from "../components/Certifications.astro";
 import Publications from "../components/Publications.astro";
 import PersonalDetails from "../components/PersonalDetails.astro";
+import CaseStudies from "../components/CaseStudies.astro";
 import Links from "../components/Links.astro";
 import { cvData } from "../data/cv.ts";
 
@@ -35,6 +36,7 @@ const description = cvData.valueProp;
     <Summary summary={cvData.summary} />
     <Timeline roles={cvData.roles} variant="full" />
     <Impact highlights={cvData.impact} />
+    <CaseStudies />
     <Expertise expertise={cvData.expertise} />
     <Education education={cvData.education} />
     <Certifications certifications={cvData.certifications} />

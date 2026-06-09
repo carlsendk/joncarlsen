@@ -9,6 +9,7 @@ import Hero from "../components/Hero.astro";
 import Impact from "../components/Impact.astro";
 import Expertise from "../components/Expertise.astro";
 import Timeline from "../components/Timeline.astro";
+import CaseStudies from "../components/CaseStudies.astro";
 import Links from "../components/Links.astro";
 import { cvData } from "../data/cv.ts";
 
@@ -23,6 +24,7 @@ const description = cvData.valueProp;
     <Impact highlights={cvData.impact} />
     <Expertise expertise={cvData.expertise} />
     <Timeline roles={cvData.roles} variant="condensed" limit={4} />
+    <CaseStudies />
     <div class="mx-auto max-w-2xl px-6 pt-2">
       <a
         href="/cv"

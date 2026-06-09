@@ -1,0 +1,29 @@
+---
+// "Selected Work" listing section (ADR-001). Queries the `work` collection,
+// drops drafts, sorts by `order`, and renders a card per case study. Shared by
+// the frontpage and /cv so the listing logic lives in one place. Renders
+// nothing when there are no published case studies.
+import { getCollection } from "astro:content";
+import CaseStudyCard from "./CaseStudyCard.astro";
+
+const entries = (await getCollection("work", ({ data }) => !data.draft)).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+{
+  entries.length > 0 && (
+    <section aria-labelledby="work-heading" class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14">
+      <h2 id="work-heading" class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
+        Selected Work
+      </h2>
+      <ul class="mt-8 space-y-4">
+        {entries.map((entry) => (
+          <li>
+            <CaseStudyCard entry={entry} />
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
