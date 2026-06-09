@@ -1,0 +1,22 @@
+# Netlify build + deploy config (supersedes the GitHub Pages workflow — see ADR-007).
+# The build command IS the hard gate: a type error or a broken link exits non-zero
+# and fails the build, so Netlify never swaps the live site. The Lighthouse plugin
+# adds perf/accessibility budgets on top.
+[build]
+  command = "npm run check && npm run build && npx --yes linkinator@6.1.2 ./dist --recurse --skip '(^https?://(www\\.)?linkedin\\.com|^https?://(www\\.)?joncarlsen\\.dk)'"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Lighthouse budgets (perf >= 90, accessibility >= 95). Audits the published
+# output and fails the build when a budget is missed.
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+  [plugins.inputs]
+    output_path = "reports/lighthouse.html"
+
+  [plugins.inputs.thresholds]
+    performance = 0.9
+    accessibility = 0.95
