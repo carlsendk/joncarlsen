@@ -21,6 +21,25 @@ const canonical = Astro.site
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Theme flash guard (ADR-003): set the .dark class before first paint from
+         the saved choice, falling back to the OS preference. Inlined and blocking
+         so there is no flash of the wrong theme. This and the toggle (task_04) are
+         the only client JS on the page. -->
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          if (t !== "light" && t !== "dark") {
+            t = matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+          }
+          document.documentElement.classList.toggle("dark", t === "dark");
+        } catch (e) {}
+      })();
+    </script>
+
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -42,7 +61,7 @@ const canonical = Astro.site
     <meta property="og:url" content={canonical} />
     {ogImage && <meta property="og:image" content={ogImage} />}
   </head>
-  <body class="bg-white text-slate-900 antialiased">
+  <body class="bg-bg text-fg antialiased">
     <slot />
   </body>
 </html>
