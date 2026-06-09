@@ -161,3 +161,65 @@ body::before {
     background-size: 100% 1px;
   }
 }
+
+/* Print stylesheet (ADR-001): a clean, light, single-column CV for "save as PDF"
+   from the browser. Tuned for /cv but applied globally, since it only affects
+   printing and never the screen. It forces light ink-on-white regardless of the
+   active theme, hides the toggle, the film grain, and navigation chrome, makes
+   every reveal section fully visible (no scroll-driven opacity), keeps entries
+   from splitting across pages, and prints the full URL after each outbound link
+   so a printed copy stays useful. No contact details are introduced (ADR-002). */
+@media print {
+  /* Light ink-on-white regardless of the active theme. `!important` so these
+     win over the screen `.dark` token values when printing in dark mode. */
+  :root,
+  .dark {
+    --bg: #ffffff !important;
+    --fg: #0f172a !important;
+    --muted: #334155 !important;
+    --accent: #1d4ed8 !important;
+    --border: #cbd5e1 !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  /* Hide interactive and decorative chrome. */
+  #theme-toggle,
+  nav {
+    display: none !important;
+  }
+  body::before {
+    display: none !important; /* film grain */
+  }
+
+  /* Show all content: cancel the scroll-driven reveal so nothing prints faded. */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  /* Keep entries (roles, education, cards, list items) from splitting across a
+     page boundary, and keep headings with the content that follows. */
+  main li,
+  article header {
+    break-inside: avoid;
+  }
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  /* Print the full URL after each outbound link. Internal links (href starting
+     with "/") are skipped, so only real profile URLs are surfaced. */
+  main a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: #475569;
+    word-break: break-all;
+  }
+}
