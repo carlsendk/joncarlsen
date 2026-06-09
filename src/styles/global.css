@@ -44,6 +44,26 @@
     sans-serif;
 }
 
+/* Self-hosted fonts (ADR-002): latin-subset variable woff2 served from this
+   origin — no third-party CDN request at runtime. Files were fetched from
+   Google's gstatic at build time and committed under public/fonts/. Only these
+   two faces load; body text uses the system stack (--font-sans). Variable fonts
+   cover weights 400–700 in one file each; `swap` avoids invisible text. */
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/fraunces-latin-var.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/jetbrains-mono-latin-var.woff2") format("woff2");
+}
+
 /* Base layer: site-wide defaults that utility classes build on (ADR-005).
    Kept intentionally small so the purged production stylesheet stays tiny. */
 @layer base {
