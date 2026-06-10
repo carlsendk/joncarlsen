@@ -21,6 +21,11 @@ const { education } = Astro.props;
           <h3 class="font-display text-lg font-semibold tracking-tight text-fg">{entry.degree}</h3>
           <p class="mt-0.5 text-base text-fg">{entry.institution}</p>
           <p class="mt-1 font-mono text-xs uppercase tracking-wider text-muted">{entry.start} – {entry.end}</p>
+          {entry.activities && entry.activities.length > 0 && (
+            <ul class="mt-2 space-y-1 text-sm leading-relaxed text-muted">
+              {entry.activities.map((activity) => <li>{activity}</li>)}
+            </ul>
+          )}
         </li>
       ))
     }

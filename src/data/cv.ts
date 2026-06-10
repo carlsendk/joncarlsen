@@ -41,6 +41,8 @@ export interface CvData {
   personalDetails: PersonalDetails;
   /** Spare-time interests, rendered as a section on the full CV (task_03). */
   interests: Interest[];
+  /** Voluntary leadership and community roles, rendered on the full CV. */
+  voluntaryLeadership: VoluntaryRole[];
   /** Optional leadership-approach narrative (Phase 2, task_09). */
   about?: string;
   /** Optional talks / writing references (Phase 2, task_09). */
@@ -96,6 +98,16 @@ export interface Interest {
   themes?: string[];
 }
 
+/** A voluntary leadership role: sustained people-development outside paid work. */
+export interface VoluntaryRole {
+  /** Role and organisation, e.g. "Sea Scout Leader, Det Danske Spejderkorps". */
+  role: string;
+  /** One-line description of the work. */
+  detail: string;
+  /** Free-form theme tags for selection (ADR-004). */
+  themes?: string[];
+}
+
 /** A single education entry. */
 export interface Education {
   /** Degree or qualification, e.g. "MSc, Computer Science & Engineering". */
@@ -106,6 +118,8 @@ export interface Education {
   start: string;
   /** End year, e.g. "2010". */
   end: string;
+  /** Optional study-era activities alongside the degree (student governance, tutoring). */
+  activities?: string[];
 }
 
 /** An outbound link to a professional profile. */
@@ -406,11 +420,11 @@ export const cvData: CvData = {
     },
     {
       company: "Ørsted (formerly DONG Energy)",
-      position: "Product Owner / Software Developer & Architect",
-      start: "Jun 2007",
+      position: "Product Owner & Architect",
+      start: "2010",
       end: "Oct 2014",
       scope:
-        "Led Agile/SCRUM transformation and built distributed development teams in Asia.",
+        "Set the technical direction across energy IT systems and led Agile/SCRUM transformation with distributed teams in Asia.",
       bullets: [
         {
           text: "Started and trained multiple offshore teams in Asia and established the development centre.",
@@ -437,12 +451,48 @@ export const cvData: CvData = {
         "software-architecture",
       ],
     },
+    {
+      company: "Ørsted (formerly DONG Energy)",
+      position: "Software Developer & Project Manager (part-time)",
+      start: "Feb 2008",
+      end: "2010",
+      scope:
+        "Built a new SMS gateway part-time while studying for my master's, using an IT project model and early agile practices.",
+      bullets: [
+        {
+          text: "Delivered a new SMS gateway in C#, WCF, Oracle, and MSMQ.",
+        },
+        {
+          text: "Introduced agile practices to the delivery, an early step toward the SCRUM transformation that followed.",
+        },
+        {
+          text: "Carried out my master thesis with the company: External Short Messaging Entity.",
+        },
+      ],
+      themes: ["transformation", "cloud-realtime-data"],
+      skills: ["c-sharp", "wcf", "oracle", "agile"],
+    },
+    {
+      company: "Ørsted (formerly DONG Energy)",
+      position: "Software Development Intern",
+      start: "Jun 2007",
+      end: "Feb 2008",
+      scope:
+        "Worked on automated metering over SMS as part of my bachelor studies.",
+      bullets: [
+        {
+          text: "Supported development on Oracle and .NET for automated metering by SMS communication.",
+        },
+        {
+          text: "Built my bachelor project: an application to monitor SMS communication at the company, in C# with .NET and Oracle.",
+        },
+      ],
+      themes: ["cloud-realtime-data"],
+      skills: ["c-sharp", "dotnet", "oracle"],
+    },
   ],
   earlierRoles: [
-    "DONG Energy, Master Thesis (DTU): External Short Messaging Entity, SMS-gateway prototype, 2009 to 2010.",
-    "Microsoft, Student Partner, evangelism of Microsoft technologies at Danish universities, 2005 to 2007.",
-    "Ministry of the Environment, Denmark, IT Support, 2005 to 2007.",
-    "Polyteknisk Forenings Studentersociale Fond, Board Member and Vice-Chairman, 2005 to 2006.",
+    "Ministry of the Environment, Denmark, IT Support: first-line support to ITIL standards, aligning IT services with business needs, 2005 to 2007.",
   ],
   education: [
     {
@@ -450,6 +500,9 @@ export const cvData: CvData = {
       institution: "Technical University of Denmark (DTU)",
       start: "2008",
       end: "2010",
+      activities: [
+        "Tutored first-year students and ran the daily operation of a department coffee shop.",
+      ],
     },
     {
       degree: "HD, Business Administration & Management",
@@ -462,6 +515,9 @@ export const cvData: CvData = {
       institution: "Technical University of Denmark (DTU)",
       start: "2003",
       end: "2008",
+      activities: [
+        "Vice-Chairman of Polyteknisk Forening, the DTU student organisation, leading internal management, board communication, and strategy implementation.",
+      ],
     },
     {
       degree: "High School (Mathematics)",
@@ -472,7 +528,7 @@ export const cvData: CvData = {
   ],
   certifications: [
     "Advisory Board Member, Heeplink (2022 to 2024)",
-    "NOVA Talent Network (2011 to Present)",
+    "Nova Pro Talent Network (2011 to Present)",
     "Scalers CTO/CPO Network (2021 to Present)",
     "DFDS Horizon Talent Programme, selected participant",
     "Management 3.0 (2015)",
@@ -482,6 +538,7 @@ export const cvData: CvData = {
   ],
   publications: [
     "Master Thesis (DTU): External Short Messaging Entity",
+    "Bachelor Project (DTU): SMS Communication Monitoring",
     "Microsoft TechEd, Barcelona",
     "SmartGrid & E-mobility OTTI 2010",
     "CIM User Group 2010",
@@ -522,12 +579,38 @@ export const cvData: CvData = {
       themes: ["sport", "endurance"],
     },
     {
-      label: "Coaching and mentoring, on and off the field",
+      label: "Family time and the outdoors",
+      themes: ["family", "outdoors"],
+    },
+  ],
+  voluntaryLeadership: [
+    {
+      role: "Sea Scout Leader, Det Danske Spejderkorps",
+      detail:
+        "A lifelong sea scout. I teach children and young people seamanship, sailing, and scouting, and develop them into young leaders. This has run alongside my whole career and shaped how I coach and grow people.",
       themes: ["leadership", "mentoring"],
     },
     {
-      label: "Family time and the outdoors",
-      themes: ["family", "outdoors"],
+      role: "Instructor, PLAN leadership courses (Det Danske Spejderkorps)",
+      detail:
+        "Lead national leadership courses for 12 to 16 year-olds, with a focus on sailing, helping young people grow into stronger leaders.",
+      themes: ["leadership", "mentoring"],
+    },
+    {
+      role: "Blå Sommer 2009, national scout camp",
+      detail:
+        "Co-created a sailing activity and coded an SMS game for scouts to play. Around 200 scouts took part over five days.",
+      themes: ["leadership", "hands-on-engineering"],
+    },
+    {
+      role: "SØ-landslejr, sea scout national camp",
+      detail: "Helped organise the camp and run activities for participants.",
+      themes: ["leadership"],
+    },
+    {
+      role: "Football coach",
+      detail: "Coached children and young people in soccer.",
+      themes: ["leadership", "mentoring"],
     },
   ],
   about:

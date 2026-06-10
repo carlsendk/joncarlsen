@@ -16,6 +16,7 @@ import Education from "../components/Education.astro";
 import Certifications from "../components/Certifications.astro";
 import Publications from "../components/Publications.astro";
 import PersonalDetails from "../components/PersonalDetails.astro";
+import VoluntaryLeadership from "../components/VoluntaryLeadership.astro";
 import Interests from "../components/Interests.astro";
 import CaseStudies from "../components/CaseStudies.astro";
 import Links from "../components/Links.astro";
@@ -56,6 +57,7 @@ const leadImpact = await leadImpactItems();
     <Education education={cvData.education} />
     <Certifications certifications={cvData.certifications} />
     <Publications publications={cvData.publications} />
+    <VoluntaryLeadership leadership={cvData.voluntaryLeadership} />
     <PersonalDetails details={cvData.personalDetails} />
     <Interests interests={cvData.interests} />
     <Links links={cvData.links} resumePdf={cvData.resumePdf} />

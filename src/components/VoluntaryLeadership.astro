@@ -1,0 +1,32 @@
+---
+// Voluntary leadership for the full CV (/cv only). Reads
+// cvData.voluntaryLeadership. Each entry shows the role and a one-line detail;
+// themes are selection metadata, not shown in the MVP UI. Renders nothing when
+// there are no entries, consistent with the other guarded sections.
+import type { VoluntaryRole } from "../data/cv.ts";
+
+interface Props {
+  /** Voluntary leadership and community roles. */
+  leadership: VoluntaryRole[];
+}
+
+const { leadership } = Astro.props;
+---
+
+{
+  leadership.length > 0 && (
+    <section aria-labelledby="voluntary-heading" class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14">
+      <h2 id="voluntary-heading" class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
+        Voluntary Leadership
+      </h2>
+      <ul class="mt-8 space-y-6">
+        {leadership.map((entry) => (
+          <li>
+            <h3 class="font-display text-lg font-semibold tracking-tight text-fg">{entry.role}</h3>
+            <p class="mt-1 leading-relaxed text-muted">{entry.detail}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
