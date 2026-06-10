@@ -343,8 +343,16 @@ export const cvData: CvData = {
       start: "Apr 2021",
       end: "Oct 2021",
       scope:
-        "Led eSignatur, a small Danish e-signature company, as CTO, owning developers, QA, and support plus security, compliance, and the product and technical roadmap. Set the engineering practices and a costed cloud-adoption plan, managed sourcing partners, and brought technical and product depth into customer sales.",
+        "Led eSignatur, a small Danish e-signature company, as CTO, holding product ownership of the e-signature product and owning developers, QA, and support plus security, compliance, and the product and technical roadmap. Set the engineering practices and a costed cloud-adoption plan, drove ISAE 3000 certification, managed sourcing partners, and brought technical and product depth into pre-sale and customer follow-up meetings.",
       bullets: [
+        {
+          text: "Held product ownership of the e-signature product, owning the product and technical roadmap, and ran its support function.",
+          work: "esignatur-cto",
+        },
+        {
+          text: "Drove eSignatur to ISAE 3000 certification.",
+          work: "esignatur-cto",
+        },
         {
           text: "Devised a cloud-adoption plan using a cloud-native maturity matrix.",
           work: "esignatur-cto",
@@ -358,20 +366,20 @@ export const cvData: CvData = {
           work: "esignatur-cto",
         },
         {
-          text: "Improved collaboration and productivity by leading Agile adoption, and coached and mentored the team while closing skill gaps with training.",
+          text: "Brought technical and product expertise into pre-sale meetings and regular customer follow-up meetings.",
           work: "esignatur-cto",
         },
         {
-          text: "Owned the product and technical roadmap and supported customer sales meetings.",
+          text: "Improved collaboration and productivity by leading Agile adoption, and coached and mentored the team while closing skill gaps with training.",
           work: "esignatur-cto",
         },
       ],
       themes: ["transformation", "platform-devex", "security-compliance"],
       skills: [
+        "product-ownership",
         "cloud-architecture",
         "vendor-management",
         "agile",
-        "product-strategy",
       ],
     },
     {
