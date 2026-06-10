@@ -585,7 +585,6 @@ export const cvData: CvData = {
     "Advisory Board Member, Heeplink (2022 to 2024)",
     "Nova Pro Talent Network (2011 to Present)",
     "Scalers CTO/CPO Network (2021 to Present)",
-    "DFDS Horizon Talent Programme, selected participant",
     "Management 3.0 (2015)",
     "Certified SCRUM Product Owner (CSPO)",
     "Certified ScrumMaster (CSM)",
@@ -593,6 +592,10 @@ export const cvData: CvData = {
   ],
   publications: [
     { label: "Invited graduation speaker, DTU, 2024" },
+    {
+      label: "DFDS Horizon talent programme, selected from 200 nominees",
+      work: "dfds-platform",
+    },
     {
       label: "Master thesis (DTU): External Short Messaging Entity",
       work: "dong-master-thesis-sms",
