@@ -302,27 +302,31 @@ export const cvData: CvData = {
       start: "Oct 2021",
       end: "Aug 2022",
       scope:
-        "Around 50 people across 5 teams within a 200+ person, Vitruvian-backed business.",
+        "Took on Scrive's service operations after it acquired eSignatur, retaining ownership of eSignatur and leading around 50 people across 5 teams (Firefighters, QA, DevOps, SRE, and e-signature) within a 200+ person, Vitruvian-backed business. Moved the service to Kubernetes with zero downtime, cut operational cost by around 10%, drove ISO 27001 certification, and grew team leads into managers.",
       bullets: [
         {
-          text: "Improved service SLA and reduced operational cost through a move to containers and Kubernetes with zero downtime.",
-          work: "scrive-kubernetes-iso27001",
+          text: "Improved service SLA through a zero-downtime move to containers and Kubernetes, and cut operational cost by around 10% by optimising AWS and database IOPS.",
+          work: "scrive-kubernetes-platform",
         },
         {
-          text: "Lifted service SLA to [TODO: SLA % after] and cut operational cost by [TODO: cost reduction %] through the zero-downtime move to containers and Kubernetes.",
-          work: "scrive-kubernetes-iso27001",
+          text: "Set up an EU-hosted version of the application on Kubernetes.",
+          work: "scrive-kubernetes-platform",
         },
         {
-          text: "Led preparation and a successful audit for ISO 27001 and ISAE 3000 certifications.",
-          work: "scrive-kubernetes-iso27001",
+          text: "Led preparation and a successful audit for ISO 27001 certification.",
+          work: "scrive-iso27001",
+        },
+        {
+          text: "Set up a proper incident-management process for the on-call teams.",
+          work: "scrive-service-operations",
+        },
+        {
+          text: "Set the direction for the QA department.",
+          work: "scrive-service-operations",
         },
         {
           text: "Converted team leads into managers through coaching and mentorship.",
-          work: "scrive-kubernetes-iso27001",
-        },
-        {
-          text: "Strengthened the incident-response process via a cross-functional improvement team.",
-          work: "scrive-kubernetes-iso27001",
+          work: "scrive-service-operations",
         },
       ],
       themes: ["security-compliance", "transformation", "org-scaling"],
