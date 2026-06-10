@@ -13,6 +13,8 @@ skills:
   - "ai-ml"
   - "mlops"
   - "engineering-leadership"
+metrics:
+  - "ML models to production for logistics"
 order: 3.8
 ---
 

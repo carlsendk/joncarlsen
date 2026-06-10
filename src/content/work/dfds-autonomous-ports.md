@@ -12,6 +12,8 @@ skills:
   - "dotnet-core"
   - "microservices"
   - "engineering-leadership"
+metrics:
+  - "Driverless trucks in DFDS ports"
 order: 3.7
 ---
 
