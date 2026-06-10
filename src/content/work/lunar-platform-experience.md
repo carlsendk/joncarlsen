@@ -28,11 +28,12 @@ without losing compliance.
 
 I created the department structure from scratch, defining roles,
 responsibilities, and communication lines across around fifty people in five
-teams. We built self-service and x-as-a-service capabilities so engineering,
-data, security, and employees could provision what they needed directly. I set
-outcome targets for eID consolidation, implementation success, and platform
-robustness, with continuous regulatory compliance, and built an investor pitch
-deck that put the platform's value and growth potential into business terms.
+teams, using Team Topologies and domain-driven design to draw the boundaries. I
+ran it on OKRs so the teams worked to clear outcomes rather than activity. We
+built self-service and x-as-a-service capabilities so engineering, data,
+security, and employees could provision what they needed directly. I set outcome
+targets for eID consolidation, implementation success, and platform robustness,
+with continuous regulatory compliance throughout.
 
 ## Outcome
 

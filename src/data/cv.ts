@@ -269,10 +269,15 @@ export const cvData: CvData = {
       position: "Director of Technology, Developer & Platform Experience",
       start: "Aug 2022",
       end: "Feb 2023",
-      scope: "Around 50 people across 5 teams.",
+      scope:
+        "Built Lunar's developer and platform experience department from scratch, around 50 people across 5 teams at a Nordic challenger bank. Ran it on OKRs with Team Topologies and domain-driven design, enabling self-service for engineering, data, and security while holding continuous regulatory compliance.",
       bullets: [
         {
-          text: "Created the developer-and-platform department from scratch, defining its roles and reporting lines.",
+          text: "Created the developer-and-platform department from scratch, defining its roles and reporting lines with Team Topologies and domain-driven design.",
+          work: "lunar-platform-experience",
+        },
+        {
+          text: "Set up OKRs so the department worked to clear outcomes, including platform robustness, with continuous regulatory compliance.",
           work: "lunar-platform-experience",
         },
         {
@@ -280,11 +285,11 @@ export const cvData: CvData = {
           work: "lunar-platform-experience",
         },
         {
-          text: "Built an investor pitch deck setting out the value proposition and growth potential.",
-          work: "lunar-platform-experience",
+          text: "Led a new data platform project on Google Cloud, and built the investor pitch deck centred on it.",
+          work: "lunar-data-platform",
         },
         {
-          text: "Ran the department on outcome targets, including eID consolidation and platform robustness, while holding continuous regulatory compliance.",
+          text: "Set up the project to consolidate Lunar's eID brokers while holding continuous compliance.",
           work: "lunar-eid-consolidation",
         },
       ],
@@ -292,8 +297,8 @@ export const cvData: CvData = {
       skills: [
         "platform-engineering",
         "self-service",
+        "data-platform",
         "engineering-leadership",
-        "regulatory-compliance",
       ],
     },
     {
