@@ -33,8 +33,8 @@ export interface CvData {
   education: Education[];
   /** Certifications, networks, and associations. */
   certifications: string[];
-  /** Publications and honours. */
-  publications: string[];
+  /** Publications and honours, each optionally linking to a backing work case study. */
+  publications: Publication[];
   /** Outbound profile links (LinkedIn, GitHub, knowledge base). No contact details. */
   links: ProfileLink[];
   /** Personal details (Danish CV norm). Rendered on the full CV only. */
@@ -120,6 +120,14 @@ export interface Education {
   end: string;
   /** Optional study-era activities alongside the degree (student governance, tutoring). */
   activities?: string[];
+}
+
+/** A publication or honour, optionally linking to a backing work case study. */
+export interface Publication {
+  /** Display label. */
+  label: string;
+  /** Work-collection slug (file id under src/content/work/) when a case study backs it. */
+  work?: string;
 }
 
 /** An outbound link to a professional profile. */
@@ -511,6 +519,10 @@ export const cvData: CvData = {
       institution: "Copenhagen Business School",
       start: "2012",
       end: "2014",
+      activities: [
+        "A part-time diploma in two parts: a general Graduate Certificate in business administration, then a specialised Graduate Diploma.",
+        "Studied two evenings a week for the commercial grounding behind technology leadership.",
+      ],
     },
     {
       degree: "BEng, Information Technology",
@@ -540,7 +552,17 @@ export const cvData: CvData = {
     "Certified ScrumMaster (CSM)",
     "IT Architecture Foundation, Danish IT (DIT)",
   ],
-  publications: [],
+  publications: [
+    { label: "Invited graduation speaker, DTU, 2024" },
+    {
+      label: "Master thesis (DTU): External Short Messaging Entity",
+      work: "dong-master-thesis-sms",
+    },
+    {
+      label: "Bachelor project (DTU): SMS Communication Monitoring",
+      work: "dong-bachelor-sms-monitoring",
+    },
+  ],
   links: [
     { label: "LinkedIn", url: "https://www.linkedin.com/in/joncarlsen/" },
     { label: "GitHub", url: "https://github.com/carlsendk" },

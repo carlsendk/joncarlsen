@@ -1,8 +1,11 @@
 ---
-// Publications and honours for the full CV. Reads cvData.publications.
+// Publications and honours for the full CV. Reads cvData.publications; each item
+// optionally deep-links to its backing work case study at /work/<slug>.
+import type { Publication } from "../data/cv.ts";
+
 interface Props {
   /** Publications and honours. */
-  publications: string[];
+  publications: Publication[];
 }
 
 const { publications } = Astro.props;
@@ -15,7 +18,20 @@ const { publications } = Astro.props;
         Publications & Honours
       </h2>
       <ul class="mt-8 space-y-2 leading-relaxed text-muted">
-        {publications.map((item) => <li>{item}</li>)}
+        {publications.map((item) =>
+          item.work ? (
+            <li>
+              <a
+                href={`/work/${item.work}`}
+                class="link-underline motion-safe:transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >
+                {item.label}
+              </a>
+            </li>
+          ) : (
+            <li>{item.label}</li>
+          ),
+        )}
       </ul>
     </section>
   )
