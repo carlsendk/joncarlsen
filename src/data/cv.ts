@@ -170,7 +170,7 @@ export function isReady(text: string): boolean {
 // narrative for the summary and value proposition). Real figures only.
 export const cvData: CvData = {
   name: "Jon Østerby Carlsen",
-  title: "Director of Engineering & AI · AXON Networks",
+  title: "Executive Engineering Leadership",
   valueProp:
     "Engineering executive who sets technology strategy and then executes it, across the full span from business and sales through product, engineering, QA, and operations. Around 20 years scaling organisations across Europe and Asia, leading agile transformations and lifting engineering practices, and now building AI and real-time data products at AXON, where LLM-driven agents act on telemetry arriving at up to 50,000 datapoints per second per device.",
   summary:
@@ -178,8 +178,11 @@ export const cvData: CvData = {
   scope:
     "Executive engineering leadership over focused 40 to 50 person organisations and a business-wide transformation that reached around 200 engineers. Full remit across business, product, engineering, QA, and operations, with P&L responsibility, technology and AI strategy, security, and compliance.",
   credentials: [
+    "Set and executed technology strategy with P&L responsibility across the full span: business and sales, product, engineering, QA, and operations.",
     "Owned the full CTO remit at eSignatur: product and technical roadmap, security, compliance, cloud strategy, and vendor management.",
     "Built the AI function and target cloud architecture at AXON, putting LLM-driven agents on live telemetry.",
+    "Led organisation-wide Agile and SCRUM transformations, from around 20 teams at Ørsted to the ways of working at DFDS and Lunar.",
+    "Product owner and product leader across Ørsted, DFDS, and eSignatur (CSPO).",
     "VP of Service Operations and CTO of eSignatur inside a 200+ person, Vitruvian-backed business at Scrive.",
     "Created and ran around 50-person engineering organisations at Scrive and Lunar.",
     "Built the investor pitch deck at Lunar, setting out the value proposition and growth potential.",
@@ -708,7 +711,7 @@ export const cvData: CvData = {
     },
   ],
   about:
-    "I lead with a clear purpose, create room for people to master their craft, and build organisations that can act on their own through autonomy and delegation. I start from the business strategy and work back to the technology roadmap, so the engineering bets line up with where the company is going. Most of what I build is there to make good outcomes repeatable rather than heroic: self-service platforms, and measurement tied to real business results instead of activity. I meet an organisation at the maturity stage it is actually at and move it forward one deliberate step at a time, toward automation and AI-driven operations. That is the work at AXON now, taking a modern engineering culture into LLM-driven agents that act on live telemetry.",
+    "I lead with a clear purpose, create room for people to master their craft, and build organisations that can act on their own through autonomy and delegation. I start from the business strategy and work back to the technology roadmap, so the engineering bets line up with where the company is going. My remit has spanned the full organisation, from business and sales through product, engineering, QA, and operations, and the work has usually meant changing how teams operate, not just what they ship, through agile transformation and stronger engineering practices. Most of what I build is there to make good outcomes repeatable rather than heroic: self-service platforms, and measurement tied to real business results instead of activity. I meet an organisation at the maturity stage it is actually at and move it forward one deliberate step at a time, toward automation and AI-driven operations. That is the work at AXON now, taking a modern engineering culture into LLM-driven agents that act on live telemetry.",
   talks: [
     "Engineering operating model, a framework for aligning technology direction with business strategy. https://carlsendk.github.io/tech-leadership/wiki/operating-model/operating-model-framework",
     "Engineering practices, a maturity model from normalisation to self-service platforms. https://carlsendk.github.io/tech-leadership/wiki/engineering-practices",
