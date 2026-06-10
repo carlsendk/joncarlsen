@@ -22,7 +22,7 @@ const { leadership } = Astro.props;
       <ul class="mt-8 space-y-6">
         {leadership.map((entry) => (
           <li>
-            <h3 class="font-display text-lg font-semibold tracking-tight text-fg">{entry.role}</h3>
+            <h3 class="font-display text-xl font-semibold tracking-tight text-fg">{entry.role}</h3>
             <p class="mt-1 leading-relaxed text-muted">{entry.detail}</p>
           </li>
         ))}
