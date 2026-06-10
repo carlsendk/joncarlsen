@@ -12,6 +12,8 @@ skills:
   - "soa"
   - "event-driven"
   - "integration"
+metrics:
+  - "Virtual Power Plant delivered"
 order: 6
 ---
 

@@ -12,6 +12,8 @@ skills:
   - "product-ownership"
   - "gis"
   - "continuous-integration"
+metrics:
+  - "Delivered on time and under budget"
 order: 10
 ---
 

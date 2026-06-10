@@ -12,6 +12,9 @@ skills:
   - "agile"
   - "scrum"
   - "change-management"
+metrics:
+  - "SCRUM rolled out across IT"
+  - "Offshore development centre established"
 order: 8
 ---
 

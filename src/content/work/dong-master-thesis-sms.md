@@ -13,6 +13,8 @@ skills:
   - "wcf"
   - "oracle"
   - "msmq"
+metrics:
+  - "SMS-delay equation defined"
 order: 11
 ---
 

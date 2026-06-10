@@ -443,7 +443,7 @@ export const cvData: CvData = {
           work: "orsted-distribution-management-system",
         },
         {
-          text: "Led a five-person team as team lead and SCRUM Master, running the SMS messaging platform and migrating the gateway with a clean production cutover.",
+          text: "Led a five-person team as team lead and SCRUM Master, running the SMS messaging platform and migrating the gateway with a zero-downtime production cutover.",
           work: "orsted-sms-messaging-platform",
         },
         {
@@ -496,7 +496,7 @@ export const cvData: CvData = {
           work: "dong-bachelor-sms-monitoring",
         },
         {
-          text: "Built my bachelor project: an application to monitor SMS communication at the company, in C# with .NET and Oracle.",
+          text: "Built my bachelor project: an application to monitor SMS communication at the company in C#, ASP.NET, and Oracle, improving visibility into breaks in internal communication.",
           work: "dong-bachelor-sms-monitoring",
         },
       ],

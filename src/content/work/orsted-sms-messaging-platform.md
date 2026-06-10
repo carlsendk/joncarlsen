@@ -12,6 +12,8 @@ skills:
   - "team-leadership"
   - "scrum"
   - "integration"
+metrics:
+  - "Zero-downtime gateway migration"
 order: 9
 ---
 

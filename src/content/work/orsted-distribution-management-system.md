@@ -12,6 +12,8 @@ skills:
   - "architecture"
   - "smart-grid"
   - "requirements"
+metrics:
+  - "Smart-grid DMS specified"
 order: 7
 ---
 
