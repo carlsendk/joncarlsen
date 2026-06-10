@@ -302,14 +302,14 @@ export const cvData: CvData = {
       start: "Oct 2021",
       end: "Aug 2022",
       scope:
-        "Took on Scrive's service operations after it acquired eSignatur, retaining ownership of eSignatur and leading around 50 people across 5 teams (Firefighters, QA, DevOps, SRE, and e-signature) within a 200+ person, Vitruvian-backed business. Moved the service to Kubernetes with zero downtime, cut operational cost by around 10%, drove ISO 27001 certification, and grew team leads into managers.",
+        "Took on Scrive's service operations after it acquired eSignatur, retaining ownership of eSignatur and leading around 50 people across 5 teams (Firefighters, QA, DevOps, SRE, and e-signature) within a 200+ person, Vitruvian-backed business. Cut yearly operational cost by around 10% through AWS and database optimisation, stood up an EU-hosted version on Kubernetes for GDPR, drove ISO 27001 certification, and grew three team leads into managers.",
       bullets: [
         {
-          text: "Improved service SLA through a zero-downtime move to containers and Kubernetes, and cut operational cost by around 10% by optimising AWS and database IOPS.",
+          text: "Cut yearly operational cost by around 10% by optimising AWS and database IOPS.",
           work: "scrive-kubernetes-platform",
         },
         {
-          text: "Set up an EU-hosted version of the application on Kubernetes.",
+          text: "Set up an EU-hosted version of the application on Kubernetes to meet GDPR.",
           work: "scrive-kubernetes-platform",
         },
         {
@@ -325,7 +325,7 @@ export const cvData: CvData = {
           work: "scrive-service-operations",
         },
         {
-          text: "Converted team leads into managers through coaching and mentorship.",
+          text: "Converted three team leads into managers through coaching and mentorship.",
           work: "scrive-service-operations",
         },
       ],

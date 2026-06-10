@@ -14,7 +14,7 @@ skills:
   - "engineering-leadership"
 metrics:
   - "Incident management for on-call teams"
-  - "Team leads grown into managers"
+  - "Three team leads grown into managers"
 order: 5.2
 ---
 
@@ -30,8 +30,8 @@ deliberate rather than improvised.
 I set up a proper incident-management process for the on-call teams through a
 cross-functional improvement team, so issues were handled and learned from
 consistently rather than ad hoc. I set the direction for the QA department, and I
-grew team leads into managers through coaching and mentorship, establishing and
-delivering leadership training together with HR so the step up was supported.
+grew three team leads into managers through coaching and mentorship, establishing
+and delivering leadership training together with HR so the step up was supported.
 
 ## Outcome
 
