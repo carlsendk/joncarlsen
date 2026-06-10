@@ -428,27 +428,31 @@ export const cvData: CvData = {
     },
     {
       company: "Ørsted (formerly DONG Energy)",
-      position: "Product Owner & Architect",
-      start: "2010",
+      position: "Product Owner, SCRUM Master & IT Architect",
+      start: "May 2010",
       end: "Oct 2014",
       scope:
-        "Set the technical direction across energy IT systems and led Agile/SCRUM transformation with distributed teams in Asia.",
+        "Product owner and technical lead across the energy IT estate, running SCRUM with distributed teams in Denmark and Malaysia and setting architecture as the business modernised.",
       bullets: [
         {
-          text: "Started and trained multiple offshore teams in Asia and established the development centre.",
-          work: "orsted-agile-scrum-transformation",
-        },
-        {
-          text: "Designed SOA and event-driven integrations, and delivered SMS gateways, monitoring, and a Virtual Power Plant (PowerHub).",
+          text: "Designed event-driven integrations and helped deliver PowerHub, a Virtual Power Plant that coordinates distributed energy assets.",
           work: "orsted-virtual-power-plant",
         },
         {
-          text: "Implemented SCRUM organisation-wide and created a Story Points estimation model.",
-          work: "orsted-agile-scrum-transformation",
+          text: "Wrote the technical tender specification for a new smart-grid Distribution Management System.",
+          work: "orsted-distribution-management-system",
         },
         {
-          text: "Developed the technical tender specification for a new Distribution Management System to enable smart grid.",
-          work: "orsted-distribution-management-system",
+          text: "Led a five-person team as team lead and SCRUM Master, running the SMS messaging platform and migrating the gateway with a clean production cutover.",
+          work: "orsted-sms-messaging-platform",
+        },
+        {
+          text: "Owned delivery of GIS and digital web platforms on ESRI, with distributed teams in Denmark and Malaysia working on TFS with test-driven development and continuous integration.",
+          work: "orsted-gis-digital-platform",
+        },
+        {
+          text: "Implemented SCRUM across the IT department and created a Story Points estimation model.",
+          work: "orsted-agile-scrum-transformation",
         },
       ],
       themes: ["transformation", "org-scaling", "cloud-realtime-data"],
@@ -461,9 +465,9 @@ export const cvData: CvData = {
     },
     {
       company: "Ørsted (formerly DONG Energy)",
-      position: "Software Developer & Project Manager (part-time)",
+      position: "Software Developer & Project Manager",
       start: "Feb 2008",
-      end: "2010",
+      end: "May 2010",
       scope:
         "Built a new SMS gateway part-time while studying for my master's, using an IT project model and early agile practices.",
       bullets: [

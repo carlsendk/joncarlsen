@@ -1,8 +1,8 @@
 ---
 title: "An organisation-wide Agile and SCRUM transformation at Ørsted"
 summary: "Led the move to SCRUM across the IT department and built distributed development teams in Asia."
-role: "Product Owner / Software Developer & Architect"
-period: "2007-2014"
+role: "Product Owner, SCRUM Master & IT Architect"
+period: "2012 - 2014"
 company: "Ørsted"
 featured: false
 themes:

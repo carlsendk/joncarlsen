@@ -1,8 +1,8 @@
 ---
 title: "Specifying a smart-grid Distribution Management System"
 summary: "Wrote the technical tender specification for a new Distribution Management System to enable smart-grid operations."
-role: "Product Owner / Software Developer & Architect"
-period: "2007-2014"
+role: "Product Owner & IT Architect"
+period: "Dec 2011 - Jun 2012"
 company: "Ørsted"
 featured: false
 themes:
@@ -18,9 +18,10 @@ order: 7
 ## Context
 
 Running a smart grid means seeing and controlling the distribution network in
-much finer detail than legacy systems allowed. Ørsted needed a new Distribution
-Management System, and the procurement had to define what that system must do
-before any vendor could build it.
+much finer detail than legacy systems allowed. Ørsted needed to replace its
+legacy Netcenter Distribution Management System for control and monitoring of
+the 10 kV network and to be ready for smart-grid operations. The procurement had
+to define what that system must do before any vendor could build it.
 
 ## What I did
 
