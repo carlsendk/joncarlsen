@@ -368,7 +368,7 @@ export const cvData: CvData = {
       start: "Nov 2017",
       end: "Mar 2021",
       scope:
-        "Built the developer-platform department and drove a business-wide move to cloud-native, scaling the core team from 3 to 20 over three years.",
+        "Built the company's developer-platform capability from the ground up and led the business-wide move to cloud-native, scaling the core department from 3 to 20 people over three years. Oversaw cloud operations with a focus on security and cost-efficiency, and set the architectural direction and operating standards that let teams build and run their own services on the platform.",
       bullets: [
         {
           text: "Drove cloud-native microservices adoption across the business, enabling around 200 engineers to build for the cloud.",
@@ -414,7 +414,7 @@ export const cvData: CvData = {
       start: "Nov 2014",
       end: "Oct 2017",
       scope:
-        "Led the customer-experience department (CMS and booking) through a move to modern responsive web and continuous delivery, scaling it from 5 to 25 people across 5 teams.",
+        "Led the customer-experience department behind DFDS's web, CMS, and booking, scaling it from 5 to 25 people across 5 teams. Evolved the architecture towards modern, responsive web, trained product owners, ScrumMasters, and engineers, brought design and UX into delivery, and moved the teams onto continuous delivery and infrastructure as code.",
       bullets: [
         {
           text: "Released DFDS's first responsive website on SharePoint 2013 and brought in zero-downtime deployment.",
