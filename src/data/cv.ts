@@ -222,11 +222,15 @@ export const cvData: CvData = {
           work: "axon-ai-platform",
         },
         {
-          text: "Led the move from Java to Go for the services that needed predictable performance.",
-          work: "axon-ai-platform",
+          text: "Set up the team and built Neura, a GenAI agent embedded in AXON's products, and brought it into pre-sales.",
+          work: "axon-neura-agent",
         },
         {
-          text: "Set up a continuous-delivery culture with clear ownership, so teams ship without waiting on a central bottleneck.",
+          text: "Built a team and led the organisation's move from Java to Go, with training and guides, for performance and maintainability.",
+          work: "axon-java-to-go",
+        },
+        {
+          text: "Set up a continuous-delivery culture with clear ownership, integrated a design and UX workflow, and launched a third-party device team.",
           work: "axon-ai-platform",
         },
         {

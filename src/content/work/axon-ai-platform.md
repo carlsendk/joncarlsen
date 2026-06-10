@@ -42,8 +42,7 @@ focused on LLM-driven agents that act on live telemetry rather than on stale
 snapshots. To make that possible we scaled the real-time data pipelines so the
 models read the high-frequency streams directly.
 
-Where services needed predictable performance I led the move from Java to Go,
-and I set up a continuous-delivery culture with clear ownership so teams ship
+I set up a continuous-delivery culture with clear ownership so teams ship
 without waiting on a central bottleneck. Alongside the platform work I
 integrated a design and UX workflow and launched a third-party device team.
 
