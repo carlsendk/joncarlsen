@@ -1,0 +1,27 @@
+---
+// Spare-time interests for the full CV (/cv only, ADR-003). Reads
+// cvData.interests. Renders labels as a scannable list; themes are selection
+// metadata, not shown in the MVP UI. Renders nothing when there are no
+// interests, consistent with the other guarded sections.
+import type { Interest } from "../data/cv.ts";
+
+interface Props {
+  /** Spare-time interests. */
+  interests: Interest[];
+}
+
+const { interests } = Astro.props;
+---
+
+{
+  interests.length > 0 && (
+    <section aria-labelledby="interests-heading" class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14">
+      <h2 id="interests-heading" class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
+        Interests
+      </h2>
+      <ul class="mt-8 space-y-2 leading-relaxed text-muted">
+        {interests.map((interest) => <li>{interest.label}</li>)}
+      </ul>
+    </section>
+  )
+}

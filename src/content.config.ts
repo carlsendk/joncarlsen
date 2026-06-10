@@ -22,6 +22,18 @@ const work = defineCollection({
     role: z.string(),
     /** Time span, e.g. "2023-Present". */
     period: z.string(),
+    /** Company the project was delivered for; groups the /projects index. */
+    company: z.string(),
+    /** Surfaces the project on the frontpage and /cv; all projects render a page regardless (ADR-003). */
+    featured: z.boolean().default(false),
+    // `themes` and `skills` are free-form strings with no enforced enum (ADR-004),
+    // so the vocabulary can evolve without a schema change. Recommended starter
+    // themes for consistency (not validated): ai-llm, platform-devex, org-scaling,
+    // cloud-realtime-data, security-compliance, transformation.
+    /** Free-form theme tags for selection (ADR-004). */
+    themes: z.array(z.string()).default([]),
+    /** Free-form skill tags for selection (ADR-004). */
+    skills: z.array(z.string()).default([]),
     /** Headline metrics shown on cards (optional). */
     metrics: z.array(z.string()).default([]),
     /** Sort order for listings (lower first). */

@@ -37,6 +37,8 @@ export interface CvData {
   links: ProfileLink[];
   /** Personal details (Danish CV norm). Rendered on the full CV only. */
   personalDetails: PersonalDetails;
+  /** Spare-time interests, rendered as a section on the full CV (task_03). */
+  interests: Interest[];
   /** Optional leadership-approach narrative (Phase 2, task_09). */
   about?: string;
   /** Optional talks / writing references (Phase 2, task_09). */
@@ -44,6 +46,14 @@ export interface CvData {
   /** Optional path to a downloadable resume under public/. Unused: the print-friendly /cv replaces a PDF (ADR-001). */
   resumePdf?: string;
 }
+
+// `themes` and `skills` are free-form string tags with no enforced enum
+// (ADR-004), so the vocabulary can evolve without a type change. They are
+// selection metadata (offline tailoring and the Phase 2 variants), not
+// necessarily rendered in the MVP UI. Recommended starter themes for
+// consistency (not validated), shared with the `work` schema in
+// content.config.ts: ai-llm, platform-devex, org-scaling, cloud-realtime-data,
+// security-compliance, transformation.
 
 /** A single role in the experience timeline. */
 export interface Role {
@@ -58,6 +68,10 @@ export interface Role {
   scope: string;
   /** Achievement bullets (used by the full /cv view). */
   bullets: string[];
+  /** Free-form theme tags for selection (ADR-004). */
+  themes?: string[];
+  /** Free-form skill tags for selection (ADR-004). */
+  skills?: string[];
 }
 
 /** A quantified impact highlight; the metric is shown first. */
@@ -66,6 +80,16 @@ export interface Highlight {
   metric: string;
   /** What the metric means. */
   summary: string;
+  /** Free-form theme tags for selection (ADR-004). */
+  themes?: string[];
+}
+
+/** A spare-time interest, tagged for selection. Growable list (ADR-004). */
+export interface Interest {
+  /** Short human label, e.g. "Golf, including Trackman simulator practice". */
+  label: string;
+  /** Free-form theme tags for selection (ADR-004). */
+  themes?: string[];
 }
 
 /** A single education entry. */
@@ -108,9 +132,9 @@ export const cvData: CvData = {
   name: "Jon Østerby Carlsen",
   title: "Director of Engineering & AI · AXON Networks",
   valueProp:
-    "I turn high-volume, real-time data into intelligent products, and turn engineering teams into self-sufficient platforms. Around 20 years scaling teams across Europe and Asia, now building GenAI and LLM capability on cloud-native infrastructure.",
+    "I build engineering organisations that turn high-volume, real-time data into intelligent products, and give teams the platforms to ship on their own. Around 20 years across Europe and Asia, now leading engineering and AI at AXON, where LLM-driven agents act on telemetry arriving at up to 50,000 datapoints per second per device.",
   summary:
-    "Engineering leader specialising in real-time data platforms, AI and LLM-driven intelligence, and large-scale cloud architectures. Around 20 years in tech, currently Director of Engineering & AI (EMEA) at AXON Networks. I scale engineering organisations, strengthen collaboration across hardware, tracking, and software teams, and deliver high-performance systems for mission-critical, latency-sensitive environments. I have built and led high-performing teams across Europe and Asia, set long-term technical direction, and transformed complex engineering environments.",
+    "Engineering leader with around 20 years in tech, currently Director of Engineering and AI for EMEA at AXON Networks, where I lead the organisation behind a cloud-native platform that turns network telemetry into operational insight at up to 50,000 datapoints per second per device, and built the AI/ML team that puts LLM-driven agents on those live streams. Earlier, at DFDS, I grew the developer-platform department from 3 to 20 and drove a company-wide move to cloud-native that reached around 200 engineers and 500+ microservices on Kubernetes, built from zero in three years. Before that I led roughly 50-person organisations at Scrive and Lunar and built distributed teams across Europe and Asia. The through-line is simple: I tend to leave an organisation a maturity stage further along than I found it.",
   expertise: [
     "Engineering leadership and organisational scaling",
     "AI/ML, GenAI, LLM and local-LLM product integration",
@@ -129,12 +153,26 @@ export const cvData: CvData = {
       scope:
         "Lead the AXON Orchestrator organisation in EMEA, around 40 people, plus supporting integration of 70 across Europe.",
       bullets: [
-        "Lead a cloud-native platform that turns high-volume network telemetry into operational insight, processing up to 50,000 datapoints per second per device.",
-        "Defined the target cloud architecture for the orchestration platform.",
-        "Built a new AI/ML team focused on LLM-driven AI agents and applied intelligence.",
-        "Scaled real-time data pipelines so AI/ML and LLM models operate on high-frequency, low-latency streams.",
-        "Led the transition from Java to Go for performance and maintainability.",
-        "Led integration of the ACS system into the AXON platform and supported M&A platform integration.",
+        "Lead the engineering and AI organisation behind a cloud-native platform that turns network telemetry into operational insight at up to 50,000 datapoints per second per device.",
+        "Defined the target cloud architecture and built a new AI/ML team for LLM-driven agents that act on live telemetry rather than on stale snapshots.",
+        "Scaled the real-time data pipelines so AI and LLM models read high-frequency streams directly.",
+        "Led the move from Java to Go for the services that needed predictable performance.",
+        "Set up a continuous-delivery culture with clear ownership, so teams ship without waiting on a central bottleneck.",
+        "Led the integration of the ACS system into the platform and kept one architecture coherent through post-acquisition integration.",
+      ],
+      themes: [
+        "ai-llm",
+        "cloud-realtime-data",
+        "org-scaling",
+        "platform-devex",
+        "transformation",
+      ],
+      skills: [
+        "ai-ml",
+        "real-time-data",
+        "cloud-architecture",
+        "go",
+        "engineering-leadership",
       ],
     },
     {
@@ -145,8 +183,10 @@ export const cvData: CvData = {
       scope:
         "Advisory role for a digital platform matching skilled people with the projects that need them.",
       bullets: [
-        "Advised on technology direction and product strategy for the platform.",
+        "Advised on technology direction and product strategy for the matching platform.",
       ],
+      themes: ["product-strategy", "transformation"],
+      skills: ["advisory", "product-strategy", "technology-strategy"],
     },
     {
       company: "Lunar A/S",
@@ -155,10 +195,17 @@ export const cvData: CvData = {
       end: "Feb 2023",
       scope: "Around 50 people across 5 teams.",
       bullets: [
-        "Created the department structure from scratch, defining roles, responsibilities, and communication lines.",
-        "Enabled self-service and x-as-a-service for developers, data engineers, security, and employees.",
-        "Built an investor pitch deck communicating the value proposition and growth potential.",
-        "Set outcome targets for eID consolidation, implementation success, and platform robustness, with continuous regulatory compliance.",
+        "Created the developer-and-platform department from scratch, defining its roles and reporting lines.",
+        "Enabled self-service and x-as-a-service for developers, data engineers, security, and the wider business.",
+        "Built an investor pitch deck setting out the value proposition and growth potential.",
+        "Ran the department on outcome targets, including eID consolidation and platform robustness, while holding continuous regulatory compliance.",
+      ],
+      themes: ["platform-devex", "org-scaling", "security-compliance"],
+      skills: [
+        "platform-engineering",
+        "self-service",
+        "engineering-leadership",
+        "regulatory-compliance",
       ],
     },
     {
@@ -174,6 +221,13 @@ export const cvData: CvData = {
         "Converted team leads into managers through coaching and mentorship.",
         "Strengthened the incident-response process via a cross-functional improvement team.",
       ],
+      themes: ["security-compliance", "transformation", "org-scaling"],
+      skills: [
+        "kubernetes",
+        "service-operations",
+        "iso-27001",
+        "engineering-leadership",
+      ],
     },
     {
       company: "eSignatur",
@@ -188,6 +242,13 @@ export const cvData: CvData = {
         "Improved collaboration and productivity by leading Agile adoption.",
         "Owned the product and technical roadmap and supported customer sales meetings.",
       ],
+      themes: ["transformation", "platform-devex", "security-compliance"],
+      skills: [
+        "cloud-architecture",
+        "vendor-management",
+        "agile",
+        "product-strategy",
+      ],
     },
     {
       company: "DFDS",
@@ -201,6 +262,13 @@ export const cvData: CvData = {
         "Built an internal developer platform with self-service and golden paths (Team Topologies, Platform as Product).",
         "Selected for the DFDS Horizon management talent programme, out of 200 nominees.",
       ],
+      themes: ["platform-devex", "org-scaling", "transformation"],
+      skills: [
+        "kubernetes",
+        "microservices",
+        "platform-engineering",
+        "engineering-leadership",
+      ],
     },
     {
       company: "DFDS",
@@ -211,8 +279,15 @@ export const cvData: CvData = {
       bullets: [
         "Transformed the architecture to React, serverless, and a headless CMS, and released DFDS's first responsive website.",
         "Implemented A/B and multivariate testing across the web teams.",
-        "Integrated design and UX, implemented continuous delivery, and used infrastructure as code.",
+        "Integrated design and UX into the teams and shipped on continuous delivery with infrastructure as code.",
         "Led the \"DFDS Way\" of working and rolled out the development mission via roadshows.",
+      ],
+      themes: ["transformation", "platform-devex", "org-scaling"],
+      skills: [
+        "react",
+        "serverless",
+        "continuous-delivery",
+        "engineering-leadership",
       ],
     },
     {
@@ -228,6 +303,13 @@ export const cvData: CvData = {
         "Implemented SCRUM organisation-wide and created a Story Points estimation model.",
         "Developed the technical tender specification for a new Distribution Management System to enable smart grid.",
       ],
+      themes: ["transformation", "org-scaling", "cloud-realtime-data"],
+      skills: [
+        "soa",
+        "event-driven-architecture",
+        "scrum",
+        "software-architecture",
+      ],
     },
   ],
   earlierRoles: [
@@ -241,26 +323,31 @@ export const cvData: CvData = {
       metric: "50,000/s",
       summary:
         "Datapoints per second per device processed by the real-time AXON platform I lead.",
+      themes: ["cloud-realtime-data", "ai-llm"],
     },
     {
       metric: "3 → 20",
       summary:
         "Scaled the DFDS Developer & Platform Experience department over three years.",
+      themes: ["org-scaling", "platform-devex"],
     },
     {
       metric: "500+",
       summary:
         "Microservices run on Kubernetes at DFDS, built from zero in three years.",
+      themes: ["platform-devex", "transformation"],
     },
     {
       metric: "~200",
       summary:
         "Engineers moved to cloud-native microservices in a business-wide DFDS transformation.",
+      themes: ["transformation", "org-scaling"],
     },
     {
       metric: "ISO 27001",
       summary:
         "and ISAE 3000 certifications taken through successful audit at Scrive.",
+      themes: ["security-compliance"],
     },
   ],
   education: [
@@ -319,4 +406,34 @@ export const cvData: CvData = {
     nationality: "Danish",
     maritalStatus: "Married",
   },
+  interests: [
+    {
+      label: "Golf, including Trackman simulator practice through the winter",
+      themes: ["sport", "data-curiosity"],
+    },
+    {
+      label: "Soccer, playing and following the game",
+      themes: ["sport", "team"],
+    },
+    {
+      label: "NFL and flag football",
+      themes: ["sport", "team"],
+    },
+    {
+      label: "Home automation and hobby coding",
+      themes: ["tech", "hands-on-engineering"],
+    },
+    {
+      label: "Running",
+      themes: ["sport", "endurance"],
+    },
+    {
+      label: "Coaching and mentoring, on and off the field",
+      themes: ["leadership", "mentoring"],
+    },
+    {
+      label: "Family time and the outdoors",
+      themes: ["family", "outdoors"],
+    },
+  ],
 };

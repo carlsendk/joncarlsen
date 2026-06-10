@@ -1,0 +1,88 @@
+---
+// Projects index (/projects) — the breadth tier of the two-tier project model
+// (ADR-002, ADR-003). Lists every non-draft `work` entry grouped by company,
+// each linking to its /work/<slug> deep page. The frontpage and /cv surface
+// only featured projects; this page exposes the full set. No client JS and no
+// contact details (ADR-002).
+import Base from "../layouts/Base.astro";
+import CaseStudyCard from "../components/CaseStudyCard.astro";
+import { getCollection } from "astro:content";
+import { cvData } from "../data/cv.ts";
+
+// Drop drafts, then group by company. Entries within a company sort by `order`
+// (lower first), matching the Selected Work listing. Companies are ordered by
+// their most prominent entry (lowest `order`), with the company name as a
+// stable, locale-pinned tie-break, so the page is deterministic across builds.
+const entries = await getCollection("work", ({ data }) => !data.draft);
+
+const byCompany = new Map<string, typeof entries>();
+for (const entry of entries) {
+  const group = byCompany.get(entry.data.company) ?? [];
+  group.push(entry);
+  byCompany.set(entry.data.company, group);
+}
+
+const companies = [...byCompany.entries()]
+  .map(([company, group]) => ({
+    company,
+    entries: group.sort((a, b) => a.data.order - b.data.order),
+  }))
+  .sort(
+    (a, b) =>
+      a.entries[0].data.order - b.entries[0].data.order ||
+      a.company.localeCompare(b.company, "en"),
+  );
+
+const companyId = (company: string) =>
+  `company-${company.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
+
+const title = `Projects · ${cvData.name}`;
+const description = `Projects by ${cvData.name}, grouped by company.`;
+---
+
+<Base title={title} description={description}>
+  <nav class="mx-auto max-w-2xl px-6 pt-6">
+    <a
+      href="/cv"
+      class="link-underline font-mono text-xs uppercase tracking-wider text-muted motion-safe:transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+    >
+      ← Back to CV
+    </a>
+  </nav>
+  <header class="mx-auto max-w-2xl px-6 pt-20 pb-12 sm:pt-28">
+    <h1 class="font-display text-5xl font-semibold tracking-tight text-fg sm:text-6xl">Projects</h1>
+    <p class="mt-6 max-w-prose text-lg leading-relaxed text-muted">
+      Every project, grouped by company. Each links to its full write-up.
+    </p>
+  </header>
+  <main>
+    {
+      companies.length > 0 ? (
+        companies.map(({ company, entries }) => (
+          <section
+            aria-labelledby={companyId(company)}
+            class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14"
+          >
+            <h2
+              id={companyId(company)}
+              class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted"
+            >
+              {company}
+            </h2>
+            <ul class="mt-8 space-y-4">
+              {entries.map((entry) => (
+                <li>
+                  <CaseStudyCard entry={entry} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      ) : (
+        <section class="mx-auto max-w-2xl border-t border-border px-6 py-14">
+          <p class="leading-relaxed text-muted">No projects published yet.</p>
+        </section>
+      )
+    }
+  </main>
+</Base>
