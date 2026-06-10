@@ -8,11 +8,15 @@ interface Props {
 const { publications } = Astro.props;
 ---
 
-<section aria-labelledby="publications-heading" class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14">
-  <h2 id="publications-heading" class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
-    Publications & Honours
-  </h2>
-  <ul class="mt-8 space-y-2 leading-relaxed text-muted">
-    {publications.map((item) => <li>{item}</li>)}
-  </ul>
-</section>
+{
+  publications.length > 0 && (
+    <section aria-labelledby="publications-heading" class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14">
+      <h2 id="publications-heading" class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
+        Publications & Honours
+      </h2>
+      <ul class="mt-8 space-y-2 leading-relaxed text-muted">
+        {publications.map((item) => <li>{item}</li>)}
+      </ul>
+    </section>
+  )
+}

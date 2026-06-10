@@ -460,13 +460,11 @@ export const cvData: CvData = {
         "Built a new SMS gateway part-time while studying for my master's, using an IT project model and early agile practices.",
       bullets: [
         {
-          text: "Delivered a new SMS gateway in C#, WCF, Oracle, and MSMQ.",
+          text: "Delivered a new SMS gateway in C#, WCF, Oracle, and MSMQ, the subject of my master thesis.",
+          work: "dong-master-thesis-sms",
         },
         {
           text: "Introduced agile practices to the delivery, an early step toward the SCRUM transformation that followed.",
-        },
-        {
-          text: "Carried out my master thesis with the company: External Short Messaging Entity.",
         },
       ],
       themes: ["transformation", "cloud-realtime-data"],
@@ -485,6 +483,7 @@ export const cvData: CvData = {
         },
         {
           text: "Built my bachelor project: an application to monitor SMS communication at the company, in C# with .NET and Oracle.",
+          work: "dong-bachelor-sms-monitoring",
         },
       ],
       themes: ["cloud-realtime-data"],
@@ -501,6 +500,9 @@ export const cvData: CvData = {
       start: "2008",
       end: "2010",
       activities: [
+        "Focused on efficient software and hardware solutions for complex technical problems, covering systems analysis, modelling, and implementation.",
+        "Notable courses: Windows Programming in C# and .NET, and Advanced Databases.",
+        "Master thesis with DONG Energy: External Short Messaging Entity, an SMS gateway.",
         "Tutored first-year students and ran the daily operation of a department coffee shop.",
       ],
     },
@@ -516,6 +518,8 @@ export const cvData: CvData = {
       start: "2003",
       end: "2008",
       activities: [
+        "Focused on complex digital systems.",
+        "Bachelor project with DONG Energy: an application to monitor SMS communication.",
         "Vice-Chairman of Polyteknisk Forening, the DTU student organisation, leading internal management, board communication, and strategy implementation.",
       ],
     },
@@ -536,14 +540,7 @@ export const cvData: CvData = {
     "Certified ScrumMaster (CSM)",
     "IT Architecture Foundation, Danish IT (DIT)",
   ],
-  publications: [
-    "Master Thesis (DTU): External Short Messaging Entity",
-    "Bachelor Project (DTU): SMS Communication Monitoring",
-    "Microsoft TechEd, Barcelona",
-    "SmartGrid & E-mobility OTTI 2010",
-    "CIM User Group 2010",
-    "Telvent User Group, Denver 2012",
-  ],
+  publications: [],
   links: [
     { label: "LinkedIn", url: "https://www.linkedin.com/in/joncarlsen/" },
     { label: "GitHub", url: "https://github.com/carlsendk" },
@@ -599,7 +596,7 @@ export const cvData: CvData = {
     {
       role: "Blå Sommer 2009, national scout camp",
       detail:
-        "Co-created a sailing activity and coded an SMS game for scouts to play. Around 200 scouts took part over five days.",
+        "Co-created a sailing activity and coded an SMS game for scouts to play. Around 400 scouts came through our activity each day over five days.",
       themes: ["leadership", "hands-on-engineering"],
     },
     {
