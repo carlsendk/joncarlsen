@@ -17,15 +17,15 @@ const { details } = Astro.props;
     Personal Details
   </h2>
   <dl class="mt-8 space-y-2">
-    <div class="flex gap-3">
+    <div class="flex items-baseline gap-3">
       <dt class="w-28 shrink-0 font-mono text-xs uppercase tracking-wider text-muted">Born</dt>
       <dd class="text-fg">{details.dob}</dd>
     </div>
-    <div class="flex gap-3">
+    <div class="flex items-baseline gap-3">
       <dt class="w-28 shrink-0 font-mono text-xs uppercase tracking-wider text-muted">Nationality</dt>
       <dd class="text-fg">{details.nationality}</dd>
     </div>
-    <div class="flex gap-3">
+    <div class="flex items-baseline gap-3">
       <dt class="w-28 shrink-0 font-mono text-xs uppercase tracking-wider text-muted">Status</dt>
       <dd class="text-fg">{details.maritalStatus}</dd>
     </div>
