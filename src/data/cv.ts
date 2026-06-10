@@ -511,7 +511,6 @@ export const cvData: CvData = {
         "Focused on efficient software and hardware solutions for complex technical problems, covering systems analysis, modelling, and implementation.",
         "Notable courses: Windows Programming in C# and .NET, and Advanced Databases.",
         "Master thesis with DONG Energy: External Short Messaging Entity, an SMS gateway.",
-        "Tutored first-year students and ran the daily operation of a department coffee shop.",
       ],
     },
     {
@@ -532,7 +531,6 @@ export const cvData: CvData = {
       activities: [
         "Focused on complex digital systems.",
         "Bachelor project with DONG Energy: an application to monitor SMS communication.",
-        "Vice-Chairman of Polyteknisk Forening, the DTU student organisation, leading internal management, board communication, and strategy implementation.",
       ],
     },
     {
@@ -629,6 +627,18 @@ export const cvData: CvData = {
     {
       role: "Football coach",
       detail: "Coached children and young people in soccer.",
+      themes: ["leadership", "mentoring"],
+    },
+    {
+      role: "Vice-Chairman, Polyteknisk Forening (DTU student organisation)",
+      detail:
+        "Led internal management, board communication, and strategy implementation for the student organisation at DTU.",
+      themes: ["leadership"],
+    },
+    {
+      role: "Student tutor and coffee-shop lead, DTU",
+      detail:
+        "Tutored first-year students and ran the daily operation of a department coffee shop.",
       themes: ["leadership", "mentoring"],
     },
   ],
