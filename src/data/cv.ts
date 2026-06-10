@@ -454,6 +454,9 @@ export const cvData: CvData = {
           text: "Implemented SCRUM across around 20 teams, created a Story Points estimation model, and coached the teams, SCRUM Masters, and new product owners through the change.",
           work: "orsted-agile-scrum-transformation",
         },
+        {
+          text: "Put a heavy focus on engineering practices throughout, building good CI and CD into every product so continuous delivery was the default.",
+        },
       ],
       themes: ["transformation", "org-scaling", "cloud-realtime-data"],
       skills: [

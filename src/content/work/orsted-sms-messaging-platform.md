@@ -39,7 +39,7 @@ were common. The same
 platform ran SMSlog, which logged people in and out by SMS or a Silverlight
 interface, and PriceGuard for price notifications. I planned the migration off
 the old gateway so existing clients moved across with a zero-downtime production
-cutover.
+cutover. Good CI and CD were in place so changes shipped continuously and safely.
 
 ## Outcome
 

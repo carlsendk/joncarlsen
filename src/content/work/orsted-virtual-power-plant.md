@@ -38,7 +38,8 @@ on services and message queues with its own API, the service-oriented style that
 came before the term microservices and before REST was common. The hard part of
 any such platform is coordinating a complex, secure flow of messages and control
 signals across assets in real time, and the integration backbone is what made
-the coordinated operation possible.
+the coordinated operation possible. I built good CI and CD into the delivery so
+changes shipped continuously and safely.
 
 ## Outcome
 
