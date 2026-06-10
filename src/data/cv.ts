@@ -636,9 +636,8 @@ export const cvData: CvData = {
       themes: ["leadership"],
     },
     {
-      role: "Student tutor and coffee-shop lead, DTU",
-      detail:
-        "Tutored first-year students and ran the daily operation of a department coffee shop.",
+      role: "Student tutor, DTU",
+      detail: "Tutored first-year students.",
       themes: ["leadership", "mentoring"],
     },
   ],
