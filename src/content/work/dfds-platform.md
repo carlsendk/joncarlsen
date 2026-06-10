@@ -13,6 +13,7 @@ skills:
   - "kubernetes"
   - "microservices"
   - "platform-engineering"
+  - "event-driven"
   - "engineering-leadership"
 metrics:
   - "500+ microservices on Kubernetes"
@@ -42,12 +43,19 @@ platform as a product with its own roadmap and internal users.
 On top of that platform we ran the migration to microservices on Kubernetes,
 built from zero. Over three years the estate grew past 500 services in
 production, and around 200 engineers moved to building and operating for the
-cloud. I set the architectural direction, the operational standards teams had to
-meet to run in production, and the support model that kept the platform reliable
-as adoption climbed.
+cloud. The goal of the composable-architecture programme was to make it easy for
+every team to be compliant with the DFDS IT and digital strategy, and to transfer
+the knowledge teams needed to build and run their own applications for the cloud
+in an automated way. I set the architectural direction, the operational standards
+teams had to meet to run in production, and the support model that kept the
+platform reliable as adoption climbed, much of it on an event-driven architecture
+built around Kafka. I also oversaw cloud operations with a focus on security and
+cost-efficiency as the estate grew.
 
-During this period I was selected for the DFDS Horizon management talent
-programme out of 200 nominees.
+I led three teams inside the department: API development and data models,
+Development Excellence, and Autonomous Ports building on .NET Core. During this
+period I was selected for the DFDS Horizon management talent programme out of 200
+nominees.
 
 ## Outcome
 

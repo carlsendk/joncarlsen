@@ -26,9 +26,13 @@ doing the work, not just stated at the top.
 
 I led the DFDS Way, the department's way of working, and rolled out the
 development mission to the teams through roadshows so the direction was something
-people had heard and could act on. Alongside that I trained product owners,
-ScrumMasters, and engineers, brought design and UX into the delivery flow, and
-optimised for flow with DevOps, continuous delivery, and infrastructure as code.
+people had heard and could act on. In the analysis phase of DFDS Way 2.0 the
+development department was one of the first to map its tools and practices to the
+DFDS Way, and I advised on selecting the platform to hold all of that, which
+became DFDS's new SaaS intranet for employee communication. Alongside that I
+trained product owners, ScrumMasters, and engineers, brought design and UX into
+the delivery flow, and optimised for flow with DevOps, continuous delivery, and
+infrastructure as code.
 
 ## Outcome
 

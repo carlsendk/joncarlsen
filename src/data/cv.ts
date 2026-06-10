@@ -378,7 +378,15 @@ export const cvData: CvData = {
           work: "dfds-platform",
         },
         {
-          text: "Built an internal developer platform with self-service and golden paths (Team Topologies, Platform as Product).",
+          text: "Built an internal developer platform with self-service and golden paths, treating the platform as a product (Team Topologies, Platform as Product).",
+          work: "dfds-platform",
+        },
+        {
+          text: "Oversaw cloud operations with a focus on security and cost-efficiency, on an event-driven architecture built around Kafka.",
+          work: "dfds-platform",
+        },
+        {
+          text: "Led three teams: API development and data models, Development Excellence, and Autonomous Ports on .NET Core.",
           work: "dfds-platform",
         },
         {
@@ -391,6 +399,7 @@ export const cvData: CvData = {
         "kubernetes",
         "microservices",
         "platform-engineering",
+        "event-driven",
         "engineering-leadership",
       ],
     },
@@ -402,7 +411,11 @@ export const cvData: CvData = {
       scope: "Scaled the customer-experience department from 5 to 25 people across 5 teams.",
       bullets: [
         {
-          text: "Transformed the architecture to React, serverless, and a headless CMS, and released DFDS's first responsive website.",
+          text: "Released DFDS's first responsive website on SharePoint 2013 and brought in zero-downtime deployment.",
+          work: "dfds-responsive-web-platform",
+        },
+        {
+          text: "Then moved the customer-facing architecture to a headless CMS on React and Contentful with serverless functions.",
           work: "dfds-responsive-web-platform",
         },
         {
@@ -417,10 +430,15 @@ export const cvData: CvData = {
           text: "Led the \"DFDS Way\" of working and rolled out the development mission via roadshows.",
           work: "dfds-way-of-working",
         },
+        {
+          text: "Technical advisor on a new SaaS intranet for employee communication.",
+          work: "dfds-way-of-working",
+        },
       ],
       themes: ["transformation", "platform-devex", "org-scaling"],
       skills: [
         "react",
+        "contentful",
         "serverless",
         "continuous-delivery",
         "engineering-leadership",
