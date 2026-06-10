@@ -435,7 +435,7 @@ export const cvData: CvData = {
         "Product owner and technical lead across the energy IT estate, running SCRUM with distributed teams in Denmark and Malaysia and setting architecture as the business modernised.",
       bullets: [
         {
-          text: "Designed event-driven integrations and helped deliver PowerHub, a Virtual Power Plant that coordinates distributed energy assets.",
+          text: "Designed event-driven integrations and helped deliver PowerHub, a real-time Virtual Power Plant that monitors distributed energy assets and runs them as one.",
           work: "orsted-virtual-power-plant",
         },
         {
