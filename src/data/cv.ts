@@ -270,10 +270,10 @@ export const cvData: CvData = {
       start: "Aug 2022",
       end: "Feb 2023",
       scope:
-        "Built Lunar's developer and platform experience department from scratch, around 50 people across 5 teams at a Nordic challenger bank. Ran it on OKRs with Team Topologies and domain-driven design, enabling self-service for engineering, data, and security while holding continuous regulatory compliance.",
+        "Led Lunar's developer and platform experience department, around 50 people across 5 teams at a Nordic challenger bank. Ran it on OKRs with Team Topologies and domain-driven design, enabling self-service for engineering, data, and security while holding continuous regulatory compliance.",
       bullets: [
         {
-          text: "Created the developer-and-platform department from scratch, defining its roles and reporting lines with Team Topologies and domain-driven design.",
+          text: "Shaped the developer-and-platform department, redefining its roles and reporting lines with Team Topologies and domain-driven design.",
           work: "lunar-platform-experience",
         },
         {

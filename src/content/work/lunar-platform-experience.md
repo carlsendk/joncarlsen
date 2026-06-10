@@ -1,6 +1,6 @@
 ---
 title: "A developer and platform experience function at Lunar"
-summary: "Built a developer and platform experience department from scratch and enabled self-service for engineering, data, and security."
+summary: "Led Lunar's developer and platform experience department and enabled self-service for engineering, data, and security."
 role: "Director of Technology, Developer & Platform Experience"
 period: "2022-2023"
 company: "Lunar A/S"
@@ -26,10 +26,10 @@ without losing compliance.
 
 ## What I did
 
-I created the department structure from scratch, defining roles,
-responsibilities, and communication lines across around fifty people in five
-teams, using Team Topologies and domain-driven design to draw the boundaries. I
-ran it on OKRs so the teams worked to clear outcomes rather than activity. We
+I took on an existing department of around fifty people in five teams and
+redefined its structure, roles, responsibilities, and communication lines, using
+Team Topologies and domain-driven design to draw the boundaries. I ran it on OKRs
+so the teams worked to clear outcomes rather than activity. We
 built self-service and x-as-a-service capabilities so engineering, data,
 security, and employees could provision what they needed directly. I set outcome
 targets for eID consolidation, implementation success, and platform robustness,
