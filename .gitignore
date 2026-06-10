@@ -19,3 +19,4 @@ npm-debug.log*
 .netlify/
 # Local-only docs (do not publish)
 docs/
+.playwright-mcp/
