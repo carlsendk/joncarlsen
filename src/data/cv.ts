@@ -339,19 +339,27 @@ export const cvData: CvData = {
       start: "Apr 2021",
       end: "Oct 2021",
       scope:
-        "Led a Danish e-signature company across development, QA, support, security, and compliance.",
+        "Led eSignatur, a small Danish e-signature company, as CTO, owning developers, QA, and support plus security, compliance, and the product and technical roadmap. Set the engineering practices and a costed cloud-adoption plan, managed sourcing partners, and brought technical and product depth into customer sales.",
       bullets: [
         {
           text: "Devised a cloud-adoption plan using a cloud-native maturity matrix.",
+          work: "esignatur-cto",
+        },
+        {
+          text: "Set up the development organisation and its engineering practices, with Azure DevOps for an optimal process flow.",
+          work: "esignatur-cto",
         },
         {
           text: "Managed and onboarded sourcing partners, covering vendor selection, contracts, and SLAs.",
+          work: "esignatur-cto",
         },
         {
-          text: "Improved collaboration and productivity by leading Agile adoption.",
+          text: "Improved collaboration and productivity by leading Agile adoption, and coached and mentored the team while closing skill gaps with training.",
+          work: "esignatur-cto",
         },
         {
           text: "Owned the product and technical roadmap and supported customer sales meetings.",
+          work: "esignatur-cto",
         },
       ],
       themes: ["transformation", "platform-devex", "security-compliance"],
