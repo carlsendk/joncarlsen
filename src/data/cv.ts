@@ -386,7 +386,7 @@ export const cvData: CvData = {
           work: "dfds-platform",
         },
         {
-          text: "Led the Autonomous Ports team, building port-automation services on .NET Core.",
+          text: "Led the Autonomous Ports team, building the software to handle driverless trucks moving through DFDS ports, on .NET Core.",
           work: "dfds-autonomous-ports",
         },
         {
