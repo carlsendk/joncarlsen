@@ -33,7 +33,9 @@ improved communication with the SMS providers and added a new one. From there I
 led the full integration of the SMS gateway across Ørsted's other systems, so it
 handled all SMS communication to units and customers, millions of messages a
 year. It was built in C# and
-.NET with a web-services interface and a UI to control it, on Oracle. The same
+.NET on services and message queues, with a web-services API and a UI to control
+it, on Oracle, the service-oriented style that came before microservices and REST
+were common. The same
 platform ran SMSlog, which logged people in and out by SMS or a Silverlight
 interface, and PriceGuard for price notifications. I planned the migration off
 the old gateway so existing clients moved across with a zero-downtime production

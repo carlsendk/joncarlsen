@@ -33,8 +33,10 @@ never designed to talk to each other.
 I worked as a developer and architect on PowerHub, designing service-oriented
 and event-driven integrations to bring around 20 distributed assets together.
 PowerHub was a real-time system: it monitored the distributed units and hooked
-into the live power supply system so they could be operated as one. The hard part of any
-such platform is coordinating a complex, secure flow of messages and control
+into the live power supply system so they could be operated as one. It was built
+on services and message queues with its own API, the service-oriented style that
+came before the term microservices and before REST was common. The hard part of
+any such platform is coordinating a complex, secure flow of messages and control
 signals across assets in real time, and the integration backbone is what made
 the coordinated operation possible.
 
