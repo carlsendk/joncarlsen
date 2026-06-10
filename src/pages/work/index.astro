@@ -1,13 +1,13 @@
 ---
-// Projects index (/projects) — the breadth tier of the two-tier project model
-// (ADR-002, ADR-003). Lists every non-draft `work` entry grouped by company,
-// each linking to its /work/<slug> deep page. The frontpage and /cv surface
-// only featured projects; this page exposes the full set. No client JS and no
-// contact details (ADR-002).
-import Base from "../layouts/Base.astro";
-import CaseStudyCard from "../components/CaseStudyCard.astro";
+// Work index (/work) — the breadth tier of the two-tier project model
+// (ADR-002, ADR-003, ADR-005). Lists every non-draft `work` entry grouped by
+// company, each linking to its /work/<slug> deep page. The frontpage and /cv
+// surface only featured projects; this page exposes the full set. No client JS
+// and no contact details (ADR-002).
+import Base from "../../layouts/Base.astro";
+import CaseStudyCard from "../../components/CaseStudyCard.astro";
 import { getCollection } from "astro:content";
-import { cvData } from "../data/cv.ts";
+import { cvData } from "../../data/cv.ts";
 
 // Drop drafts, then group by company. Entries within a company sort by `order`
 // (lower first), matching the Selected Work listing. Companies are ordered by

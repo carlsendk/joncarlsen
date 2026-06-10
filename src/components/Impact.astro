@@ -1,14 +1,21 @@
 ---
-// Renders selected achievements, each led by a quantified result. The metric
-// is rendered BEFORE its summary so the number leads (PRD "Impact highlights").
-import type { Highlight } from "../data/cv.ts";
+// Renders the lead impact figures derived from the work collection (ADR-004):
+// the first metric of each company, each led by its quantified result. The metric
+// is rendered BEFORE its company so the number leads (PRD "Impact highlights"),
+// and the whole item links to the backing case study at /work/<slug>.
+//
+// Figures only — never the case-study prose — so the /cv band never repeats the
+// timeline's descriptive bullets (ADR-004). The data is derived at build time
+// (src/lib/impact.ts); this component adds no client JS. Internal links are
+// skipped by the /cv print rule (global.css), so print stays clean.
+import type { ImpactItem } from "../lib/impact.ts";
 
 interface Props {
-  /** Quantified impact highlights. */
-  highlights: Highlight[];
+  /** Lead impact items (first metric per company), derived from the work collection. */
+  items: ImpactItem[];
 }
 
-const { highlights } = Astro.props;
+const { items } = Astro.props;
 ---
 
 <section aria-labelledby="impact-heading" class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14">
@@ -17,16 +24,27 @@ const { highlights } = Astro.props;
   </h2>
   <ul class="mt-8 space-y-10">
     {
-      highlights.map((highlight) => (
+      items.map((item) => (
         <li>
-          <p class="font-display text-5xl font-semibold tracking-tight text-accent sm:text-6xl">
-            {highlight.metric}
-          </p>
-          <p class="mt-2 max-w-prose leading-relaxed text-muted">
-            {highlight.summary}
-          </p>
+          <a
+            href={`/work/${item.slug}`}
+            class="group block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            <p class="font-display text-5xl font-semibold tracking-tight text-accent sm:text-6xl">
+              {item.metric}
+            </p>
+            <p class="mt-2 font-mono text-xs uppercase tracking-wider text-muted motion-safe:transition-colors group-hover:text-accent">
+              {item.company}
+            </p>
+          </a>
         </li>
       ))
     }
   </ul>
+  <a
+    href="/impact"
+    class="link-underline mt-10 inline-block font-mono text-xs uppercase tracking-wider text-muted motion-safe:transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+  >
+    See all impact →
+  </a>
 </section>

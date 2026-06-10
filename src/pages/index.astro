@@ -6,22 +6,33 @@
 // leads (ADR-002). Reads only the subset of cvData it needs.
 import Base from "../layouts/Base.astro";
 import Hero from "../components/Hero.astro";
+import Summary from "../components/Summary.astro";
 import Impact from "../components/Impact.astro";
 import Expertise from "../components/Expertise.astro";
 import Timeline from "../components/Timeline.astro";
 import CaseStudies from "../components/CaseStudies.astro";
 import Links from "../components/Links.astro";
 import { cvData } from "../data/cv.ts";
+import { leadImpactItems } from "../lib/impact.ts";
 
 // Metadata is single-sourced from cvData so the owner edits one file (ADR-003).
 const title = `${cvData.name} · CV`;
 const description = cvData.valueProp;
+
+// Impact band derives from the work collection (first metric per company, ADR-004).
+const leadImpact = await leadImpactItems();
 ---
 
 <Base title={title} description={description}>
-  <Hero name={cvData.name} title={cvData.title} valueProp={cvData.valueProp} />
+  <Hero
+    name={cvData.name}
+    title={cvData.title}
+    valueProp={cvData.valueProp}
+    scope={cvData.scope}
+  />
   <main>
-    <Impact highlights={cvData.impact} />
+    <Summary summary={cvData.summary} />
+    <Impact items={leadImpact} />
     <Expertise expertise={cvData.expertise} />
     <Timeline roles={cvData.roles} variant="condensed" limit={4} />
     <CaseStudies />

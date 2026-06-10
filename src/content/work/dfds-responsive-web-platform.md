@@ -14,6 +14,7 @@ skills:
   - "headless-cms"
 metrics:
   - "First responsive DFDS website"
+  - "5 to 25 person Customer Experience department"
 order: 3
 ---
 

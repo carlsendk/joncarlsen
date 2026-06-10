@@ -2,7 +2,7 @@
 // "Selected Work" listing section (ADR-001). Queries the `work` collection,
 // keeps only featured, non-draft entries (the depth tier — ADR-002/003), sorts
 // by `order`, and renders a card per case study. The full set lives on the
-// /projects index, linked below. Shared by the frontpage and /cv so the listing
+// /work index, linked below. Shared by the frontpage and /cv so the listing
 // logic lives in one place. Renders nothing when there are no featured entries.
 import { getCollection } from "astro:content";
 import CaseStudyCard from "./CaseStudyCard.astro";
@@ -26,10 +26,10 @@ const entries = (
         ))}
       </ul>
       <a
-        href="/projects"
+        href="/work"
         class="link-underline mt-8 inline-flex font-mono text-xs uppercase tracking-wider text-muted motion-safe:transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       >
-        See all projects, grouped by company →
+        See all work, grouped by company →
       </a>
     </section>
   )

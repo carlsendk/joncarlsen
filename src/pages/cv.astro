@@ -9,6 +9,8 @@ import Hero from "../components/Hero.astro";
 import Summary from "../components/Summary.astro";
 import Timeline from "../components/Timeline.astro";
 import Impact from "../components/Impact.astro";
+import Credentials from "../components/Credentials.astro";
+import Approach from "../components/Approach.astro";
 import Expertise from "../components/Expertise.astro";
 import Education from "../components/Education.astro";
 import Certifications from "../components/Certifications.astro";
@@ -18,9 +20,14 @@ import Interests from "../components/Interests.astro";
 import CaseStudies from "../components/CaseStudies.astro";
 import Links from "../components/Links.astro";
 import { cvData } from "../data/cv.ts";
+import { leadImpactItems } from "../lib/impact.ts";
 
 const title = `Full CV · ${cvData.name}`;
 const description = cvData.valueProp;
+
+// Figures-only band derived from the work collection (first metric per company,
+// ADR-004), so the band never repeats the full timeline's descriptive bullets.
+const leadImpact = await leadImpactItems();
 ---
 
 <Base title={title} description={description}>
@@ -32,11 +39,18 @@ const description = cvData.valueProp;
       ← Overview
     </a>
   </nav>
-  <Hero name={cvData.name} title={cvData.title} valueProp={cvData.valueProp} />
+  <Hero
+    name={cvData.name}
+    title={cvData.title}
+    valueProp={cvData.valueProp}
+    scope={cvData.scope}
+  />
   <main>
     <Summary summary={cvData.summary} />
+    <Credentials credentials={cvData.credentials} />
     <Timeline roles={cvData.roles} variant="full" />
-    <Impact highlights={cvData.impact} />
+    <Impact items={leadImpact} />
+    <Approach about={cvData.about} talks={cvData.talks} />
     <CaseStudies />
     <Expertise expertise={cvData.expertise} />
     <Education education={cvData.education} />

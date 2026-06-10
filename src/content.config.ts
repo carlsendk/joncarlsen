@@ -22,7 +22,7 @@ const work = defineCollection({
     role: z.string(),
     /** Time span, e.g. "2023-Present". */
     period: z.string(),
-    /** Company the project was delivered for; groups the /projects index. */
+    /** Company the project was delivered for; groups the /work index. */
     company: z.string(),
     /** Surfaces the project on the frontpage and /cv; all projects render a page regardless (ADR-003). */
     featured: z.boolean().default(false),

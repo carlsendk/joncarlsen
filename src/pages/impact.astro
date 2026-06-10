@@ -1,0 +1,100 @@
+---
+// Impact (/impact) — the aggregated track record (ADR-002, ADR-004). Lists every
+// metric of every non-draft work entry, grouped by company, each line led by its
+// quantified result and deep-linked to the backing case study at /work/<slug>.
+// Derived at build time from the work collection (src/lib/impact.ts), so adding a
+// metric updates this page on the next build with no curation. No client JS.
+//
+// Drafts are excluded at query time inside impactItems() (ADR-003); companies with
+// no metric (Ørsted today) never appear here. Mirrors the /work grouping
+// pattern (Map by company, deterministic sort) and reuses the figures-only item
+// presentation from Impact.astro for visual consistency.
+import Base from "../layouts/Base.astro";
+import { impactItems } from "../lib/impact.ts";
+import { cvData } from "../data/cv.ts";
+
+// Every metric line, already flattened in work.order order. Group by company,
+// then order companies by their lowest `order` (the most prominent entry), with
+// the company name as a stable, locale-pinned tie-break — matching /work so
+// both indexes read the same and are deterministic across builds. Items within a
+// company keep their metrics[] order (impactItems() preserves it).
+const items = await impactItems();
+
+const byCompany = new Map<string, typeof items>();
+for (const item of items) {
+  const group = byCompany.get(item.company) ?? [];
+  group.push(item);
+  byCompany.set(item.company, group);
+}
+
+const companies = [...byCompany.entries()]
+  .map(([company, group]) => ({ company, items: group }))
+  .sort(
+    (a, b) =>
+      a.items[0].order - b.items[0].order ||
+      a.company.localeCompare(b.company, "en"),
+  );
+
+const companyId = (company: string) =>
+  `company-${company.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
+
+const title = `Impact · ${cvData.name}`;
+const description = `Quantified impact by ${cvData.name}, grouped by company.`;
+---
+
+<Base title={title} description={description}>
+  <nav class="mx-auto max-w-2xl px-6 pt-6">
+    <a
+      href="/cv"
+      class="link-underline font-mono text-xs uppercase tracking-wider text-muted motion-safe:transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+    >
+      ← Back to CV
+    </a>
+  </nav>
+  <header class="mx-auto max-w-2xl px-6 pt-20 pb-12 sm:pt-28">
+    <h1 class="font-display text-5xl font-semibold tracking-tight text-fg sm:text-6xl">Impact</h1>
+    <p class="mt-6 max-w-prose text-lg leading-relaxed text-muted">
+      Every quantified result, grouped by company. Each links to the case study behind it.
+    </p>
+  </header>
+  <main>
+    {
+      companies.length > 0 ? (
+        companies.map(({ company, items }) => (
+          <section
+            aria-labelledby={companyId(company)}
+            class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14"
+          >
+            <h2
+              id={companyId(company)}
+              class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted"
+            >
+              {company}
+            </h2>
+            <ul class="mt-8 space-y-10">
+              {items.map((item) => (
+                <li>
+                  <a
+                    href={`/work/${item.slug}`}
+                    class="group block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  >
+                    <p class="font-display text-5xl font-semibold tracking-tight text-accent sm:text-6xl">
+                      {item.metric}
+                    </p>
+                    <p class="mt-2 font-mono text-xs uppercase tracking-wider text-muted motion-safe:transition-colors group-hover:text-accent">
+                      {item.title}
+                    </p>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      ) : (
+        <section class="mx-auto max-w-2xl border-t border-border px-6 py-14">
+          <p class="leading-relaxed text-muted">No impact figures published yet.</p>
+        </section>
+      )
+    }
+  </main>
+</Base>

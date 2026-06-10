@@ -19,14 +19,16 @@ export interface CvData {
   valueProp: string;
   /** 3-4 line professional summary, rendered on the full CV. */
   summary: string;
+  /** Hard executive scope line: org size, transformation reach, remit owned. One complete sentence, no draft markers (ADR-003). */
+  scope: string;
+  /** Curated executive signals (CTO remit, board, scaling, recognition). Rendered through the isReady guard (task_03). */
+  credentials: string[];
   /** Areas of expertise, scannable. */
   expertise: string[];
   /** Experience timeline, newest first. One array, rendered condensed or full. */
   roles: Role[];
   /** Short one-liners for early-career roles without dedicated bullets. */
   earlierRoles: string[];
-  /** Selected quantified achievements; the metric leads visually. */
-  impact: Highlight[];
   /** Degrees, newest first. */
   education: Education[];
   /** Certifications, networks, and associations. */
@@ -55,6 +57,18 @@ export interface CvData {
 // content.config.ts: ai-llm, platform-devex, org-scaling, cloud-realtime-data,
 // security-compliance, transformation.
 
+/**
+ * A role bullet: a description of work done, optionally linking to the work
+ * case study that backs it (ADR-003). The bullet carries no metric — impact
+ * lives on the work entry's `metrics[]`.
+ */
+export interface Bullet {
+  /** Description of work done, rendered on /cv. */
+  text: string;
+  /** Work-collection slug (the file id under src/content/work/) when a case study backs the bullet. */
+  work?: string;
+}
+
 /** A single role in the experience timeline. */
 export interface Role {
   company: string;
@@ -66,22 +80,12 @@ export interface Role {
   end: string;
   /** One-line scope (used by the condensed frontpage view). */
   scope: string;
-  /** Achievement bullets (used by the full /cv view). */
-  bullets: string[];
+  /** Achievement bullets, each a description with an optional work link (used by the full /cv view). */
+  bullets: Bullet[];
   /** Free-form theme tags for selection (ADR-004). */
   themes?: string[];
   /** Free-form skill tags for selection (ADR-004). */
   skills?: string[];
-}
-
-/** A quantified impact highlight; the metric is shown first. */
-export interface Highlight {
-  /** The number, shown first, e.g. "3 → 20" or "500+". */
-  metric: string;
-  /** What the metric means. */
-  summary: string;
-  /** Free-form theme tags for selection (ADR-004). */
-  themes?: string[];
 }
 
 /** A spare-time interest, tagged for selection. Growable list (ADR-004). */
@@ -125,6 +129,20 @@ export interface PersonalDetails {
   maritalStatus: string;
 }
 
+// ─── RENDER GUARD (ADR-003) ──────────────────────────────────────────────────
+// Draft figures are staged inline in array items using the sentinel `[TODO: ...]`
+// (for example "Reduced cloud spend by [TODO: % YoY] at Scrive"). Array-rendering
+// components filter items through `isReady` so unfinished drafts never reach the
+// page. Single-string spine fields (summary, scope) hold complete sentences only.
+
+/** Sentinel that marks a draft figure not yet ready to render. */
+export const TODO_SENTINEL = "[TODO";
+
+/** True when the text holds no draft sentinel and is safe to render. */
+export function isReady(text: string): boolean {
+  return !text.includes(TODO_SENTINEL);
+}
+
 // ─── CONTENT ─────────────────────────────────────────────────────────────────
 // Sourced from docs/Content/_base/master-CV.md (and about-me.md / the leadership
 // narrative for the summary and value proposition). Real figures only.
@@ -132,9 +150,25 @@ export const cvData: CvData = {
   name: "Jon Østerby Carlsen",
   title: "Director of Engineering & AI · AXON Networks",
   valueProp:
-    "I build engineering organisations that turn high-volume, real-time data into intelligent products, and give teams the platforms to ship on their own. Around 20 years across Europe and Asia, now leading engineering and AI at AXON, where LLM-driven agents act on telemetry arriving at up to 50,000 datapoints per second per device.",
+    "Technology executive who turns high-volume, real-time data into intelligent products, and turns engineering teams into platforms that ship on their own. Around 20 years scaling organisations across Europe and Asia, now leading engineering and AI at AXON, where LLM-driven agents act on telemetry arriving at up to 50,000 datapoints per second per device.",
   summary:
-    "Engineering leader with around 20 years in tech, currently Director of Engineering and AI for EMEA at AXON Networks, where I lead the organisation behind a cloud-native platform that turns network telemetry into operational insight at up to 50,000 datapoints per second per device, and built the AI/ML team that puts LLM-driven agents on those live streams. Earlier, at DFDS, I grew the developer-platform department from 3 to 20 and drove a company-wide move to cloud-native that reached around 200 engineers and 500+ microservices on Kubernetes, built from zero in three years. Before that I led roughly 50-person organisations at Scrive and Lunar and built distributed teams across Europe and Asia. The through-line is simple: I tend to leave an organisation a maturity stage further along than I found it.",
+    "Technology executive with around 20 years in tech, now Director of Engineering and AI for EMEA at AXON Networks, where I own the organisation behind a cloud-native platform that turns network telemetry into operational insight at up to 50,000 datapoints per second per device, and built the AI/ML team that puts LLM-driven agents on those live streams. At DFDS I grew the developer-platform department from 3 to 20 and drove a business-wide move to cloud-native that reached around 200 engineers and 500+ microservices on Kubernetes, built from zero in three years. Before that I held executive ownership of roughly 50-person organisations as VP at Scrive and CTO at eSignatur, and as Director at Lunar, and built distributed teams across Europe and Asia. The through-line is simple: I tend to leave an organisation a maturity stage further along than I found it.",
+  scope:
+    "Executive engineering leadership over focused 40 to 50 person organisations and a business-wide cloud-native transformation that reached around 200 engineers, with full remit over technology direction, AI strategy, security, and compliance.",
+  credentials: [
+    "Owned the full CTO remit at eSignatur: product and technical roadmap, security, compliance, cloud strategy, and vendor management.",
+    "Built the AI function and target cloud architecture at AXON, putting LLM-driven agents on live telemetry.",
+    "VP of Service Operations and CTO of eSignatur inside a 200+ person, Vitruvian-backed business at Scrive.",
+    "Created and ran around 50-person engineering organisations at Scrive and Lunar.",
+    "Built the investor pitch deck at Lunar, setting out the value proposition and growth potential.",
+    "Advisory Board Member at Heeplink, 2022 to 2024.",
+    "Member of the Scalers CTO/CPO network since 2021.",
+    "Reported technology strategy and risk to the board and investors on a [TODO: board/investor cadence] basis.",
+    "Scaled the DFDS developer and platform department from 3 to 20 and drove a 200-engineer move to cloud-native microservices.",
+    "Selected for the DFDS Horizon management talent programme, out of 200 nominees.",
+    "Author of a public framework on engineering leadership and platform operating models.",
+    "HD in Business Administration and Management (CBS), backing the commercial side of technology leadership.",
+  ],
   expertise: [
     "Engineering leadership and organisational scaling",
     "AI/ML, GenAI, LLM and local-LLM product integration",
@@ -153,12 +187,30 @@ export const cvData: CvData = {
       scope:
         "Lead the AXON Orchestrator organisation in EMEA, around 40 people, plus supporting integration of 70 across Europe.",
       bullets: [
-        "Lead the engineering and AI organisation behind a cloud-native platform that turns network telemetry into operational insight at up to 50,000 datapoints per second per device.",
-        "Defined the target cloud architecture and built a new AI/ML team for LLM-driven agents that act on live telemetry rather than on stale snapshots.",
-        "Scaled the real-time data pipelines so AI and LLM models read high-frequency streams directly.",
-        "Led the move from Java to Go for the services that needed predictable performance.",
-        "Set up a continuous-delivery culture with clear ownership, so teams ship without waiting on a central bottleneck.",
-        "Led the integration of the ACS system into the platform and kept one architecture coherent through post-acquisition integration.",
+        {
+          text: "Own the engineering and AI organisation behind a cloud-native platform that turns network telemetry into operational insight at up to 50,000 datapoints per second per device.",
+          work: "axon-ai-platform",
+        },
+        {
+          text: "Defined the target cloud architecture and built a new AI/ML team for LLM-driven agents that act on live telemetry rather than on stale snapshots.",
+          work: "axon-ai-platform",
+        },
+        {
+          text: "Scaled the real-time data pipelines so AI and LLM models read high-frequency streams directly.",
+          work: "axon-ai-platform",
+        },
+        {
+          text: "Led the move from Java to Go for the services that needed predictable performance.",
+          work: "axon-ai-platform",
+        },
+        {
+          text: "Set up a continuous-delivery culture with clear ownership, so teams ship without waiting on a central bottleneck.",
+          work: "axon-ai-platform",
+        },
+        {
+          text: "Led the integration of the ACS system into the platform and kept one architecture coherent through post-acquisition integration.",
+          work: "axon-ai-platform",
+        },
       ],
       themes: [
         "ai-llm",
@@ -183,7 +235,9 @@ export const cvData: CvData = {
       scope:
         "Advisory role for a digital platform matching skilled people with the projects that need them.",
       bullets: [
-        "Advised on technology direction and product strategy for the matching platform.",
+        {
+          text: "Advised on technology direction and product strategy for the matching platform.",
+        },
       ],
       themes: ["product-strategy", "transformation"],
       skills: ["advisory", "product-strategy", "technology-strategy"],
@@ -195,10 +249,22 @@ export const cvData: CvData = {
       end: "Feb 2023",
       scope: "Around 50 people across 5 teams.",
       bullets: [
-        "Created the developer-and-platform department from scratch, defining its roles and reporting lines.",
-        "Enabled self-service and x-as-a-service for developers, data engineers, security, and the wider business.",
-        "Built an investor pitch deck setting out the value proposition and growth potential.",
-        "Ran the department on outcome targets, including eID consolidation and platform robustness, while holding continuous regulatory compliance.",
+        {
+          text: "Created the developer-and-platform department from scratch, defining its roles and reporting lines.",
+          work: "lunar-platform-experience",
+        },
+        {
+          text: "Enabled self-service and x-as-a-service for developers, data engineers, security, and the wider business.",
+          work: "lunar-platform-experience",
+        },
+        {
+          text: "Built an investor pitch deck setting out the value proposition and growth potential.",
+          work: "lunar-platform-experience",
+        },
+        {
+          text: "Ran the department on outcome targets, including eID consolidation and platform robustness, while holding continuous regulatory compliance.",
+          work: "lunar-eid-consolidation",
+        },
       ],
       themes: ["platform-devex", "org-scaling", "security-compliance"],
       skills: [
@@ -216,10 +282,26 @@ export const cvData: CvData = {
       scope:
         "Around 50 people across 5 teams within a 200+ person, Vitruvian-backed business.",
       bullets: [
-        "Improved service SLA and reduced operational cost through a move to containers and Kubernetes with zero downtime.",
-        "Led preparation and a successful audit for ISO 27001 and ISAE 3000 certifications.",
-        "Converted team leads into managers through coaching and mentorship.",
-        "Strengthened the incident-response process via a cross-functional improvement team.",
+        {
+          text: "Improved service SLA and reduced operational cost through a move to containers and Kubernetes with zero downtime.",
+          work: "scrive-kubernetes-iso27001",
+        },
+        {
+          text: "Lifted service SLA to [TODO: SLA % after] and cut operational cost by [TODO: cost reduction %] through the zero-downtime move to containers and Kubernetes.",
+          work: "scrive-kubernetes-iso27001",
+        },
+        {
+          text: "Led preparation and a successful audit for ISO 27001 and ISAE 3000 certifications.",
+          work: "scrive-kubernetes-iso27001",
+        },
+        {
+          text: "Converted team leads into managers through coaching and mentorship.",
+          work: "scrive-kubernetes-iso27001",
+        },
+        {
+          text: "Strengthened the incident-response process via a cross-functional improvement team.",
+          work: "scrive-kubernetes-iso27001",
+        },
       ],
       themes: ["security-compliance", "transformation", "org-scaling"],
       skills: [
@@ -237,10 +319,18 @@ export const cvData: CvData = {
       scope:
         "Led a Danish e-signature company across development, QA, support, security, and compliance.",
       bullets: [
-        "Devised a cloud-adoption plan using a cloud-native maturity matrix.",
-        "Managed and onboarded sourcing partners, covering vendor selection, contracts, and SLAs.",
-        "Improved collaboration and productivity by leading Agile adoption.",
-        "Owned the product and technical roadmap and supported customer sales meetings.",
+        {
+          text: "Devised a cloud-adoption plan using a cloud-native maturity matrix.",
+        },
+        {
+          text: "Managed and onboarded sourcing partners, covering vendor selection, contracts, and SLAs.",
+        },
+        {
+          text: "Improved collaboration and productivity by leading Agile adoption.",
+        },
+        {
+          text: "Owned the product and technical roadmap and supported customer sales meetings.",
+        },
       ],
       themes: ["transformation", "platform-devex", "security-compliance"],
       skills: [
@@ -257,10 +347,22 @@ export const cvData: CvData = {
       end: "Mar 2021",
       scope: "Scaled the core department from 3 to 20 people over three years.",
       bullets: [
-        "Drove cloud-native microservices adoption across the business, enabling around 200 engineers to build for the cloud.",
-        "Operated 500+ microservices in Kubernetes within three years, starting from zero.",
-        "Built an internal developer platform with self-service and golden paths (Team Topologies, Platform as Product).",
-        "Selected for the DFDS Horizon management talent programme, out of 200 nominees.",
+        {
+          text: "Drove cloud-native microservices adoption across the business, enabling around 200 engineers to build for the cloud.",
+          work: "dfds-platform",
+        },
+        {
+          text: "Operated 500+ microservices in Kubernetes within three years, starting from zero.",
+          work: "dfds-platform",
+        },
+        {
+          text: "Built an internal developer platform with self-service and golden paths (Team Topologies, Platform as Product).",
+          work: "dfds-platform",
+        },
+        {
+          text: "Selected for the DFDS Horizon management talent programme, out of 200 nominees.",
+          work: "dfds-platform",
+        },
       ],
       themes: ["platform-devex", "org-scaling", "transformation"],
       skills: [
@@ -275,12 +377,24 @@ export const cvData: CvData = {
       position: "Head of Department, Customer Experience (CMS & Booking)",
       start: "Nov 2014",
       end: "Oct 2017",
-      scope: "Scaled the department from 2 to 5 teams.",
+      scope: "Scaled the customer-experience department from 5 to 25 people across 5 teams.",
       bullets: [
-        "Transformed the architecture to React, serverless, and a headless CMS, and released DFDS's first responsive website.",
-        "Implemented A/B and multivariate testing across the web teams.",
-        "Integrated design and UX into the teams and shipped on continuous delivery with infrastructure as code.",
-        "Led the \"DFDS Way\" of working and rolled out the development mission via roadshows.",
+        {
+          text: "Transformed the architecture to React, serverless, and a headless CMS, and released DFDS's first responsive website.",
+          work: "dfds-responsive-web-platform",
+        },
+        {
+          text: "Implemented A/B and multivariate testing across the web teams.",
+          work: "dfds-responsive-web-platform",
+        },
+        {
+          text: "Integrated design and UX into the teams and shipped on continuous delivery with infrastructure as code.",
+          work: "dfds-responsive-web-platform",
+        },
+        {
+          text: "Led the \"DFDS Way\" of working and rolled out the development mission via roadshows.",
+          work: "dfds-way-of-working",
+        },
       ],
       themes: ["transformation", "platform-devex", "org-scaling"],
       skills: [
@@ -298,10 +412,22 @@ export const cvData: CvData = {
       scope:
         "Led Agile/SCRUM transformation and built distributed development teams in Asia.",
       bullets: [
-        "Started and trained multiple offshore teams in Asia and established the development centre.",
-        "Designed SOA and event-driven integrations, and delivered SMS gateways, monitoring, and a Virtual Power Plant (PowerHub).",
-        "Implemented SCRUM organisation-wide and created a Story Points estimation model.",
-        "Developed the technical tender specification for a new Distribution Management System to enable smart grid.",
+        {
+          text: "Started and trained multiple offshore teams in Asia and established the development centre.",
+          work: "orsted-agile-scrum-transformation",
+        },
+        {
+          text: "Designed SOA and event-driven integrations, and delivered SMS gateways, monitoring, and a Virtual Power Plant (PowerHub).",
+          work: "orsted-virtual-power-plant",
+        },
+        {
+          text: "Implemented SCRUM organisation-wide and created a Story Points estimation model.",
+          work: "orsted-agile-scrum-transformation",
+        },
+        {
+          text: "Developed the technical tender specification for a new Distribution Management System to enable smart grid.",
+          work: "orsted-distribution-management-system",
+        },
       ],
       themes: ["transformation", "org-scaling", "cloud-realtime-data"],
       skills: [
@@ -317,38 +443,6 @@ export const cvData: CvData = {
     "Microsoft, Student Partner, evangelism of Microsoft technologies at Danish universities, 2005 to 2007.",
     "Ministry of the Environment, Denmark, IT Support, 2005 to 2007.",
     "Polyteknisk Forenings Studentersociale Fond, Board Member and Vice-Chairman, 2005 to 2006.",
-  ],
-  impact: [
-    {
-      metric: "50,000/s",
-      summary:
-        "Datapoints per second per device processed by the real-time AXON platform I lead.",
-      themes: ["cloud-realtime-data", "ai-llm"],
-    },
-    {
-      metric: "3 → 20",
-      summary:
-        "Scaled the DFDS Developer & Platform Experience department over three years.",
-      themes: ["org-scaling", "platform-devex"],
-    },
-    {
-      metric: "500+",
-      summary:
-        "Microservices run on Kubernetes at DFDS, built from zero in three years.",
-      themes: ["platform-devex", "transformation"],
-    },
-    {
-      metric: "~200",
-      summary:
-        "Engineers moved to cloud-native microservices in a business-wide DFDS transformation.",
-      themes: ["transformation", "org-scaling"],
-    },
-    {
-      metric: "ISO 27001",
-      summary:
-        "and ISAE 3000 certifications taken through successful audit at Scrive.",
-      themes: ["security-compliance"],
-    },
   ],
   education: [
     {
@@ -435,5 +529,12 @@ export const cvData: CvData = {
       label: "Family time and the outdoors",
       themes: ["family", "outdoors"],
     },
+  ],
+  about:
+    "I lead with a clear purpose, create room for people to master their craft, and build organisations that can act on their own through autonomy and delegation. I start from the business strategy and work back to the technology roadmap, so the engineering bets line up with where the company is going. Most of what I build is there to make good outcomes repeatable rather than heroic: self-service platforms, and measurement tied to real business results instead of activity. I meet an organisation at the maturity stage it is actually at and move it forward one deliberate step at a time, toward automation and AI-driven operations. That is the work at AXON now, taking a modern engineering culture into LLM-driven agents that act on live telemetry.",
+  talks: [
+    "Engineering operating model, a framework for aligning technology direction with business strategy. https://carlsendk.github.io/tech-leadership/wiki/operating-model/operating-model-framework",
+    "Engineering practices, a maturity model from normalisation to self-service platforms. https://carlsendk.github.io/tech-leadership/wiki/engineering-practices",
+    "Engineering effectiveness, optimising the inputs that let teams do their best work. https://carlsendk.github.io/tech-leadership/wiki/engineering-effectiveness",
   ],
 };

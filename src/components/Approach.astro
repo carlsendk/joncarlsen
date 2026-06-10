@@ -1,0 +1,89 @@
+---
+// The Approach section for the full CV (/cv): the leadership-vision narrative
+// (`about`) followed by a short list of published writing (`talks`). A CTO-signal
+// section (ADR-001). The section renders nothing when there is neither a vision
+// narrative nor a ready writing reference, so it never appears empty (guarded).
+// Draft `[TODO]` writing items are filtered out via isReady (ADR-003). The only
+// off-page references are outbound brand links — never contact details (ADR-002).
+import { isReady } from "../data/cv.ts";
+
+interface Props {
+  /** Leadership-approach / vision narrative. Optional; absent until authored. */
+  about?: string;
+  /** Published-writing references. Optional; isReady-filtered. */
+  talks?: string[];
+}
+
+const { about, talks = [] } = Astro.props;
+
+// Drop any draft writing reference still holding the `[TODO]` sentinel (ADR-003).
+const writing = talks.filter(isReady);
+
+// A vision narrative counts only when it holds real prose.
+const vision = about?.trim() ? about : "";
+
+// Render nothing unless there is a vision narrative or at least one ready writing
+// reference (guarded empty state, consistent with the other gated sections).
+const hasContent = vision !== "" || writing.length > 0;
+
+// Writing-reference link contract (for the authors of `talks`): an item may embed
+// one outbound URL, e.g. "Platform operating models https://carlsendk.github.io/…".
+// The first http(s) URL is surfaced as an external brand link and the surrounding
+// text becomes its label (the URL is the fallback label); an item with no URL
+// renders as plain text. Outbound links only — never contact details (ADR-002).
+const URL_PATTERN = /https?:\/\/[^\s]+/;
+function asWriting(item: string): { label: string; url: string | null } {
+  const match = item.match(URL_PATTERN);
+  if (!match) return { label: item, url: null };
+  const url = match[0];
+  const label = item.replace(url, "").trim();
+  return { label: label || url, url };
+}
+---
+
+{
+  hasContent && (
+    <section
+      aria-labelledby="approach-heading"
+      class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14"
+    >
+      <h2
+        id="approach-heading"
+        class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted"
+      >
+        Approach
+      </h2>
+      {vision !== "" && (
+        <p class="mt-8 max-w-prose text-lg leading-relaxed text-fg">{vision}</p>
+      )}
+      {writing.length > 0 && (
+        <>
+          <p class="mt-10 font-mono text-xs uppercase tracking-[0.2em] text-muted">
+            Writing
+          </p>
+          <ul class="mt-4 space-y-2 leading-relaxed text-muted">
+            {writing.map((item) => {
+              const { label, url } = asWriting(item);
+              return (
+                <li>
+                  {url ? (
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="link-underline text-fg motion-safe:transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                    >
+                      {label}
+                    </a>
+                  ) : (
+                    label
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
+    </section>
+  )
+}
