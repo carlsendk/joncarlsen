@@ -472,7 +472,7 @@ export const cvData: CvData = {
         "Built a new SMS gateway part-time while studying for my master's, using an IT project model and early agile practices.",
       bullets: [
         {
-          text: "Delivered a new SMS gateway in C#, WCF, Oracle, and MSMQ, the subject of my master thesis.",
+          text: "Delivered a new SMS gateway in C#, WCF, Oracle, and MSMQ, the subject of my master thesis and run as a project I managed with a steering group.",
           work: "dong-master-thesis-sms",
         },
         {

@@ -33,7 +33,8 @@ built applications with MVC and Silverlight on top of WCF and REST services in a
 CQRS pattern, in C# and .NET against Microsoft SQL and Oracle on ESRI GIS
 platforms. The same delivery covered moving applications from SharePoint 2007 to
 2013 and shipping focused business apps, including an iPad app for wind-farm
-inspections and a data-collection app with Microsoft reporting.
+inspections and a data-collection app with Microsoft reporting. I reported
+progress and risk to steering groups to keep the stakeholders aligned.
 
 ## Outcome
 

@@ -1,7 +1,7 @@
 ---
 title: "Master thesis: an External Short Messaging Entity for DONG Energy"
-summary: "Designed and built a prototype SMS gateway for DONG Energy, with a custom message queue and a tested model for stable, reliable message flow."
-role: "Master Thesis (DTU), with DONG Energy"
+summary: "Designed and built a prototype SMS gateway for DONG Energy with a custom message queue and a tested model for reliable message flow, run as a project I managed with steering-group governance."
+role: "Project Manager & Master Thesis (DTU), DONG Energy"
 period: "2009-2010"
 company: "Ørsted"
 featured: false
@@ -9,12 +9,13 @@ themes:
   - "cloud-realtime-data"
   - "transformation"
 skills:
+  - "project-management"
   - "c-sharp"
   - "wcf"
   - "oracle"
-  - "msmq"
 metrics:
   - "SMS-delay equation defined"
+  - "Project-managed with a steering group"
 order: 11
 ---
 
@@ -34,7 +35,8 @@ of a robust application architecture. Because message flow is the core of any
 communication platform, I built a prototype with a custom-designed message
 queue, taking it from design ideas through to implementation, and created test
 scenarios to measure performance and stability against DONG Energy's existing
-solution.
+solution. It was not only my thesis: at Ørsted it ran as a project I managed as
+project manager, with steering group meetings to keep the stakeholders aligned.
 
 ## Outcome
 
