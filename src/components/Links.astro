@@ -27,7 +27,7 @@ const isExternal = (url: string) => /^https?:\/\//i.test(url) || url.startsWith(
         <li>
           <a
             href={link.url}
-            class="link-underline inline-flex items-center rounded-full border border-border px-4 py-2 font-mono text-sm text-fg motion-safe:transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            class="inline-flex items-center rounded-full border border-border px-4 py-2 font-mono text-sm text-fg motion-safe:transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             {...(isExternal(link.url)
               ? { target: "_blank", rel: "noopener noreferrer" }
               : {})}
