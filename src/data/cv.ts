@@ -172,11 +172,11 @@ export const cvData: CvData = {
   name: "Jon Østerby Carlsen",
   title: "Director of Engineering & AI · AXON Networks",
   valueProp:
-    "Technology executive who turns high-volume, real-time data into intelligent products, and turns engineering teams into platforms that ship on their own. Around 20 years scaling organisations across Europe and Asia, now leading engineering and AI at AXON, where LLM-driven agents act on telemetry arriving at up to 50,000 datapoints per second per device.",
+    "Engineering executive who sets technology strategy and then executes it, across the full span from business and sales through product, engineering, QA, and operations. Around 20 years scaling organisations across Europe and Asia, leading agile transformations and lifting engineering practices, and now building AI and real-time data products at AXON, where LLM-driven agents act on telemetry arriving at up to 50,000 datapoints per second per device.",
   summary:
-    "Technology executive with around 20 years in tech, now Director of Engineering and AI for EMEA at AXON Networks, where I own the organisation behind a cloud-native platform that turns network telemetry into operational insight at up to 50,000 datapoints per second per device, and built the AI/ML team that puts LLM-driven agents on those live streams. At DFDS I grew the developer-platform department from 3 to 20 and drove a business-wide move to cloud-native that reached around 200 engineers and 500+ microservices on Kubernetes, built from zero in three years. Before that I held executive ownership of roughly 50-person organisations as VP at Scrive and CTO at eSignatur, and as Director at Lunar, and built distributed teams across Europe and Asia. The through-line is simple: I tend to leave an organisation a maturity stage further along than I found it.",
+    "Technology executive with around 20 years in tech, now Director of Engineering and AI for EMEA at AXON Networks, where I own the organisation behind a cloud-native platform that turns network telemetry into operational insight at up to 50,000 datapoints per second per device, and built the AI/ML team that puts LLM-driven agents on those live streams. My remit has run the full span: business and sales, product, engineering, QA, and operations, setting the strategy and then executing it. At DFDS I grew the developer-platform department from 3 to 20 and drove a business-wide move to cloud-native that reached around 200 engineers and 500+ microservices on Kubernetes, built from zero in three years. Before that I held executive ownership of roughly 50-person organisations as VP at Scrive and CTO at eSignatur, and as Director at Lunar, leading agile transformations, owning product, and lifting engineering practices across distributed teams in Europe and Asia. The through-line is simple: I tend to leave an organisation a maturity stage further along than I found it.",
   scope:
-    "Executive engineering leadership over focused 40 to 50 person organisations and a business-wide cloud-native transformation that reached around 200 engineers, with full remit over technology direction, AI strategy, security, and compliance.",
+    "Executive engineering leadership over focused 40 to 50 person organisations and a business-wide transformation that reached around 200 engineers. Full remit across business, product, engineering, QA, and operations, with P&L responsibility, technology and AI strategy, security, and compliance.",
   credentials: [
     "Owned the full CTO remit at eSignatur: product and technical roadmap, security, compliance, cloud strategy, and vendor management.",
     "Built the AI function and target cloud architecture at AXON, putting LLM-driven agents on live telemetry.",
@@ -193,12 +193,13 @@ export const cvData: CvData = {
   ],
   expertise: [
     "Engineering leadership and organisational scaling",
+    "Agile and organisational transformation",
+    "Product ownership, technology strategy, and commercial leadership",
     "AI/ML, GenAI, LLM and local-LLM product integration",
     "Cloud and real-time data architecture",
     "High-performance computing and microservices",
-    "Product and technology strategy",
-    "DevOps, SRE and platform engineering",
-    "Cross-functional leadership, agile coaching and team development",
+    "DevOps, SRE, platform engineering, and service operations",
+    "Cross-functional leadership and team development",
   ],
   roles: [
     {
