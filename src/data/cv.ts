@@ -447,7 +447,7 @@ export const cvData: CvData = {
           work: "orsted-sms-messaging-platform",
         },
         {
-          text: "Owned delivery of GIS and digital web platforms on ESRI, with distributed teams in Denmark and Malaysia working on TFS with test-driven development and continuous integration.",
+          text: "Owned delivery of GIS and digital web platforms on ESRI as product owner, with distributed teams in Denmark and Malaysia on TFS, test-driven development, and continuous integration, delivering the projects on time and under budget.",
           work: "orsted-gis-digital-platform",
         },
         {
@@ -477,6 +477,7 @@ export const cvData: CvData = {
         },
         {
           text: "Introduced agile practices to the delivery, an early step toward the SCRUM transformation that followed.",
+          work: "orsted-agile-scrum-transformation",
         },
       ],
       themes: ["transformation", "cloud-realtime-data"],
@@ -492,6 +493,7 @@ export const cvData: CvData = {
       bullets: [
         {
           text: "Supported development on Oracle and .NET for automated metering by SMS communication.",
+          work: "dong-bachelor-sms-monitoring",
         },
         {
           text: "Built my bachelor project: an application to monitor SMS communication at the company, in C# with .NET and Oracle.",

@@ -37,4 +37,5 @@ inspections and a data-collection app with Microsoft reporting.
 
 Ørsted gained modern GIS and digital web platforms delivered by distributed
 teams on a repeatable engineering practice, and a faster path from a business
-need to a working application.
+need to a working application. As product owner I delivered these projects on
+time and under budget.
