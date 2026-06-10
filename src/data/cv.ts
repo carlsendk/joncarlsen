@@ -386,8 +386,8 @@ export const cvData: CvData = {
           work: "dfds-platform",
         },
         {
-          text: "Led three teams: API development and data models, Development Excellence, and Autonomous Ports on .NET Core.",
-          work: "dfds-platform",
+          text: "Led the Autonomous Ports team, building port-automation services on .NET Core.",
+          work: "dfds-autonomous-ports",
         },
         {
           text: "Selected for the DFDS Horizon management talent programme, out of 200 nominees.",
@@ -419,11 +419,11 @@ export const cvData: CvData = {
           work: "dfds-responsive-web-platform",
         },
         {
-          text: "Implemented A/B and multivariate testing across the web teams.",
-          work: "dfds-responsive-web-platform",
+          text: "Delivered new corporate websites for the freight, logistics, and group businesses on dfds.com.",
+          work: "dfds-corporate-web",
         },
         {
-          text: "Integrated design and UX into the teams and shipped on continuous delivery with infrastructure as code.",
+          text: "Added A/B and multivariate testing across the web teams, brought design and UX into the delivery flow, and shipped on continuous delivery with infrastructure as code.",
           work: "dfds-responsive-web-platform",
         },
         {
