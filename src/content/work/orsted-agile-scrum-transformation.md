@@ -14,6 +14,7 @@ skills:
   - "change-management"
 metrics:
   - "SCRUM rolled out across IT"
+  - "Coached SCRUM Masters and new Product Owners"
   - "Offshore development centre established"
 order: 8
 ---
@@ -29,11 +30,13 @@ IT department rather than in one or two pockets.
 
 I led a "way of working" project to implement SCRUM across the IT department, and
 I created a Story Points estimation model so teams could plan and forecast on a
-shared basis. To grow capacity I started and trained several offshore teams in
-Asia and helped establish the development centre there. I also ran a LEAN change
-project that set one standard change process for non-SAP changes, and I
-established communities of practice for product owners and ScrumMasters so the
-new practices kept improving after the rollout.
+shared basis. Much of the work was coaching: I coached the teams in SCRUM and
+mentored ScrumMasters and new product owners as they grew into the roles. To grow
+capacity I started and trained several offshore teams in Asia and helped establish
+the development centre there. I also ran a LEAN change project that set one
+standard change process for non-SAP changes, and I established communities of
+practice for product owners and ScrumMasters so the new practices kept improving
+after the rollout.
 
 ## Outcome
 

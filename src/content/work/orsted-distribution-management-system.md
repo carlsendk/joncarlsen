@@ -14,6 +14,7 @@ skills:
   - "requirements"
 metrics:
   - "Smart-grid DMS specified"
+  - "Tender selected"
 order: 7
 ---
 
@@ -36,5 +37,6 @@ a supplier could deliver against.
 ## Outcome
 
 Ørsted had a clear, technically grounded specification to procure a Distribution
-Management System fit for smart-grid operations, reducing the risk in a large and
-long-lived investment.
+Management System fit for smart-grid operations, and the tender was run to a
+selected supplier on that basis, reducing the risk in a large and long-lived
+investment.

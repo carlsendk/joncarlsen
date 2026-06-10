@@ -451,7 +451,7 @@ export const cvData: CvData = {
           work: "orsted-gis-digital-platform",
         },
         {
-          text: "Implemented SCRUM across the IT department and created a Story Points estimation model.",
+          text: "Implemented SCRUM across the IT department, created a Story Points estimation model, and coached the teams, SCRUM Masters, and new product owners through the change.",
           work: "orsted-agile-scrum-transformation",
         },
       ],
