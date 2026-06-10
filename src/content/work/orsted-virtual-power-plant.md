@@ -13,8 +13,8 @@ skills:
   - "event-driven"
   - "integration"
 metrics:
-  - "Virtual Power Plant delivered"
-  - "Real-time unit monitoring"
+  - "Real-time Virtual Power Plant"
+  - "20 distributed assets coordinated"
 order: 6
 ---
 
@@ -31,9 +31,9 @@ never designed to talk to each other.
 ## What I did
 
 I worked as a developer and architect on PowerHub, designing service-oriented
-and event-driven integrations to bring the distributed assets together. PowerHub
-was a real-time system: it monitored the distributed units and hooked into the
-live power supply system so they could be operated as one. The hard part of any
+and event-driven integrations to bring around 20 distributed assets together.
+PowerHub was a real-time system: it monitored the distributed units and hooked
+into the live power supply system so they could be operated as one. The hard part of any
 such platform is coordinating a complex, secure flow of messages and control
 signals across assets in real time, and the integration backbone is what made
 the coordinated operation possible.

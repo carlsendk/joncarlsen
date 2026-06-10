@@ -15,7 +15,7 @@ skills:
   - "c-sharp"
 metrics:
   - "Zero-downtime gateway migration"
-  - "Handles all Ørsted SMS communication"
+  - "Millions of SMS per year"
 order: 9
 ---
 
@@ -31,7 +31,8 @@ used it.
 As team lead and SCRUM Master for five developers, we first built an MVP that
 improved communication with the SMS providers and added a new one. From there I
 led the full integration of the SMS gateway across Ørsted's other systems, so it
-handled all SMS communication to units and customers. It was built in C# and
+handled all SMS communication to units and customers, millions of messages a
+year. It was built in C# and
 .NET with a web-services interface and a UI to control it, on Oracle. The same
 platform ran SMSlog, which logged people in and out by SMS or a Silverlight
 interface, and PriceGuard for price notifications. I planned the migration off

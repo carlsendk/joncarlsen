@@ -1,6 +1,6 @@
 ---
 title: "An organisation-wide Agile and SCRUM transformation at Ørsted"
-summary: "Led the move to SCRUM across the IT department and built distributed development teams in Asia."
+summary: "Led the move to SCRUM across around 20 teams and built a 100-person offshore development centre in Asia."
 role: "Product Owner, SCRUM Master & IT Architect"
 period: "2012 - 2014"
 company: "Ørsted"
@@ -13,9 +13,9 @@ skills:
   - "scrum"
   - "change-management"
 metrics:
-  - "SCRUM rolled out across IT"
+  - "SCRUM across 20 teams"
+  - "100-person offshore development centre"
   - "Coached SCRUM Masters and new Product Owners"
-  - "Offshore development centre established"
 order: 8
 ---
 
@@ -28,12 +28,13 @@ IT department rather than in one or two pockets.
 
 ## What I did
 
-I led a "way of working" project to implement SCRUM across the IT department, and
-I created a Story Points estimation model so teams could plan and forecast on a
-shared basis. Much of the work was coaching: I coached the teams in SCRUM and
-mentored ScrumMasters and new product owners as they grew into the roles. To grow
-capacity I started and trained several offshore teams in Asia and helped establish
-the development centre there. I also ran a LEAN change project that set one
+I led a "way of working" project to implement SCRUM across around 20 teams in the
+IT department, and I created a Story Points estimation model so teams could plan
+and forecast on a shared basis. Much of the work was coaching: I coached the
+teams in SCRUM and mentored ScrumMasters and new product owners as they grew into
+the roles. To grow capacity I started and trained several offshore teams in Asia
+and helped establish the development centre there, which grew to around 100
+people. I also ran a LEAN change project that set one
 standard change process for non-SAP changes, and I established communities of
 practice for product owners and ScrumMasters so the new practices kept improving
 after the rollout.

@@ -432,10 +432,10 @@ export const cvData: CvData = {
       start: "May 2010",
       end: "Oct 2014",
       scope:
-        "Product owner and technical lead across the energy IT estate, running SCRUM with distributed teams in Denmark and Malaysia and setting architecture as the business modernised.",
+        "Product owner and technical lead across the energy IT estate, running SCRUM with distributed teams in Denmark and a 100-person offshore development centre in Asia, and setting architecture as the business modernised.",
       bullets: [
         {
-          text: "Designed event-driven integrations and helped deliver PowerHub, a real-time Virtual Power Plant that monitors distributed energy assets and runs them as one.",
+          text: "Designed event-driven integrations and helped deliver PowerHub, a real-time Virtual Power Plant that monitors around 20 distributed energy assets and runs them as one.",
           work: "orsted-virtual-power-plant",
         },
         {
@@ -443,7 +443,7 @@ export const cvData: CvData = {
           work: "orsted-distribution-management-system",
         },
         {
-          text: "Led a five-person team as team lead and SCRUM Master, running the SMS messaging platform that handles all of Ørsted's SMS to units and customers, and migrating the gateway with a zero-downtime production cutover.",
+          text: "Led a five-person team as team lead and SCRUM Master, running the SMS messaging platform that handles millions of SMS a year to Ørsted's units and customers, and migrating the gateway with a zero-downtime production cutover.",
           work: "orsted-sms-messaging-platform",
         },
         {
@@ -451,7 +451,7 @@ export const cvData: CvData = {
           work: "orsted-gis-digital-platform",
         },
         {
-          text: "Implemented SCRUM across the IT department, created a Story Points estimation model, and coached the teams, SCRUM Masters, and new product owners through the change.",
+          text: "Implemented SCRUM across around 20 teams, created a Story Points estimation model, and coached the teams, SCRUM Masters, and new product owners through the change.",
           work: "orsted-agile-scrum-transformation",
         },
       ],
