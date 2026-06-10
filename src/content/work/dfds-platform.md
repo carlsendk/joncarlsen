@@ -52,10 +52,11 @@ platform reliable as adoption climbed, much of it on an event-driven architectur
 built around Kafka. I also oversaw cloud operations with a focus on security and
 cost-efficiency as the estate grew.
 
-I led three teams inside the department: API development and data models,
-Development Excellence, and Autonomous Ports building on .NET Core. During this
-period I was selected for the DFDS Horizon management talent programme out of 200
-nominees.
+I led three teams inside the department: API development and data models, which
+built the path to take machine-learning models into production for logistics with
+the AI/ML department; Development Excellence; and Autonomous Ports building on
+.NET Core. During this period I was selected for the DFDS Horizon management
+talent programme out of 200 nominees.
 
 ## Outcome
 

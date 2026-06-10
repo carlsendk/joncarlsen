@@ -367,7 +367,8 @@ export const cvData: CvData = {
       position: "Head of Department, Developer & Platform Experience",
       start: "Nov 2017",
       end: "Mar 2021",
-      scope: "Scaled the core department from 3 to 20 people over three years.",
+      scope:
+        "Built the developer-platform department and drove a business-wide move to cloud-native, scaling the core team from 3 to 20 over three years.",
       bullets: [
         {
           text: "Drove cloud-native microservices adoption across the business, enabling around 200 engineers to build for the cloud.",
@@ -390,6 +391,10 @@ export const cvData: CvData = {
           work: "dfds-autonomous-ports",
         },
         {
+          text: "Set up a software team to take ML models into production for logistics, working with the AI/ML department.",
+          work: "dfds-ml-to-production",
+        },
+        {
           text: "Selected for the DFDS Horizon management talent programme, out of 200 nominees.",
           work: "dfds-platform",
         },
@@ -408,7 +413,8 @@ export const cvData: CvData = {
       position: "Head of Department, Customer Experience (CMS & Booking)",
       start: "Nov 2014",
       end: "Oct 2017",
-      scope: "Scaled the customer-experience department from 5 to 25 people across 5 teams.",
+      scope:
+        "Led the customer-experience department (CMS and booking) through a move to modern responsive web and continuous delivery, scaling it from 5 to 25 people across 5 teams.",
       bullets: [
         {
           text: "Released DFDS's first responsive website on SharePoint 2013 and brought in zero-downtime deployment.",
