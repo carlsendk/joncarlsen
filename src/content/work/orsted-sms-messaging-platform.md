@@ -1,6 +1,6 @@
 ---
 title: "Running Ørsted's SMS messaging platform"
-summary: "Led a five-person team operating the SMS messaging platform and migrated the gateway to a new ESME with a clean production cutover."
+summary: "Led the SMS platform that handles all of Ørsted's SMS to units and customers: built the MVP, added a new provider, and led the full integration of the gateway across Ørsted's systems."
 role: "Team Lead & SCRUM Master"
 period: "Oct 2011 - Aug 2012"
 company: "Ørsted"
@@ -12,31 +12,33 @@ skills:
   - "team-leadership"
   - "scrum"
   - "integration"
+  - "c-sharp"
 metrics:
   - "Zero-downtime gateway migration"
+  - "Handles all Ørsted SMS communication"
 order: 9
 ---
 
 ## Context
 
-Ørsted ran a set of SMS-based services that the business depended on, from
-tracking people in and out of locations to price notifications. The platform
-needed steady operation and a way off an ageing SMS gateway without disrupting
-the systems that relied on it.
+The platform grew out of my master project on an external short messaging
+entity. Ørsted depended on SMS to reach units and customers, and needed reliable
+messaging and a way off an ageing gateway without disrupting the systems that
+used it.
 
 ## What I did
 
-I was team lead and SCRUM Master for a team of five developers running the
-messaging platform. We operated SMSlog, which logged people in and out of
-locations by SMS or through a Silverlight interface, and PriceGuard for price
-notifications. The main piece of work was SMSHub, which let the SMS gateway talk
-to the enterprise broker over web services, and replacing the old gateway with a
-new External Short Messaging Entity. I planned the migration so existing clients
-moved across with a clean production cutover, building small adapters so each
-system could switch to the new gateway in turn.
+As team lead and SCRUM Master for five developers, we first built an MVP that
+improved communication with the SMS providers and added a new one. From there I
+led the full integration of the SMS gateway across Ørsted's other systems, so it
+handled all SMS communication to units and customers. It was built in C# and
+.NET with a web-services interface and a UI to control it, on Oracle. The same
+platform ran SMSlog, which logged people in and out by SMS or a Silverlight
+interface, and PriceGuard for price notifications. I planned the migration off
+the old gateway so existing clients moved across with a zero-downtime production
+cutover.
 
 ## Outcome
 
-Ørsted moved from the legacy SMS gateway to the new one without disrupting the
-services that depended on it, and the messaging platform ran on a team with a
-clear way of working.
+Ørsted had one SMS platform handling all communication to units and customers,
+integrated across its systems and moved onto the new gateway without disruption.

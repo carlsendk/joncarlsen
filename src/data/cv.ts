@@ -443,7 +443,7 @@ export const cvData: CvData = {
           work: "orsted-distribution-management-system",
         },
         {
-          text: "Led a five-person team as team lead and SCRUM Master, running the SMS messaging platform and migrating the gateway with a zero-downtime production cutover.",
+          text: "Led a five-person team as team lead and SCRUM Master, running the SMS messaging platform that handles all of Ørsted's SMS to units and customers, and migrating the gateway with a zero-downtime production cutover.",
           work: "orsted-sms-messaging-platform",
         },
         {
