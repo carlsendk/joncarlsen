@@ -1,0 +1,97 @@
+---
+// Single shared sticky header (ADR-001/002/003). Rendered once in Base.astro
+// (task_02) so every route inherits it: always-visible, pure-CSS sticky bar
+// carrying — left to right — a contextual back-link, the compact identity as a
+// home link, and a utility cluster (LinkedIn + GitHub icon links and the
+// ThemeToggle). Props-free: the back-link is derived from the current path and
+// identity/links come from cvData. No scroll JS (ADR-002).
+import ThemeToggle from "./ThemeToggle.astro";
+import { cvData } from "../data/cv.ts";
+
+interface BackLink {
+  href: string;
+  label: string;
+}
+
+// Contextual back-link, derived from the route (ADR-003): '/' has nowhere back,
+// '/cv' steps back to the overview, every other path steps back to the CV.
+// Astro's default directory build serves pages with a trailing slash
+// (Astro.url.pathname is '/cv/'), so normalise it before matching.
+function backLinkFor(pathname: string): BackLink | null {
+  const path = pathname !== "/" ? pathname.replace(/\/$/, "") : pathname;
+  if (path === "/") return null;
+  if (path === "/cv") return { href: "/", label: "Overview" };
+  return { href: "/cv", label: "Back to CV" };
+}
+
+const back = backLinkFor(Astro.url.pathname);
+const headerLinks = cvData.links.filter(
+  (l) => l.label === "LinkedIn" || l.label === "GitHub",
+);
+---
+
+<header
+  id="site-header"
+  class="sticky top-0 z-40 border-b border-border bg-bg/80 backdrop-blur"
+>
+  <div class="mx-auto flex max-w-2xl items-center gap-4 px-6 py-3">
+    {
+      back && (
+        <a
+          href={back.href}
+          class="cv-link link-underline shrink-0 font-mono text-xs uppercase tracking-wider text-muted"
+        >
+          ← {back.label}
+        </a>
+      )
+    }
+
+    <a
+      href="/"
+      class="group mr-auto flex min-w-0 flex-col leading-tight focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+    >
+      <span
+        class="truncate font-display text-sm font-semibold tracking-tight text-fg motion-safe:transition-colors group-hover:text-accent"
+        >{cvData.name}</span
+      >
+      <span class="truncate font-mono text-[0.625rem] uppercase tracking-[0.2em] text-muted"
+        >{cvData.title}</span
+      >
+    </a>
+
+    <nav class="flex shrink-0 items-center gap-1" aria-label="Profile links">
+      {
+        headerLinks.map((link) => (
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={link.label}
+            class="cv-link inline-flex size-9 items-center justify-center rounded-full text-muted hover:bg-fg/5"
+          >
+            {link.label === "LinkedIn" ? (
+              <svg
+                class="size-5"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0z" />
+              </svg>
+            ) : (
+              <svg
+                class="size-5"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.55v-2.16c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.67 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.74 0c2.18-1.48 3.14-1.17 3.14-1.17.63 1.58.23 2.75.11 3.04.74.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.37-5.25 5.66.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.55A11.5 11.5 0 0 0 12 .5z" />
+              </svg>
+            )}
+          </a>
+        ))
+      }
+      <ThemeToggle />
+    </nav>
+  </div>
+</header>

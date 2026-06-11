@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import ThemeToggle from "../components/ThemeToggle.astro";
+import Header from "../components/Header.astro";
 
 interface Props {
   /** Page <title> and Open Graph title. */
@@ -71,7 +71,7 @@ const canonical = Astro.site
     {ogImage && <meta property="og:image" content={ogImage} />}
   </head>
   <body class="bg-bg text-fg antialiased">
-    <ThemeToggle />
+    <Header />
     <slot />
   </body>
 </html>
