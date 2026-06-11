@@ -51,6 +51,62 @@ export interface CvData {
   resumePdf?: string;
 }
 
+// ─── PAGE-STRUCTURE MODEL (cv-structure) ─────────────────────────────────────
+// Build-time structures the /cv restructure consumes (TechSpec "Core
+// Interfaces"). These add no rendered output on their own: section components
+// (tasks 02/03), cv.astro (task 04), Timeline (task 05), and CvNav (task 06)
+// consume them later. cvData above is unchanged.
+
+/**
+ * Section slugs that double as anchor `id`s and lead-in keys. Aligned with the
+ * existing `<slug>-heading` h2 ids already in each section component.
+ */
+export type SectionSlug =
+  | "summary"
+  | "credentials"
+  | "impact"
+  | "expertise"
+  | "experience"
+  | "work"
+  | "approach"
+  | "education"
+  | "certifications"
+  | "publications"
+  | "voluntary"
+  | "personal"
+  | "interests"
+  | "links";
+
+/**
+ * One scannable lead-in per section, rendered as a `.cv-lead` line under the
+ * `<h2>`. Partial: a slug absent from the map renders no lead-in, so sections
+ * where a lead-in would merely restate the heading omit it (ADR-004).
+ */
+export type SectionLeadIns = Partial<Record<SectionSlug, string>>;
+
+/**
+ * A curated in-page nav group: the section it scrolls to (`anchor`) and the
+ * sections it spans (`spans`). `spans` drives scroll-spy — any spanned section
+ * in view highlights the group (ADR-002).
+ */
+export interface NavGroup {
+  /** Human label, e.g. "Proof". */
+  label: string;
+  /** Link target — the section the group scrolls to. */
+  anchor: SectionSlug;
+  /** Sections covered by the group, for scroll-spy highlighting. */
+  spans: SectionSlug[];
+}
+
+/**
+ * Long-tail collapse tuning (ADR-003). The Timeline keeps the most recent
+ * `recentRoles`; a list collapses only when longer than `listThreshold`.
+ */
+export interface CollapseConfig {
+  recentRoles: number;
+  listThreshold: number;
+}
+
 // `themes` and `skills` are free-form string tags with no enforced enum
 // (ADR-004), so the vocabulary can evolve without a type change. They are
 // selection metadata (offline tailoring and the Phase 2 variants), not
@@ -724,4 +780,56 @@ export const cvData: CvData = {
     "Engineering practices, a maturity model from normalisation to self-service platforms. https://carlsendk.github.io/tech-leadership/wiki/engineering-practices",
     "Engineering effectiveness, optimising the inputs that let teams do their best work. https://carlsendk.github.io/tech-leadership/wiki/engineering-effectiveness",
   ],
+};
+
+// ─── PAGE STRUCTURE (cv-structure) ───────────────────────────────────────────
+// Authored once here, consumed by later tasks. Nothing renders these yet.
+
+/**
+ * Per-section lead-ins (ADR-004). Optional by design: sections whose heading is
+ * self-explanatory (summary, certifications, publications, personal, links) are
+ * omitted so the lead-in never merely restates the heading.
+ */
+export const sectionLeadIns: SectionLeadIns = {
+  credentials: "The executive remit, in proof points.",
+  impact: "Outcomes, by the numbers.",
+  expertise: "Where I go deepest.",
+  experience: "Around twenty years of leadership, newest first.",
+  work: "A few engagements in more depth.",
+  approach: "How I lead, and why it travels.",
+  education: "Engineering and business, by design.",
+  voluntary: "Developing people outside paid work.",
+  interests: "Beyond the desk.",
+};
+
+/**
+ * The six curated in-page nav groups (ADR-002). Every `anchor` and every entry
+ * in `spans` is a `SectionSlug`; the flattened `spans` cover all 14 sections
+ * exactly once, so scroll-spy maps any section to one group.
+ */
+export const navGroups: NavGroup[] = [
+  { label: "Summary", anchor: "summary", spans: ["summary", "credentials"] },
+  { label: "Proof", anchor: "impact", spans: ["impact", "expertise"] },
+  { label: "Experience", anchor: "experience", spans: ["experience"] },
+  { label: "Work", anchor: "work", spans: ["work", "approach"] },
+  {
+    label: "Background",
+    anchor: "education",
+    spans: ["education", "certifications", "publications"],
+  },
+  {
+    label: "Beyond",
+    anchor: "voluntary",
+    spans: ["voluntary", "personal", "interests", "links"],
+  },
+];
+
+/**
+ * Long-tail collapse tuning (ADR-003). At current content (11 roles) the
+ * timeline collapses 7 roles behind one expander; lists stay fully expanded
+ * until one exceeds `listThreshold`.
+ */
+export const collapseConfig: CollapseConfig = {
+  recentRoles: 4,
+  listThreshold: 8,
 };

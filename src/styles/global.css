@@ -260,6 +260,17 @@ body::before {
   }
 }
 
+/* Long-tail collapse (ADR-003): the JS-added class that hides the earlier-roles
+   timeline tail once the bundled expander script runs. Defined OUTSIDE
+   @layer components (like .reveal / the header-bar rules) — it never appears in
+   markup (the collapse script adds it), so it is intentionally absent from the
+   style-spec role vocabulary and the eslint no-unknown-classes guard. It governs
+   `display`, not opacity, so expanded roles resolve to full opacity and are never
+   stuck at the `.reveal` fade (that animation lives on the <section>, not here). */
+.cv-collapsed {
+  display: none;
+}
+
 /* Print stylesheet (ADR-001): a clean, light, single-column CV for "save as PDF"
    from the browser. Tuned for /cv but applied globally, since it only affects
    printing and never the screen. It forces light ink-on-white regardless of the
@@ -300,6 +311,16 @@ body::before {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
+  }
+
+  /* Long-tail collapse is screen-only: neutralize the collapse class and drop the
+     expander so the printed CV carries every earlier role (mirrors the .reveal
+     cancel above and the "print shows everything" criterion, ADR-003). */
+  .cv-collapsed {
+    display: revert !important;
+  }
+  #experience-expander {
+    display: none !important;
   }
 
   /* Keep entries (roles, education, cards, list items) from splitting across a

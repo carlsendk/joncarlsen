@@ -7,15 +7,18 @@ import type { PersonalDetails } from "../data/cv.ts";
 interface Props {
   /** Date of birth, nationality, marital status. */
   details: PersonalDetails;
+  /** Optional one-line orientation rendered under the heading. */
+  leadIn?: string;
 }
 
-const { details } = Astro.props;
+const { details, leadIn } = Astro.props;
 ---
 
-<section aria-labelledby="personal-heading" class="reveal cv-section">
+<section id="personal" aria-labelledby="personal-heading" class="reveal cv-section">
   <h2 id="personal-heading" class="cv-eyebrow">
     Personal Details
   </h2>
+  {leadIn && <p class="cv-lead">{leadIn}</p>}
   <dl class="mt-8 space-y-2">
     <div class="flex items-baseline gap-3">
       <dt class="cv-meta w-28 shrink-0">Born</dt>

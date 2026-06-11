@@ -3,9 +3,13 @@
 // two ways (TechSpec "Single roles array, two renderings"):
 //   - variant="condensed": company, title, dates, one-line scope; honours
 //     `limit` to show only the top-N most recent roles (frontpage scan).
-//   - variant="full": the above plus each role's achievement bullets (/cv).
+//   - variant="full": the above plus each role's achievement bullets (/cv),
+//     and the long-tail collapse — the first `collapseConfig.recentRoles` roles
+//     stay visible while the rest move into a collapsible tail behind one bulk
+//     expander (ADR-003). Every role is rendered server-side regardless of
+//     collapse, so print, no-JS, and search engines always see the full history.
 // The data is never forked; both renderings read the same `roles` prop.
-import { isReady } from "../data/cv.ts";
+import { isReady, collapseConfig } from "../data/cv.ts";
 import type { Role } from "../data/cv.ts";
 
 interface Props {
@@ -15,9 +19,11 @@ interface Props {
   variant?: "condensed" | "full";
   /** Condensed only: cap to the top-N most recent roles. Unset shows all. */
   limit?: number;
+  /** Optional one-line orientation rendered under the heading. */
+  leadIn?: string;
 }
 
-const { roles, variant = "condensed", limit } = Astro.props;
+const { roles, variant = "condensed", limit, leadIn } = Astro.props;
 
 // `limit` is a condensed-view concern; the full CV always shows every role.
 const limited =
@@ -31,15 +37,26 @@ const shown = limited.map((role) => ({
   ...role,
   bullets: role.bullets.filter((bullet) => isReady(bullet.text)),
 }));
+
+// Long-tail collapse (full /cv only): keep the most recent `recentRoles` visible
+// and move the remainder into a collapsible tail. This is a SPLIT, never a slice —
+// every role in `shown` is still rendered (recent + earlier together). When there
+// is no overflow (or in the condensed variant) the tail/expander are omitted and
+// the timeline renders exactly as before.
+const collapsible = variant === "full" && shown.length > collapseConfig.recentRoles;
+const recent = collapsible ? shown.slice(0, collapseConfig.recentRoles) : shown;
+const earlier = collapsible ? shown.slice(collapseConfig.recentRoles) : [];
+const hiddenCount = earlier.length;
 ---
 
-<section aria-labelledby="experience-heading" class="reveal cv-section">
+<section id="experience" aria-labelledby="experience-heading" class="reveal cv-section">
   <h2 id="experience-heading" class="cv-eyebrow">
     Experience
   </h2>
+  {leadIn && <p class="cv-lead">{leadIn}</p>}
   <ol class="mt-8 space-y-10">
     {
-      shown.map((role) => (
+      recent.map((role) => (
         <li class="border-l border-border pl-5">
           <h3 class="cv-entry-title text-fg">{role.position}</h3>
           <p class="cv-body mt-0.5 text-fg">{role.company}</p>
@@ -69,4 +86,62 @@ const shown = limited.map((role) => ({
       ))
     }
   </ol>
+  {
+    collapsible && (
+      <>
+        {/* Single bulk control. Ships `hidden` (no-JS visitors never see it,
+            since the tail below is already expanded for them) and aria-expanded
+            reflects the SSR expanded state; the bundled script reveals it,
+            collapses the tail, and flips both on click. */}
+        <button
+          type="button"
+          id="experience-expander"
+          class="cv-pill mt-10 text-muted"
+          aria-controls="experience-tail"
+          aria-expanded="true"
+          data-count={hiddenCount}
+          hidden
+        >
+          Show earlier roles ({hiddenCount})
+        </button>
+        <ol id="experience-tail" class="mt-10 space-y-10">
+          {earlier.map((role) => (
+            <li class="border-l border-border pl-5">
+              <h3 class="cv-entry-title text-fg">{role.position}</h3>
+              <p class="cv-body mt-0.5 text-fg">{role.company}</p>
+              <p class="cv-meta mt-1.5">{role.start} – {role.end}</p>
+              <p class="cv-body mt-3 text-muted">{role.scope}</p>
+              {role.bullets.length > 0 && (
+                <ul class="cv-body mt-3 list-disc space-y-2 pl-5 text-muted">
+                  {role.bullets.map((bullet) =>
+                    bullet.work ? (
+                      <li>
+                        <a
+                          href={`/work/${bullet.work}`}
+                          class="cv-link link-underline"
+                        >
+                          {bullet.text}
+                        </a>
+                      </li>
+                    ) : (
+                      <li>{bullet.text}</li>
+                    ),
+                  )}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ol>
+      </>
+    )
+  }
 </section>
+
+<script>
+  // Deferred, bundled module script (ThemeToggle idiom): collapse the earlier-
+  // roles tail on load and wire the bulk toggle. The logic lives in a tiny shared
+  // module so it is unit-testable without a browser (ADR-003 / TechSpec). It
+  // no-ops where the tail/expander ids are absent (condensed home timeline).
+  import { initCollapse } from "../scripts/collapse.ts";
+  initCollapse();
+</script>

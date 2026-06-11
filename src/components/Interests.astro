@@ -8,17 +8,20 @@ import type { Interest } from "../data/cv.ts";
 interface Props {
   /** Spare-time interests. */
   interests: Interest[];
+  /** Optional one-line orientation rendered under the heading. */
+  leadIn?: string;
 }
 
-const { interests } = Astro.props;
+const { interests, leadIn } = Astro.props;
 ---
 
 {
   interests.length > 0 && (
-    <section aria-labelledby="interests-heading" class="reveal cv-section">
+    <section id="interests" aria-labelledby="interests-heading" class="reveal cv-section">
       <h2 id="interests-heading" class="cv-eyebrow">
         Interests
       </h2>
+      {leadIn && <p class="cv-lead">{leadIn}</p>}
       <ul class="cv-body mt-8 space-y-2 text-muted">
         {interests.map((interest) => <li>{interest.label}</li>)}
       </ul>

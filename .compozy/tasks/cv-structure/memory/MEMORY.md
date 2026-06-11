@@ -1,0 +1,31 @@
+# Workflow Memory
+
+Keep only durable, cross-task context here. Do not duplicate facts that are obvious from the repository, PRD documents, or git history.
+
+## Current State
+- Task 01 done: `cv.ts` exports `sectionLeadIns`, `navGroups`, `collapseConfig` (+ `SectionSlug`, `SectionLeadIns`, `NavGroup`, `CollapseConfig` types); `.cv-lead` shipped in `global.css`. Additive only — not consumed by any render yet. The 14 section slugs align with the existing `<slug>-heading` h2 ids.
+- Task 03 done: 7 lower-band sections (Education, Certifications, Publications, VoluntaryLeadership, PersonalDetails, Interests, Links) each gained `id="<slug>"` on `<section>` + optional `leadIn?: string` prop rendered as a guarded `{leadIn && <p class="cv-lead">{leadIn}</p>}` line after the `<h2>`. `cv.astro` does not pass `leadIn` yet (task 04), so built HTML has the anchor ids but zero rendered lead-ins.
+- Task 02 done: 7 upper-band sections (Summary→summary, Credentials→credentials, Impact→impact, Expertise→expertise, Timeline→experience, CaseStudies→work, Approach→approach) gained the same `id` + guarded `leadIn` pattern. CaseStudies.astro had no `Props`/`Astro.props` before — added `interface Props { leadIn?: string }`. Timeline got `id`+`leadIn` only (collapse is task 05). All 14 slugs are now anchor-addressable; `cv.astro` still passes no `leadIn` (task 04).
+- Task 05 done: Timeline `variant="full"` long-tail collapse. All 10 roles render server-side; first `recentRoles` (4) stay visible, remaining 6 move into `<ol id="experience-tail">` behind ONE `<button id="experience-expander" aria-expanded hidden>` "Show earlier roles (N)". SSR expanded; collapse is JS-only via class `.cv-collapsed` (`display:none`, defined OUTSIDE `@layer components`) + `@media print` neutralize (`display:revert!important`). Toggle logic lives in NEW `src/scripts/collapse.ts` (`initCollapse`); Timeline's `<script type=module>` imports + calls it. `variant="condensed"` (home) unchanged. `cv.ts` still passes no `leadIn` to Timeline (task 04).
+
+## Shared Decisions
+- `navGroups` = 6 groups, spans cover all 14 slugs exactly once: Summary[summary,credentials], Proof[impact,expertise], Experience[experience], Work[work,approach], Background[education,certifications,publications], Beyond[voluntary,personal,interests,links].
+- `collapseConfig` = `{ recentRoles: 4, listThreshold: 8 }`.
+- `sectionLeadIns` omits summary/certifications/publications/personal/links (would restate heading; optional per ADR-004).
+- Lead-in markup is LITERAL per task spec: `{leadIn && <p class="cv-lead">{leadIn}</p>}` directly after the `<h2>`, NO `mt-*` utility (supersedes the task-01 "add mt-* spacing" handoff note). Spacing belongs in `.cv-lead` itself or is decided in task 04 when it first renders. Task 02 MUST mirror this exact form so the two batches stay consistent.
+
+## Shared Learnings
+- Adding a `cv-*` role class requires keeping THREE in sync or `tests/style-spec.test.mjs` fails: the class in `global.css @layer components`, a row in `docs/style-spec.md` role-vocab table, and the `CANONICAL_ROLES` list in `tests/style-spec.test.mjs`.
+- Node v26 strips TS types on import → tests can `import('../src/data/cv.ts')` directly to assert runtime data (no loader/flag). See `tests/cv-structure-01.test.mjs`.
+- Verify "no rendered change" by greppng built HTML in `dist/**` for the new class/data, not just by build success (Tailwind keeps unused `@layer components` classes in the CSS bundle, so CSS bundle ≠ byte-identical, but HTML is).
+
+## Open Risks
+- Baseline carries 4 PRE-EXISTING failing tests across the `cv-roles-conversion-*` family (Hero/Header class-string + "near-eyebrow labels preserved inline" assertions; `src/components/Hero.astro` + `Header.astro` modified in the working tree, unrelated to cv-structure). Verified failure-neutral for task 02 by stashing edits. Every task's full-suite run shows these 4 — do not mis-attribute. Expected pass count rises as each task adds its own tests.
+- Integration tests that build inside a `before()` hook build into a private outDir (`npx astro build --outDir <tmp>`), NOT default `dist/`. cv-structure-03 → default `dist/`; cv-structure-02 → `os.tmpdir()/cv-structure-02-dist`; cv-structure-05 → `os.tmpdir()/cv-structure-05-dist`. CORRECTION (task 05): a separate outDir is NOT sufficient beyond 2 concurrent builds — THREE concurrent `astro build` runs race on Tailwind's ESM cache loader (`@tailwindcss/node`) at finalization and one intermittently throws, regardless of outDir. There are now 3 build-bearing test files (02/03/05); a 4th (e.g. task 06's integration test) would be the 4th concurrent build. Mitigation used in cv-structure-05: a 4-attempt retry-with-backoff around the `execFileSync` build so it succeeds in the clear window after the others finish. A new integration test should retry likewise, or reuse an existing build rather than add another.
+- Plain `node --test` CANNOT import `.astro` (no Vite loader) so Astro's Container API is unusable for in-process component render; integration tests must `astro build` + read the dist HTML.
+- Astro INLINES small bundled `<script>`s into every page that renders the component (no separate `dist/_astro/*.js`). A script's string literals (ids it `getElementById`s, template-literal labels) therefore appear in the HTML of EVERY page using the component, even where the script no-ops. Tests asserting an element's absence must match the markup ATTRIBUTE form (e.g. `id="experience-tail"`), not the bare string.
+
+## Handoffs
+- Tasks 02 + 03 + 05 done: all 14 sections accept an optional guarded `leadIn` and carry their section `id`; Timeline carries the long-tail collapse. Task 04 can pass `leadIn` from `sectionLeadIns` to every section.
+- Task 04 wires render order + passes `leadIn` props from `sectionLeadIns`, and decides lead-in spacing the first time it renders. Task 06 builds `CvNav` from `navGroups` (scroll-spy script) — reuse the task-05 script-module pattern (`src/scripts/*.ts` + `<script type=module>` importing it) and heed the build-concurrency correction above (don't add a 4th concurrent build without a retry/reuse).
+- Integration tests that assert built `/cv` HTML should trigger their own `npm run build` in a `before()` hook (the checked-in `dist/` goes stale); see `tests/cv-structure-03.test.mjs`.

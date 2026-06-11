@@ -5,15 +5,18 @@ import type { Education } from "../data/cv.ts";
 interface Props {
   /** Degrees, newest first. */
   education: Education[];
+  /** Optional one-line orientation rendered under the heading. */
+  leadIn?: string;
 }
 
-const { education } = Astro.props;
+const { education, leadIn } = Astro.props;
 ---
 
-<section aria-labelledby="education-heading" class="reveal cv-section">
+<section id="education" aria-labelledby="education-heading" class="reveal cv-section">
   <h2 id="education-heading" class="cv-eyebrow">
     Education
   </h2>
+  {leadIn && <p class="cv-lead">{leadIn}</p>}
   <ul class="mt-8 space-y-6">
     {
       education.map((entry) => (

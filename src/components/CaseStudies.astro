@@ -7,6 +7,13 @@
 import { getCollection } from "astro:content";
 import CaseStudyCard from "./CaseStudyCard.astro";
 
+interface Props {
+  /** Optional one-line orientation rendered under the heading. */
+  leadIn?: string;
+}
+
+const { leadIn } = Astro.props;
+
 const entries = (
   await getCollection("work", ({ data }) => data.featured && !data.draft)
 ).sort((a, b) => a.data.order - b.data.order);
@@ -14,10 +21,11 @@ const entries = (
 
 {
   entries.length > 0 && (
-    <section aria-labelledby="work-heading" class="reveal cv-section">
+    <section id="work" aria-labelledby="work-heading" class="reveal cv-section">
       <h2 id="work-heading" class="cv-eyebrow">
         Selected Work
       </h2>
+      {leadIn && <p class="cv-lead">{leadIn}</p>}
       <ul class="mt-8 space-y-4">
         {entries.map((entry) => (
           <li>

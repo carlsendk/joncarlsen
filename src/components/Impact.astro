@@ -13,15 +13,18 @@ import type { ImpactItem } from "../lib/impact.ts";
 interface Props {
   /** Lead impact items (first metric per company), derived from the work collection. */
   items: ImpactItem[];
+  /** Optional one-line orientation rendered under the heading. */
+  leadIn?: string;
 }
 
-const { items } = Astro.props;
+const { items, leadIn } = Astro.props;
 ---
 
-<section aria-labelledby="impact-heading" class="reveal cv-section">
+<section id="impact" aria-labelledby="impact-heading" class="reveal cv-section">
   <h2 id="impact-heading" class="cv-eyebrow">
     Impact
   </h2>
+  {leadIn && <p class="cv-lead">{leadIn}</p>}
   <ul class="mt-8 space-y-10">
     {
       items.map((item) => (

@@ -30,6 +30,7 @@ const spec = readFileSync(path.join(root, "docs/style-spec.md"), "utf8");
 const CANONICAL_ROLES = [
   "cv-section",
   "cv-eyebrow",
+  "cv-lead",
   "cv-entry-title",
   "cv-body",
   "cv-meta",

@@ -12,9 +12,11 @@ interface Props {
   about?: string;
   /** Published-writing references. Optional; isReady-filtered. */
   talks?: string[];
+  /** Optional one-line orientation rendered under the heading. */
+  leadIn?: string;
 }
 
-const { about, talks = [] } = Astro.props;
+const { about, talks = [], leadIn } = Astro.props;
 
 // Drop any draft writing reference still holding the `[TODO]` sentinel (ADR-003).
 const writing = talks.filter(isReady);
@@ -44,6 +46,7 @@ function asWriting(item: string): { label: string; url: string | null } {
 {
   hasContent && (
     <section
+      id="approach"
       aria-labelledby="approach-heading"
       class="reveal cv-section"
     >
@@ -53,6 +56,7 @@ function asWriting(item: string): { label: string; url: string | null } {
       >
         Approach
       </h2>
+      {leadIn && <p class="cv-lead">{leadIn}</p>}
       {vision !== "" && (
         <p class="cv-body mt-8 max-w-prose text-fg">{vision}</p>
       )}

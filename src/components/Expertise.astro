@@ -4,15 +4,18 @@
 interface Props {
   /** Areas of expertise. */
   expertise: string[];
+  /** Optional one-line orientation rendered under the heading. */
+  leadIn?: string;
 }
 
-const { expertise } = Astro.props;
+const { expertise, leadIn } = Astro.props;
 ---
 
-<section aria-labelledby="expertise-heading" class="reveal cv-section">
+<section id="expertise" aria-labelledby="expertise-heading" class="reveal cv-section">
   <h2 id="expertise-heading" class="cv-eyebrow">
     Expertise
   </h2>
+  {leadIn && <p class="cv-lead">{leadIn}</p>}
   <ul class="mt-8 flex flex-wrap gap-2">
     {
       expertise.map((item) => (

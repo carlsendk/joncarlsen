@@ -8,17 +8,20 @@ import type { VoluntaryRole } from "../data/cv.ts";
 interface Props {
   /** Voluntary leadership and community roles. */
   leadership: VoluntaryRole[];
+  /** Optional one-line orientation rendered under the heading. */
+  leadIn?: string;
 }
 
-const { leadership } = Astro.props;
+const { leadership, leadIn } = Astro.props;
 ---
 
 {
   leadership.length > 0 && (
-    <section aria-labelledby="voluntary-heading" class="reveal cv-section">
+    <section id="voluntary" aria-labelledby="voluntary-heading" class="reveal cv-section">
       <h2 id="voluntary-heading" class="cv-eyebrow">
         Voluntary Leadership
       </h2>
+      {leadIn && <p class="cv-lead">{leadIn}</p>}
       <ul class="mt-8 space-y-6">
         {leadership.map((entry) => (
           <li>

@@ -6,17 +6,20 @@ import type { Publication } from "../data/cv.ts";
 interface Props {
   /** Publications and honours. */
   publications: Publication[];
+  /** Optional one-line orientation rendered under the heading. */
+  leadIn?: string;
 }
 
-const { publications } = Astro.props;
+const { publications, leadIn } = Astro.props;
 ---
 
 {
   publications.length > 0 && (
-    <section aria-labelledby="publications-heading" class="reveal cv-section">
+    <section id="publications" aria-labelledby="publications-heading" class="reveal cv-section">
       <h2 id="publications-heading" class="cv-eyebrow">
         Publications & Honours
       </h2>
+      {leadIn && <p class="cv-lead">{leadIn}</p>}
       <ul class="cv-body mt-8 space-y-2 text-muted">
         {publications.map((item) =>
           item.work ? (

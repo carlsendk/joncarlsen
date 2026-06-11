@@ -3,14 +3,17 @@
 interface Props {
   /** 3-4 line professional summary. */
   summary: string;
+  /** Optional one-line orientation rendered under the heading. */
+  leadIn?: string;
 }
 
-const { summary } = Astro.props;
+const { summary, leadIn } = Astro.props;
 ---
 
-<section aria-labelledby="summary-heading" class="reveal cv-section">
+<section id="summary" aria-labelledby="summary-heading" class="reveal cv-section">
   <h2 id="summary-heading" class="cv-eyebrow">
     Summary
   </h2>
+  {leadIn && <p class="cv-lead">{leadIn}</p>}
   <p class="cv-body mt-8 max-w-prose text-fg">{summary}</p>
 </section>

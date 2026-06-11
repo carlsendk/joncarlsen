@@ -4,15 +4,18 @@
 interface Props {
   /** Certifications, networks, and associations. */
   certifications: string[];
+  /** Optional one-line orientation rendered under the heading. */
+  leadIn?: string;
 }
 
-const { certifications } = Astro.props;
+const { certifications, leadIn } = Astro.props;
 ---
 
-<section aria-labelledby="certifications-heading" class="reveal cv-section">
+<section id="certifications" aria-labelledby="certifications-heading" class="reveal cv-section">
   <h2 id="certifications-heading" class="cv-eyebrow">
     Certifications & Networks
   </h2>
+  {leadIn && <p class="cv-lead">{leadIn}</p>}
   <ul class="cv-body mt-8 space-y-2 text-muted">
     {certifications.map((item) => <li>{item}</li>)}
   </ul>
