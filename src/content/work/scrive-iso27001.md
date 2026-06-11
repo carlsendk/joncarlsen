@@ -13,7 +13,7 @@ skills:
   - "compliance"
 metrics:
   - "ISO 27001 certified"
-order: 5.1
+order: 3.1
 ---
 
 ## Context

@@ -16,7 +16,7 @@ skills:
 metrics:
   - "SMS-delay equation defined"
   - "Project-managed with a steering group"
-order: 11
+order: 6.5
 ---
 
 ## Context

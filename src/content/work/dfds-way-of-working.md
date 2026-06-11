@@ -12,7 +12,7 @@ skills:
   - "agile-coaching"
   - "ways-of-working"
   - "continuous-delivery"
-order: 9
+order: 5.5
 ---
 
 ## Context

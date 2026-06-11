@@ -14,7 +14,7 @@ skills:
   - "continuous-delivery"
 metrics:
   - "Corporate web for freight, logistics, and group"
-order: 3.5
+order: 5.2
 ---
 
 ## Context

@@ -15,7 +15,7 @@ skills:
 metrics:
   - "Smart-grid DMS specified"
   - "Tender selected"
-order: 7
+order: 6.2
 ---
 
 ## Context

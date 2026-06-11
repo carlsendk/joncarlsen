@@ -15,7 +15,7 @@ skills:
   - "data-engineering"
 metrics:
   - "New data platform on Google Cloud"
-order: 4.1
+order: 2.1
 ---
 
 ## Context

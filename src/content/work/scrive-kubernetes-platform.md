@@ -4,7 +4,7 @@ summary: "Cut yearly operational cost by around 10% by optimising AWS and databa
 role: "VP of Service Operations & CTO of eSignatur"
 period: "2021-2022"
 company: "Scrive"
-featured: false
+featured: true
 themes:
   - "cloud-realtime-data"
   - "transformation"
@@ -16,7 +16,7 @@ skills:
 metrics:
   - "Around 10% yearly operational cost cut"
   - "EU-hosted version on Kubernetes (GDPR)"
-order: 5
+order: 3
 ---
 
 ## Context

@@ -15,7 +15,7 @@ skills:
 metrics:
   - "Real-time Virtual Power Plant"
   - "20 distributed assets coordinated"
-order: 6
+order: 6.1
 ---
 
 ## Context

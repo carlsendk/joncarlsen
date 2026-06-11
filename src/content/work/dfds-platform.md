@@ -19,7 +19,7 @@ metrics:
   - "500+ microservices on Kubernetes"
   - "3 to 20 person department"
   - "~200 engineers cloud-native"
-order: 2
+order: 5
 ---
 
 ## Context

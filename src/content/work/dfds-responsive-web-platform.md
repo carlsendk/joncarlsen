@@ -17,7 +17,7 @@ metrics:
   - "First responsive DFDS website"
   - "Zero-downtime deployments"
   - "5 to 25 person Customer Experience department"
-order: 3
+order: 5.1
 ---
 
 ## Context

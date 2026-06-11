@@ -172,11 +172,11 @@ export const cvData: CvData = {
   name: "Jon Østerby Carlsen",
   title: "Executive Engineering Leadership",
   valueProp:
-    "Engineering executive who sets technology strategy and then executes it, across the full span from business and sales through product, engineering, QA, and operations. Around 20 years scaling organisations across Europe and Asia, leading agile transformations and lifting engineering practices, and now building AI and real-time data products at AXON, where LLM-driven agents act on telemetry arriving at up to 50,000 datapoints per second per device.",
+    "Engineering executive who sets technology strategy and then executes it, end to end. Around 20 years scaling organisations across Europe and Asia, and now building AI and real-time data products at AXON, where LLM-driven agents act on live network telemetry arriving at up to 50,000 datapoints per second per device.",
   summary:
-    "Technology executive with around 20 years in tech, now Director of Engineering and AI for EMEA at AXON Networks, where I own the organisation behind a cloud-native platform that turns network telemetry into operational insight at up to 50,000 datapoints per second per device, and built the AI/ML team that puts LLM-driven agents on those live streams. My remit has run the full span: business and sales, product, engineering, QA, and operations, setting the strategy and then executing it. At DFDS I grew the developer-platform department from 3 to 20 and drove a business-wide move to cloud-native that reached around 200 engineers and 500+ microservices on Kubernetes, built from zero in three years. Before that I held executive ownership of roughly 50-person organisations as VP at Scrive and CTO at eSignatur, and as Director at Lunar, leading agile transformations, owning product, and lifting engineering practices across distributed teams in Europe and Asia. The through-line is simple: I tend to leave an organisation a maturity stage further along than I found it.",
+    "Technology executive, now Director of Engineering and AI for EMEA at AXON Networks, where I own the organisation behind a cloud-native platform that turns network telemetry into operational insight and built the AI/ML team that puts LLM-driven agents on the live streams. Before AXON I ran around 50-person engineering organisations as Director at Lunar and VP at Scrive, and held the full CTO remit at eSignatur, leading agile transformation, owning product, and lifting engineering practice. Earlier, at DFDS, I built the developer-platform department from 3 to 20 and drove a business-wide move to cloud-native that reached around 200 engineers and 500+ microservices on Kubernetes, from zero in three years. The through-line is simple: I tend to leave an organisation a maturity stage further along than I found it.",
   scope:
-    "Executive engineering leadership over focused 40 to 50 person organisations and a business-wide transformation that reached around 200 engineers. Full remit across business, product, engineering, QA, and operations, with P&L responsibility, technology and AI strategy, security, and compliance.",
+    "Executive engineering leadership over focused 40 to 50 person organisations and a business-wide transformation that reached around 200 engineers. Full remit across business, product, engineering, QA, and operations, with P&L responsibility, technology and AI strategy, security, compliance, and reporting to the board and investors.",
   credentials: [
     "Set and executed technology strategy with P&L responsibility across the full span: business and sales, product, engineering, QA, and operations.",
     "Owned the full CTO remit at eSignatur: product and technical roadmap, security, compliance, cloud strategy, and vendor management.",
@@ -196,13 +196,13 @@ export const cvData: CvData = {
   ],
   expertise: [
     "Engineering leadership and organisational scaling",
-    "Agile and organisational transformation",
-    "Product ownership, technology strategy, and commercial leadership",
-    "AI/ML, GenAI, LLM and local-LLM product integration",
+    "Agile transformation and ways of working",
+    "Technology strategy, product ownership, and commercial leadership",
+    "AI/ML, GenAI, and LLM product integration, including local LLMs",
     "Cloud and real-time data architecture",
-    "High-performance computing and microservices",
+    "Event-driven systems and microservices at scale",
     "DevOps, SRE, platform engineering, and service operations",
-    "Cross-functional leadership and team development",
+    "Coaching, mentoring, and team development",
   ],
   roles: [
     {
@@ -711,7 +711,7 @@ export const cvData: CvData = {
     },
   ],
   about:
-    "I lead with a clear purpose, create room for people to master their craft, and build organisations that can act on their own through autonomy and delegation. I start from the business strategy and work back to the technology roadmap, so the engineering bets line up with where the company is going. My remit has spanned the full organisation, from business and sales through product, engineering, QA, and operations, and the work has usually meant changing how teams operate, not just what they ship, through agile transformation and stronger engineering practices. Most of what I build is there to make good outcomes repeatable rather than heroic: self-service platforms, and measurement tied to real business results instead of activity. I meet an organisation at the maturity stage it is actually at and move it forward one deliberate step at a time, toward automation and AI-driven operations. That is the work at AXON now, taking a modern engineering culture into LLM-driven agents that act on live telemetry.",
+    "I lead with a clear purpose, create room for people to master their craft, and build organisations that can act on their own through autonomy and delegation. I start from the business strategy and work back to the technology roadmap, so the engineering bets line up with where the company is going. The work has usually meant changing how teams operate, not just what they ship, through agile transformation and stronger engineering practice. Most of what I build is there to make good outcomes repeatable rather than heroic: self-service platforms, and measurement tied to real business results instead of activity. I meet an organisation at the maturity stage it is actually at and move it forward one deliberate step at a time, toward automation and AI-driven operations. That is the work at AXON now, carrying a modern engineering culture into agents that act on live network data.",
   talks: [
     "Engineering operating model, a framework for aligning technology direction with business strategy. https://carlsendk.github.io/tech-leadership/wiki/operating-model/operating-model-framework",
     "Engineering practices, a maturity model from normalisation to self-service platforms. https://carlsendk.github.io/tech-leadership/wiki/engineering-practices",

@@ -4,7 +4,7 @@ summary: "Led the move to SCRUM across around 20 teams and built a 100-person of
 role: "Product Owner, SCRUM Master & IT Architect"
 period: "2012 - 2014"
 company: "Ørsted"
-featured: false
+featured: true
 themes:
   - "transformation"
   - "org-scaling"
@@ -16,7 +16,7 @@ metrics:
   - "SCRUM across 20 teams"
   - "100-person offshore development centre"
   - "Coached SCRUM Masters and new Product Owners"
-order: 8
+order: 6
 ---
 
 ## Context

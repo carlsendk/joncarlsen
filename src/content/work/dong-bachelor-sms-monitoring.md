@@ -14,7 +14,7 @@ skills:
   - "oracle"
 metrics:
   - "Improved visibility into communication breaks"
-order: 12
+order: 6.6
 ---
 
 ## Context

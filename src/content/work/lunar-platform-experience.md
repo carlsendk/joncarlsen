@@ -4,7 +4,7 @@ summary: "Led Lunar's developer and platform experience department and enabled s
 role: "Director of Technology, Developer & Platform Experience"
 period: "2022-2023"
 company: "Lunar A/S"
-featured: false
+featured: true
 themes:
   - "platform-devex"
   - "org-scaling"
@@ -14,7 +14,7 @@ skills:
   - "engineering-leadership"
 metrics:
   - "~50 people across 5 teams"
-order: 4
+order: 2
 ---
 
 ## Context

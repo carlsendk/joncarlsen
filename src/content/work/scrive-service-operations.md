@@ -15,7 +15,7 @@ skills:
 metrics:
   - "Incident management for on-call teams"
   - "Three team leads grown into managers"
-order: 5.2
+order: 3.2
 ---
 
 ## Context

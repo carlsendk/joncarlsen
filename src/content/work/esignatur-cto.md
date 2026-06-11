@@ -17,7 +17,7 @@ skills:
 metrics:
   - "ISAE 3000 certified"
   - "Cloud-adoption plan on a cloud-native maturity matrix"
-order: 5.5
+order: 4
 ---
 
 ## Context

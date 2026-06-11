@@ -14,7 +14,7 @@ skills:
   - "continuous-integration"
 metrics:
   - "Delivered on time and under budget"
-order: 10
+order: 6.4
 ---
 
 ## Context

@@ -12,7 +12,7 @@ skills:
   - "eid"
   - "identity"
   - "regulatory-compliance"
-order: 10
+order: 2.2
 ---
 
 ## Context

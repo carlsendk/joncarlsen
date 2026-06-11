@@ -4,7 +4,7 @@ summary: "Set up the team and built Neura, a GenAI agent embedded in AXON Networ
 role: "Director of Engineering & AI (EMEA)"
 period: "2023-Present"
 company: "AXON Networks"
-featured: false
+featured: true
 themes:
   - "ai-llm"
   - "cloud-realtime-data"

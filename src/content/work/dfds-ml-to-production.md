@@ -15,7 +15,7 @@ skills:
   - "engineering-leadership"
 metrics:
   - "ML models to production for logistics"
-order: 3.8
+order: 5.4
 ---
 
 ## Context

@@ -16,7 +16,7 @@ skills:
 metrics:
   - "Zero-downtime gateway migration"
   - "Millions of SMS per year"
-order: 9
+order: 6.3
 ---
 
 ## Context
