@@ -1,5 +1,5 @@
 ---
-title: "Moving AXON from Java to Go"
+title: "Moving AXON Networks from Java to Go"
 summary: "Built a team and led the organisation's move from Java to Go, with training and guides, for performance and maintainability."
 role: "Director of Engineering & AI (EMEA)"
 period: "2023-Present"
@@ -20,7 +20,7 @@ order: 1.2
 
 ## Context
 
-AXON's platform runs latency-sensitive services where predictable performance
+AXON Networks' platform runs latency-sensitive services where predictable performance
 matters, and Go fits that better than Java while being simpler to maintain.
 Moving a language across an organisation is not a rewrite, though, it is a change
 of habit for every team, so it needed to be led as a transition rather than
@@ -36,6 +36,6 @@ management rather than a one-off migration.
 
 ## Outcome
 
-AXON moved its performance-sensitive services to Go and gave the wider
+AXON Networks moved its performance-sensitive services to Go and gave the wider
 organisation the training and guides to keep building in Go, so the change held
 as a new default rather than a single project.

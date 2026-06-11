@@ -353,3 +353,12 @@ body::before {
     }
   }
 }
+
+/* Link hover colour. Tailwind v4 ranks the utilities layer above @layer
+   components, so a resting colour utility (text-fg / text-muted) on a link
+   overrides cv-link's own hover:text-accent and the hover never shows. This
+   unlayered rule outranks every layer, so every cv-link hovers to the accent
+   regardless of its resting colour. */
+.cv-link:hover {
+  color: var(--accent);
+}

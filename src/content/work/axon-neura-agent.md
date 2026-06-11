@@ -1,5 +1,5 @@
 ---
-title: "Neura: a GenAI agent in AXON's products"
+title: "Neura: a GenAI agent in AXON Networks' products"
 summary: "Set up the team and built Neura, a GenAI agent embedded in AXON Networks' products, and brought it into pre-sales."
 role: "Director of Engineering & AI (EMEA)"
 period: "2023-Present"
@@ -14,13 +14,13 @@ skills:
   - "llm"
   - "genai"
 metrics:
-  - "GenAI agent shipped into AXON products"
+  - "GenAI agent shipped into AXON Networks products"
 order: 1.1
 ---
 
 ## Context
 
-AXON's orchestration platform turns high-volume network telemetry into
+AXON Networks' orchestration platform turns high-volume network telemetry into
 operational insight in real time. That live data is exactly what a GenAI agent
 needs to be useful in an operational setting: rather than answering from a stale
 snapshot, it can reason over what the network is doing now. The opportunity was to
@@ -37,6 +37,6 @@ up for the platform.
 
 ## Outcome
 
-AXON has a GenAI agent in its products and a team building it forward, and a
+AXON Networks has a GenAI agent in its products and a team building it forward, and a
 concrete way to show the AI story to customers in pre-sales. It is the leading
 edge of the move from a modern engineering setup toward AI-driven operations.

@@ -41,4 +41,4 @@ development and data-models team inside the department.
 ML models for logistics could move from the AI/ML department into production
 reliably, on the shared platform, which gave DFDS a repeatable way to
 operationalise machine learning rather than a string of experiments. It is the
-same model-to-production discipline I went on to lead at AXON.
+same model-to-production discipline I went on to lead at AXON Networks.

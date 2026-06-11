@@ -1,6 +1,6 @@
 ---
 title: "Building an AI platform on real-time network telemetry"
-summary: "Stood up the AI/ML capability and the real-time data architecture behind AXON's orchestration platform."
+summary: "Stood up the AI/ML capability and the real-time data architecture behind AXON Networks' orchestration platform."
 role: "Director of Engineering & AI (EMEA)"
 period: "2023-Present"
 company: "AXON Networks"
@@ -26,7 +26,7 @@ order: 1
 
 ## Context
 
-AXON's orchestration platform turns high-volume network telemetry into
+AXON Networks' orchestration platform turns high-volume network telemetry into
 operational insight. Each device streams up to 50,000 datapoints per second, so
 the platform reads its network in real time rather than in batches, and every
 decision about data flow and model placement has to respect that latency budget.
