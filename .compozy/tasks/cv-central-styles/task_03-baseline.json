@@ -1,0 +1,22 @@
+{
+  "note": "Pre-conversion computed-style baseline (subtask 3.1). Captured via Playwright getComputedStyle on the production build (npm run build + preview) at http://localhost:4327/cv. Re-measured identically post-conversion for 3.4; only the documented body line-height normalizations (edu_institution, per_dd, exp_company: 24px -> 26px) may differ.",
+  "url": "http://localhost:4327/cv",
+  "elements": {
+    "exp_section": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "24px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(15, 23, 42)", "marginTop": "0px" },
+    "exp_eyebrow": { "fontFamily": "\"JetBrains Mono\"", "fontSize": "12px", "fontWeight": "500", "lineHeight": "16px", "letterSpacing": "2.4px", "textTransform": "uppercase", "color": "rgb(71, 85, 105)", "marginTop": "0px" },
+    "exp_entryTitle": { "fontFamily": "Fraunces", "fontSize": "20px", "fontWeight": "600", "lineHeight": "28px", "letterSpacing": "-0.5px", "textTransform": "none", "color": "rgb(15, 23, 42)", "marginTop": "0px" },
+    "exp_company": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "24px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(15, 23, 42)", "marginTop": "2px", "DRIFT": "lineHeight 24px -> 26px after cv-body (intended)" },
+    "exp_dates": { "fontFamily": "\"JetBrains Mono\"", "fontSize": "12px", "fontWeight": "400", "lineHeight": "16px", "letterSpacing": "0.6px", "textTransform": "uppercase", "color": "rgb(71, 85, 105)", "marginTop": "6px" },
+    "exp_scope": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "26px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(71, 85, 105)", "marginTop": "12px" },
+    "exp_bulletUl": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "26px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(71, 85, 105)", "marginTop": "12px" },
+    "edu_entryTitle": { "fontFamily": "Fraunces", "fontSize": "20px", "fontWeight": "600", "lineHeight": "28px", "letterSpacing": "-0.5px", "textTransform": "none", "color": "rgb(15, 23, 42)", "marginTop": "0px" },
+    "edu_institution": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "24px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(15, 23, 42)", "marginTop": "2px", "DRIFT": "lineHeight 24px -> 26px after cv-body (intended; spec maps institution -> cv-body)" },
+    "edu_dates": { "fontFamily": "\"JetBrains Mono\"", "fontSize": "12px", "fontWeight": "400", "lineHeight": "16px", "letterSpacing": "0.6px", "textTransform": "uppercase", "color": "rgb(71, 85, 105)", "marginTop": "4px" },
+    "edu_activitiesUl": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "14px", "fontWeight": "400", "lineHeight": "22.75px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(71, 85, 105)", "marginTop": "8px" },
+    "vol_detail": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "26px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(71, 85, 105)", "marginTop": "4px" },
+    "pub_ul": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "26px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(71, 85, 105)", "marginTop": "32px" },
+    "cert_ul": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "26px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(71, 85, 105)", "marginTop": "32px" },
+    "per_dt": { "fontFamily": "\"JetBrains Mono\"", "fontSize": "12px", "fontWeight": "400", "lineHeight": "16px", "letterSpacing": "0.6px", "textTransform": "uppercase", "color": "rgb(71, 85, 105)", "marginTop": "0px" },
+    "per_dd": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "24px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(15, 23, 42)", "marginTop": "0px", "DRIFT": "lineHeight 24px -> 26px after cv-body (intended; spec maps dd -> cv-body). Baseline alignment preserved via items-baseline on container." }
+  }
+}

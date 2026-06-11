@@ -13,17 +13,17 @@ const { publications } = Astro.props;
 
 {
   publications.length > 0 && (
-    <section aria-labelledby="publications-heading" class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14">
-      <h2 id="publications-heading" class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
+    <section aria-labelledby="publications-heading" class="reveal cv-section">
+      <h2 id="publications-heading" class="cv-eyebrow">
         Publications & Honours
       </h2>
-      <ul class="mt-8 space-y-2 leading-relaxed text-muted">
+      <ul class="cv-body mt-8 space-y-2 text-muted">
         {publications.map((item) =>
           item.work ? (
             <li>
               <a
                 href={`/work/${item.work}`}
-                class="link-underline motion-safe:transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                class="cv-link link-underline"
               >
                 {item.label}
               </a>

@@ -36,22 +36,14 @@ const companies = [...byCompany.entries()]
 const companyId = (company: string) =>
   `company-${company.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
 
-const title = `Projects · ${cvData.name}`;
-const description = `Projects by ${cvData.name}, grouped by company.`;
+const title = `Case Studies · ${cvData.name}`;
+const description = `Case studies by ${cvData.name}, grouped by company.`;
 ---
 
 <Base title={title} description={description}>
-  <nav class="mx-auto max-w-2xl px-6 pt-6">
-    <a
-      href="/cv"
-      class="link-underline font-mono text-xs uppercase tracking-wider text-muted motion-safe:transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-    >
-      ← Back to CV
-    </a>
-  </nav>
   <header class="mx-auto max-w-2xl px-6 pt-20 pb-12 sm:pt-28">
-    <h1 class="font-display text-5xl font-semibold tracking-tight text-fg sm:text-6xl">Projects</h1>
-    <p class="mt-6 max-w-prose leading-relaxed text-muted">
+    <h1 class="font-display text-5xl font-semibold tracking-tight text-fg sm:text-6xl">Case Studies</h1>
+    <p class="cv-body mt-6 max-w-prose text-muted">
       Every project, grouped by company. Each links to its full write-up.
     </p>
   </header>
@@ -59,14 +51,8 @@ const description = `Projects by ${cvData.name}, grouped by company.`;
     {
       companies.length > 0 ? (
         companies.map(({ company, entries }) => (
-          <section
-            aria-labelledby={companyId(company)}
-            class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14"
-          >
-            <h2
-              id={companyId(company)}
-              class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted"
-            >
+          <section aria-labelledby={companyId(company)} class="reveal cv-section">
+            <h2 id={companyId(company)} class="cv-eyebrow">
               {company}
             </h2>
             <ul class="mt-8 space-y-4">
@@ -79,8 +65,8 @@ const description = `Projects by ${cvData.name}, grouped by company.`;
           </section>
         ))
       ) : (
-        <section class="mx-auto max-w-2xl border-t border-border px-6 py-14">
-          <p class="leading-relaxed text-muted">No projects published yet.</p>
+        <section class="cv-section">
+          <p class="cv-body text-muted">No projects published yet.</p>
         </section>
       )
     }

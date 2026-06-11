@@ -1,0 +1,24 @@
+{
+  "captured": "pre-conversion baseline, /cv @ localhost:4322, viewport default",
+  "elements": {
+    "hero.subtitle":      {"face":"JetBrains Mono","size":"14px","weight":"400","lh":"20px","ls":"2.8px","note":"STAYS INLINE (off-tier)"},
+    "hero.valueProp":     {"face":"Hanken Grotesk","size":"16px","weight":"400","lh":"26px","ls":"normal"},
+    "hero.scopeLabel":    {"face":"JetBrains Mono","size":"12px","weight":"400","lh":"16px","ls":"2.4px","note":"DRIFT: weight 400->500 under cv-eyebrow"},
+    "hero.scopeValue":    {"face":"Hanken Grotesk","size":"16px","weight":"400","lh":"26px","ls":"normal"},
+    "summary.section":    {"pad":"56px 24px","borderTop":"1px","maxW":"672px"},
+    "summary.h2":         {"face":"JetBrains Mono","size":"12px","weight":"500","lh":"16px","ls":"2.4px"},
+    "summary.body":       {"face":"Hanken Grotesk","size":"16px","weight":"400","lh":"26px"},
+    "credentials.h2":     {"face":"JetBrains Mono","size":"12px","weight":"500","ls":"2.4px"},
+    "credentials.body":   {"face":"Hanken Grotesk","size":"16px","weight":"400","lh":"26px","color":"muted"},
+    "approach.h2":        {"face":"JetBrains Mono","size":"12px","weight":"500","ls":"2.4px"},
+    "approach.vision":    {"face":"Hanken Grotesk","size":"16px","weight":"400","lh":"26px"},
+    "approach.writingLabel":{"face":"JetBrains Mono","size":"12px","weight":"400","lh":"16px","ls":"2.4px","note":"DRIFT: weight 400->500 under cv-eyebrow"},
+    "approach.list":      {"face":"Hanken Grotesk","size":"16px","weight":"400","lh":"26px","color":"muted"},
+    "approach.link":      {"face":"Hanken Grotesk","size":"16px","weight":"400","color":"fg"},
+    "expertise.h2":       {"face":"JetBrains Mono","size":"12px","weight":"500","ls":"2.4px"},
+    "expertise.chip":     {"face":"JetBrains Mono","size":"12px","weight":"400","lh":"16px","pad":"4px 12px","borderTop":"1px","color":"muted"},
+    "interests.h2":       {"face":"JetBrains Mono","size":"12px","weight":"500","ls":"2.4px"},
+    "interests.body":     {"face":"Hanken Grotesk","size":"16px","weight":"400","lh":"26px","color":"muted"}
+  },
+  "expectedDrift": ["hero.scopeLabel weight 400->500", "approach.writingLabel weight 400->500"]
+}

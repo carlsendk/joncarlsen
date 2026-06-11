@@ -15,11 +15,11 @@ const { interests } = Astro.props;
 
 {
   interests.length > 0 && (
-    <section aria-labelledby="interests-heading" class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14">
-      <h2 id="interests-heading" class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
+    <section aria-labelledby="interests-heading" class="reveal cv-section">
+      <h2 id="interests-heading" class="cv-eyebrow">
         Interests
       </h2>
-      <ul class="mt-8 space-y-2 leading-relaxed text-muted">
+      <ul class="cv-body mt-8 space-y-2 text-muted">
         {interests.map((interest) => <li>{interest.label}</li>)}
       </ul>
     </section>

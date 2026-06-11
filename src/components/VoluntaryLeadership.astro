@@ -15,15 +15,15 @@ const { leadership } = Astro.props;
 
 {
   leadership.length > 0 && (
-    <section aria-labelledby="voluntary-heading" class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14">
-      <h2 id="voluntary-heading" class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
+    <section aria-labelledby="voluntary-heading" class="reveal cv-section">
+      <h2 id="voluntary-heading" class="cv-eyebrow">
         Voluntary Leadership
       </h2>
       <ul class="mt-8 space-y-6">
         {leadership.map((entry) => (
           <li>
-            <h3 class="font-display text-xl font-semibold tracking-tight text-fg">{entry.role}</h3>
-            <p class="mt-1 leading-relaxed text-muted">{entry.detail}</p>
+            <h3 class="cv-entry-title text-fg">{entry.role}</h3>
+            <p class="cv-body mt-1 text-muted">{entry.detail}</p>
           </li>
         ))}
       </ul>

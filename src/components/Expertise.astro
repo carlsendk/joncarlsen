@@ -9,14 +9,14 @@ interface Props {
 const { expertise } = Astro.props;
 ---
 
-<section aria-labelledby="expertise-heading" class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14">
-  <h2 id="expertise-heading" class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
+<section aria-labelledby="expertise-heading" class="reveal cv-section">
+  <h2 id="expertise-heading" class="cv-eyebrow">
     Expertise
   </h2>
   <ul class="mt-8 flex flex-wrap gap-2">
     {
       expertise.map((item) => (
-        <li class="rounded-full border border-border px-3 py-1 font-mono text-xs text-muted">{item}</li>
+        <li class="cv-badge text-muted">{item}</li>
       ))
     }
   </ul>

@@ -1,9 +1,11 @@
 # Netlify build + deploy config (supersedes the GitHub Pages workflow — see ADR-007).
-# The build command IS the hard gate: a type error or a broken link exits non-zero
-# and fails the build, so Netlify never swaps the live site. The Lighthouse plugin
-# adds perf/accessibility budgets on top.
+# The build command IS the hard gate: a lint violation, a type error, or a broken
+# link exits non-zero and fails the build, so Netlify never swaps the live site.
+# `npm run lint` runs first so style drift short-circuits before the expensive
+# build/link/Lighthouse steps (ADR-003). The Lighthouse plugin adds
+# perf/accessibility budgets on top.
 [build]
-  command = "npm run check && npm run build && npx --yes linkinator@6.1.2 ./dist --recurse --skip '(^https?://(www\\.)?linkedin\\.com|^https?://(www\\.)?joncarlsen\\.dk)'"
+  command = "npm run lint && npm run check && npm run build && npx --yes linkinator@6.1.2 ./dist --recurse --skip '(^https?://(www\\.)?linkedin\\.com|^https?://(www\\.)?joncarlsen\\.dk)'"
   publish = "dist"
 
 [build.environment]

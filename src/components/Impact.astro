@@ -18,8 +18,8 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<section aria-labelledby="impact-heading" class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14">
-  <h2 id="impact-heading" class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
+<section aria-labelledby="impact-heading" class="reveal cv-section">
+  <h2 id="impact-heading" class="cv-eyebrow">
     Impact
   </h2>
   <ul class="mt-8 space-y-10">
@@ -30,10 +30,8 @@ const { items } = Astro.props;
             href={`/work/${item.slug}`}
             class="group block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
-            <p class="font-display text-2xl font-semibold tracking-tight text-accent sm:text-3xl">
-              {item.metric}
-            </p>
-            <p class="mt-2 font-mono text-xs uppercase tracking-wider text-muted motion-safe:transition-colors group-hover:text-accent">
+            <p class="cv-metric">{item.metric}</p>
+            <p class="cv-meta mt-2 motion-safe:transition-colors group-hover:text-accent">
               {item.company}
             </p>
           </a>
@@ -43,7 +41,7 @@ const { items } = Astro.props;
   </ul>
   <a
     href="/impact"
-    class="link-underline mt-10 inline-block font-mono text-xs uppercase tracking-wider text-muted motion-safe:transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+    class="cv-link link-underline mt-10 inline-block font-mono text-xs uppercase tracking-wider text-muted"
   >
     See all impact →
   </a>

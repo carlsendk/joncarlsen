@@ -12,22 +12,22 @@ interface Props {
 const { details } = Astro.props;
 ---
 
-<section aria-labelledby="personal-heading" class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14">
-  <h2 id="personal-heading" class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
+<section aria-labelledby="personal-heading" class="reveal cv-section">
+  <h2 id="personal-heading" class="cv-eyebrow">
     Personal Details
   </h2>
   <dl class="mt-8 space-y-2">
     <div class="flex items-baseline gap-3">
-      <dt class="w-28 shrink-0 font-mono text-xs uppercase tracking-wider text-muted">Born</dt>
-      <dd class="text-fg">{details.dob}</dd>
+      <dt class="cv-meta w-28 shrink-0">Born</dt>
+      <dd class="cv-body text-fg">{details.dob}</dd>
     </div>
     <div class="flex items-baseline gap-3">
-      <dt class="w-28 shrink-0 font-mono text-xs uppercase tracking-wider text-muted">Nationality</dt>
-      <dd class="text-fg">{details.nationality}</dd>
+      <dt class="cv-meta w-28 shrink-0">Nationality</dt>
+      <dd class="cv-body text-fg">{details.nationality}</dd>
     </div>
     <div class="flex items-baseline gap-3">
-      <dt class="w-28 shrink-0 font-mono text-xs uppercase tracking-wider text-muted">Status</dt>
-      <dd class="text-fg">{details.maritalStatus}</dd>
+      <dt class="cv-meta w-28 shrink-0">Status</dt>
+      <dd class="cv-body text-fg">{details.maritalStatus}</dd>
     </div>
   </dl>
 </section>

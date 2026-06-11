@@ -10,19 +10,19 @@ interface Props {
 const { education } = Astro.props;
 ---
 
-<section aria-labelledby="education-heading" class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14">
-  <h2 id="education-heading" class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
+<section aria-labelledby="education-heading" class="reveal cv-section">
+  <h2 id="education-heading" class="cv-eyebrow">
     Education
   </h2>
   <ul class="mt-8 space-y-6">
     {
       education.map((entry) => (
         <li>
-          <h3 class="font-display text-xl font-semibold tracking-tight text-fg">{entry.degree}</h3>
-          <p class="mt-0.5 text-base text-fg">{entry.institution}</p>
-          <p class="mt-1 font-mono text-xs uppercase tracking-wider text-muted">{entry.start} – {entry.end}</p>
+          <h3 class="cv-entry-title text-fg">{entry.degree}</h3>
+          <p class="cv-body mt-0.5 text-fg">{entry.institution}</p>
+          <p class="cv-meta mt-1">{entry.start} – {entry.end}</p>
           {entry.activities && entry.activities.length > 0 && (
-            <ul class="mt-2 space-y-1 text-sm leading-relaxed text-muted">
+            <ul class="cv-detail mt-2 space-y-1 text-muted">
               {entry.activities.map((activity) => <li>{activity}</li>)}
             </ul>
           )}

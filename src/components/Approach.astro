@@ -45,23 +45,23 @@ function asWriting(item: string): { label: string; url: string | null } {
   hasContent && (
     <section
       aria-labelledby="approach-heading"
-      class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14"
+      class="reveal cv-section"
     >
       <h2
         id="approach-heading"
-        class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted"
+        class="cv-eyebrow"
       >
         Approach
       </h2>
       {vision !== "" && (
-        <p class="mt-8 max-w-prose leading-relaxed text-fg">{vision}</p>
+        <p class="cv-body mt-8 max-w-prose text-fg">{vision}</p>
       )}
       {writing.length > 0 && (
         <>
           <p class="mt-10 font-mono text-xs uppercase tracking-[0.2em] text-muted">
             Writing
           </p>
-          <ul class="mt-4 space-y-2 leading-relaxed text-muted">
+          <ul class="cv-body mt-4 space-y-2 text-muted">
             {writing.map((item) => {
               const { label, url } = asWriting(item);
               return (
@@ -71,7 +71,7 @@ function asWriting(item: string): { label: string; url: string | null } {
                       href={url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="link-underline text-fg motion-safe:transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                      class="cv-link link-underline text-fg"
                     >
                       {label}
                     </a>

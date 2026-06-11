@@ -20,30 +20,22 @@ const { Content } = await render(entry);
 ---
 
 <Base title={`${title} · ${entry.collection}`} description={summary}>
-  <nav class="mx-auto max-w-2xl px-6 pt-6">
-    <a
-      href="/cv"
-      class="link-underline font-mono text-xs uppercase tracking-wider text-muted motion-safe:transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-    >
-      ← Back to CV
-    </a>
-  </nav>
   <article class="mx-auto max-w-2xl px-6 pt-12 pb-24">
     <header>
-      <h1 class="font-display text-4xl font-semibold tracking-tight text-fg sm:text-5xl">{title}</h1>
+      <h1 class="font-display text-5xl font-semibold tracking-tight text-fg sm:text-6xl">{title}</h1>
       <p class="mt-3 font-mono text-xs uppercase tracking-[0.2em] text-muted">{role} · {period}</p>
       {
         metrics.length > 0 && (
           <ul class="mt-6 flex flex-wrap gap-2">
             {metrics.map((metric) => (
-              <li class="rounded-full border border-border px-3 py-1 font-mono text-xs text-muted">{metric}</li>
+              <li class="cv-badge text-muted">{metric}</li>
             ))}
           </ul>
         )
       }
     </header>
     <div
-      class="prose-cv mt-10 leading-relaxed text-muted [&_h2]:mt-8 [&_h2]:font-mono [&_h2]:text-xs [&_h2]:font-medium [&_h2]:uppercase [&_h2]:tracking-[0.2em] [&_h2]:text-muted [&_p]:mt-4 [&_p]:text-fg"
+      class="prose-cv cv-body mt-10 text-muted [&_h2]:mt-8 [&_h2]:font-mono [&_h2]:text-xs [&_h2]:font-medium [&_h2]:uppercase [&_h2]:tracking-[0.2em] [&_h2]:text-muted [&_p]:mt-4 [&_p]:text-fg"
     >
       <Content />
     </div>

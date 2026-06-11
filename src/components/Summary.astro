@@ -8,9 +8,9 @@ interface Props {
 const { summary } = Astro.props;
 ---
 
-<section aria-labelledby="summary-heading" class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14">
-  <h2 id="summary-heading" class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
+<section aria-labelledby="summary-heading" class="reveal cv-section">
+  <h2 id="summary-heading" class="cv-eyebrow">
     Summary
   </h2>
-  <p class="mt-8 max-w-prose leading-relaxed text-fg">{summary}</p>
+  <p class="cv-body mt-8 max-w-prose text-fg">{summary}</p>
 </section>

@@ -17,8 +17,8 @@ const { links, resumePdf } = Astro.props;
 const isExternal = (url: string) => /^https?:\/\//i.test(url) || url.startsWith("//");
 ---
 
-<section aria-labelledby="links-heading" class="reveal mx-auto max-w-2xl border-t border-border px-6 py-14 pb-24">
-  <h2 id="links-heading" class="font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted">
+<section aria-labelledby="links-heading" class="reveal cv-section pb-24">
+  <h2 id="links-heading" class="cv-eyebrow">
     Links
   </h2>
   <ul class="mt-8 flex flex-wrap gap-3">
@@ -27,7 +27,7 @@ const isExternal = (url: string) => /^https?:\/\//i.test(url) || url.startsWith(
         <li>
           <a
             href={link.url}
-            class="inline-flex items-center rounded-full border border-border px-4 py-2 font-mono text-sm text-fg motion-safe:transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            class="cv-pill text-fg"
             {...(isExternal(link.url)
               ? { target: "_blank", rel: "noopener noreferrer" }
               : {})}
@@ -44,7 +44,7 @@ const isExternal = (url: string) => /^https?:\/\//i.test(url) || url.startsWith(
         <a
           href={resumePdf}
           download
-          class="inline-flex items-center rounded-full bg-accent px-5 py-2.5 font-mono text-sm font-medium text-bg motion-safe:transition-colors hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          class="cv-pill-solid"
         >
           Download résumé (PDF)
         </a>

@@ -1,10 +1,11 @@
 ---
 // Light/dark theme toggle — the only interactive control beyond links (ADR-003).
-// Native <button> with a self-contained is:inline handler (no framework island,
-// no bundle). The initial theme is already set by the flash guard in Base.astro;
-// this flips the .dark class on <html>, persists the choice, and keeps
-// aria-pressed in sync. Keyboard operation comes free with the native button;
-// the visible focus ring is guaranteed by the base-layer focus-visible rule.
+// Native <button>. The initial theme is already set by the inline flash guard in
+// Base.astro; this handler is a standard Astro-processed (bundled, deferred)
+// <script> per ADR-004 — it flips the .dark class on <html>, persists the choice,
+// and keeps aria-pressed in sync. Keyboard operation comes free with the native
+// button; the visible focus ring is guaranteed by the base-layer focus-visible
+// rule. Composed into Header.astro; no positioning of its own.
 ---
 
 <button
@@ -12,7 +13,7 @@
   id="theme-toggle"
   aria-label="Toggle dark mode"
   aria-pressed="false"
-  class="fixed top-3 right-3 z-50 inline-flex size-10 items-center justify-center rounded-full border border-border bg-bg/80 text-fg backdrop-blur-sm motion-safe:transition-colors hover:bg-fg/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+  class="inline-flex size-10 items-center justify-center rounded-full border border-border bg-bg/80 text-fg backdrop-blur-sm motion-safe:transition-colors hover:bg-fg/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
 >
   <!-- Shown in light mode: a moon (tap to go dark). -->
   <svg class="size-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -25,16 +26,18 @@
   </svg>
 </button>
 
-<script is:inline>
+<script>
   (function () {
-    var btn = document.getElementById("theme-toggle");
+    // const so TypeScript preserves the non-null narrowing into the nested
+    // closures below (the bundled <script> is type-checked, unlike is:inline).
+    const btn = document.getElementById("theme-toggle");
     if (!btn) return;
-    function sync() {
+    const sync = () => {
       btn.setAttribute(
         "aria-pressed",
         document.documentElement.classList.contains("dark") ? "true" : "false"
       );
-    }
+    };
     sync();
     btn.addEventListener("click", function () {
       var isDark = document.documentElement.classList.toggle("dark");

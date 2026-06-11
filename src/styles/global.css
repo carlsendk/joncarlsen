@@ -79,6 +79,9 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    /* Clear the sticky #site-header (≈4rem: py-3 wrapping a size-10 toggle + 1px
+       border) so in-page anchor/focus targets are never hidden behind it. */
+    scroll-padding-top: 4.5rem;
   }
 
   body {
@@ -96,6 +99,85 @@
     outline-offset: 2px;
     border-radius: 2px;
   }
+}
+
+/* Role-class layer (ADR-002): the single source of truth for recurring UI roles.
+   One named class per role, built with @apply over the EXACT utilities already in
+   use, so compiled CSS is identical to today's markup — the whole-site conversion
+   (tasks 02-05) is verifiably non-visual except for the drift collapsed here. Per
+   the cv-visual-design type-scale amendment (2026-06-10) each role carries its one
+   canonical value: one body size (text-base default), one eyebrow tracking
+   (tracking-[0.2em] + font-medium), one meta tracking (tracking-wider), and
+   consistent heading weights (font-semibold).
+
+   Colour rule: per-instance colour (text-fg vs text-muted) stays in markup so one
+   role serves both foreground and muted contexts (cv-body, cv-entry-title,
+   cv-detail, cv-badge, cv-pill, cv-link). Colour is baked in ONLY where it is
+   invariant and the authoritative style-spec fixes it (cv-eyebrow / cv-meta are
+   always text-muted) or where it is intrinsic to the role's identity (cv-metric
+   is the accent number; cv-pill-solid is text-bg on the accent fill; cv-link's
+   hover:text-accent is the shared interaction colour). These classes are defined
+   here but NOT yet applied in markup, so this layer adds no new visual output on
+   its own. See docs/style-spec.md for the human-readable canonical scale. */
+@layer components {
+  /* Section shell wrapping each /cv block. Layout + top divider; canonical
+     padding px-6 py-14. The `reveal` scroll-animation hook stays in markup beside
+     cv-section — it is a plain CSS class (defined only inside @media/@supports),
+     not a Tailwind utility, so it cannot be @applied. */
+  .cv-section { @apply mx-auto max-w-2xl border-t border-border px-6 py-14; }
+
+  /* Section eyebrow label (h2): mono, text-xs, font-medium, tracking-[0.2em],
+     uppercase. Canonical eyebrow tier — always text-muted (invariant), so the
+     colour is baked in per the style-spec. */
+  .cv-eyebrow { @apply font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted; }
+
+  /* Entry/role/education heading (h3): display face, text-xl, font-semibold,
+     tracking-tight. Colour (text-fg) stays in markup. */
+  .cv-entry-title { @apply font-display text-xl font-semibold tracking-tight; }
+
+  /* Body prose paragraph. Size is the inherited text-base default — no literal
+     size token. Colour (text-fg / text-muted) varies per instance, so it stays
+     in markup; this is the only role whose colour genuinely varies. */
+  .cv-body { @apply leading-relaxed; }
+
+  /* Meta line — dates, location, scope labels: mono, text-xs, uppercase,
+     tracking-wider. Always text-muted (invariant), baked in per the style-spec.
+     Distinct from cv-eyebrow only by tracking (wider vs [0.2em]) and weight. */
+  .cv-meta { @apply font-mono text-xs uppercase tracking-wider text-muted; }
+
+  /* Sub-detail prose (e.g. Education activities): text-sm, leading-relaxed.
+     Colour stays in markup. */
+  .cv-detail { @apply text-sm leading-relaxed; }
+
+  /* Recurring inline/outbound link: animated underline (link-underline stays in
+     markup — plain CSS class, not a utility), colour transition, hover:text-accent
+     (the shared interaction colour), and the focus-visible accent ring. Resting
+     colour (text-muted on CTAs) stays in markup. */
+  .cv-link { @apply motion-safe:transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent; }
+
+  /* Outline pill / interactive tag: rounded-full bordered chip, mono text-sm,
+     canonical padding px-4 py-2, hover border+text accent, focus ring. Resting
+     text colour stays in markup. */
+  .cv-pill { @apply inline-flex items-center rounded-full border border-border px-4 py-2 font-mono text-sm motion-safe:transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent; }
+
+  /* Filled (solid) pill / primary action: accent fill, mono text-sm font-medium,
+     canonical padding px-5 py-2.5, hover opacity, focus ring. text-bg is intrinsic
+     (label sits on the accent fill), so it is baked in. */
+  .cv-pill-solid { @apply inline-flex items-center rounded-full bg-accent px-5 py-2.5 font-mono text-sm font-medium text-bg motion-safe:transition-colors hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent; }
+
+  /* Card container (case-study / work cards): block, rounded-2xl bordered, p-5,
+     hover accent border, focus ring. */
+  .cv-card { @apply block rounded-2xl border border-border p-5 motion-safe:transition-colors hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent; }
+
+  /* Small static badge / tag chip (expertise skills, metric tags): rounded-full
+     bordered, mono text-xs, canonical padding px-3 py-1. Colour (text-muted)
+     stays in markup so the badge can serve either context. */
+  .cv-badge { @apply rounded-full border border-border px-3 py-1 font-mono text-xs; }
+
+  /* Impact metric number: display face, text-2xl → sm:text-3xl, font-semibold,
+     tracking-tight. text-accent is intrinsic to the metric tier, so it is baked
+     in (a metric is always the accent number). */
+  .cv-metric { @apply font-display text-2xl font-semibold tracking-tight text-accent sm:text-3xl; }
 }
 
 /* Subtle film grain (ADR-004): a fixed, neutral (desaturated) SVG-noise overlay
@@ -196,7 +278,9 @@ body::before {
     color: #0f172a !important;
   }
 
-  /* Hide interactive and decorative chrome. */
+  /* Hide interactive and decorative chrome. Hide the sticky bar by id so the
+     Hero's <header> element is preserved (both use <header>). */
+  #site-header,
   #theme-toggle,
   nav {
     display: none !important;

@@ -1,0 +1,44 @@
+{
+  "_note": "Computed-style parity snapshot for task_03 (entry/list role conversion). Captured with Playwright getComputedStyle on the production build (npm run build && astro preview) at /cv, before and after the conversion. The conversion is non-visual EXCEPT the three documented body-line normalizations (exp_company, edu_institution, per_dd), where adopting cv-body collapses line-height from the text-base default (24px) to the canonical body leading-relaxed (26px). cv-roles-conversion.test.mjs asserts that property over this data.",
+  "driftElements": ["exp_company", "edu_institution", "per_dd"],
+  "before": {
+    "exp_section": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "24px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(15, 23, 42)", "marginTop": "0px" },
+    "exp_eyebrow": { "fontFamily": "\"JetBrains Mono\"", "fontSize": "12px", "fontWeight": "500", "lineHeight": "16px", "letterSpacing": "2.4px", "textTransform": "uppercase", "color": "rgb(71, 85, 105)", "marginTop": "0px" },
+    "exp_entryTitle": { "fontFamily": "Fraunces", "fontSize": "20px", "fontWeight": "600", "lineHeight": "28px", "letterSpacing": "-0.5px", "textTransform": "none", "color": "rgb(15, 23, 42)", "marginTop": "0px" },
+    "exp_company": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "24px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(15, 23, 42)", "marginTop": "2px" },
+    "exp_dates": { "fontFamily": "\"JetBrains Mono\"", "fontSize": "12px", "fontWeight": "400", "lineHeight": "16px", "letterSpacing": "0.6px", "textTransform": "uppercase", "color": "rgb(71, 85, 105)", "marginTop": "6px" },
+    "exp_scope": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "26px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(71, 85, 105)", "marginTop": "12px" },
+    "exp_bulletUl": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "26px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(71, 85, 105)", "marginTop": "12px" },
+    "edu_entryTitle": { "fontFamily": "Fraunces", "fontSize": "20px", "fontWeight": "600", "lineHeight": "28px", "letterSpacing": "-0.5px", "textTransform": "none", "color": "rgb(15, 23, 42)", "marginTop": "0px" },
+    "edu_institution": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "24px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(15, 23, 42)", "marginTop": "2px" },
+    "edu_dates": { "fontFamily": "\"JetBrains Mono\"", "fontSize": "12px", "fontWeight": "400", "lineHeight": "16px", "letterSpacing": "0.6px", "textTransform": "uppercase", "color": "rgb(71, 85, 105)", "marginTop": "4px" },
+    "edu_activitiesUl": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "14px", "fontWeight": "400", "lineHeight": "22.75px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(71, 85, 105)", "marginTop": "8px" },
+    "vol_detail": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "26px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(71, 85, 105)", "marginTop": "4px" },
+    "pub_ul": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "26px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(71, 85, 105)", "marginTop": "32px" },
+    "cert_ul": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "26px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(71, 85, 105)", "marginTop": "32px" },
+    "per_dt": { "fontFamily": "\"JetBrains Mono\"", "fontSize": "12px", "fontWeight": "400", "lineHeight": "16px", "letterSpacing": "0.6px", "textTransform": "uppercase", "color": "rgb(71, 85, 105)", "marginTop": "0px" },
+    "per_dd": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "24px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(15, 23, 42)", "marginTop": "0px" }
+  },
+  "after": {
+    "exp_section": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "24px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(15, 23, 42)", "marginTop": "0px" },
+    "exp_eyebrow": { "fontFamily": "\"JetBrains Mono\"", "fontSize": "12px", "fontWeight": "500", "lineHeight": "16px", "letterSpacing": "2.4px", "textTransform": "uppercase", "color": "rgb(71, 85, 105)", "marginTop": "0px" },
+    "exp_entryTitle": { "fontFamily": "Fraunces", "fontSize": "20px", "fontWeight": "600", "lineHeight": "28px", "letterSpacing": "-0.5px", "textTransform": "none", "color": "rgb(15, 23, 42)", "marginTop": "0px" },
+    "exp_company": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "26px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(15, 23, 42)", "marginTop": "2px" },
+    "exp_dates": { "fontFamily": "\"JetBrains Mono\"", "fontSize": "12px", "fontWeight": "400", "lineHeight": "16px", "letterSpacing": "0.6px", "textTransform": "uppercase", "color": "rgb(71, 85, 105)", "marginTop": "6px" },
+    "exp_scope": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "26px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(71, 85, 105)", "marginTop": "12px" },
+    "exp_bulletUl": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "26px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(71, 85, 105)", "marginTop": "12px" },
+    "edu_entryTitle": { "fontFamily": "Fraunces", "fontSize": "20px", "fontWeight": "600", "lineHeight": "28px", "letterSpacing": "-0.5px", "textTransform": "none", "color": "rgb(15, 23, 42)", "marginTop": "0px" },
+    "edu_institution": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "26px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(15, 23, 42)", "marginTop": "2px" },
+    "edu_dates": { "fontFamily": "\"JetBrains Mono\"", "fontSize": "12px", "fontWeight": "400", "lineHeight": "16px", "letterSpacing": "0.6px", "textTransform": "uppercase", "color": "rgb(71, 85, 105)", "marginTop": "4px" },
+    "edu_activitiesUl": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "14px", "fontWeight": "400", "lineHeight": "22.75px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(71, 85, 105)", "marginTop": "8px" },
+    "vol_detail": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "26px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(71, 85, 105)", "marginTop": "4px" },
+    "pub_ul": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "26px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(71, 85, 105)", "marginTop": "32px" },
+    "cert_ul": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "26px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(71, 85, 105)", "marginTop": "32px" },
+    "per_dt": { "fontFamily": "\"JetBrains Mono\"", "fontSize": "12px", "fontWeight": "400", "lineHeight": "16px", "letterSpacing": "0.6px", "textTransform": "uppercase", "color": "rgb(71, 85, 105)", "marginTop": "0px" },
+    "per_dd": { "fontFamily": "\"Hanken Grotesk\"", "fontSize": "16px", "fontWeight": "400", "lineHeight": "26px", "letterSpacing": "normal", "textTransform": "none", "color": "rgb(15, 23, 42)", "marginTop": "0px" }
+  },
+  "personalDetailsBaselineAlignment": {
+    "_note": "PersonalDetails first dt/dd row, after conversion. The flex row keeps align-items:baseline, so dt and dd remain baseline-aligned despite the dd line-height bump.",
+    "alignItems": "baseline"
+  }
+}

@@ -1,0 +1,41 @@
+# Workflow Memory
+
+Keep only durable, cross-task context here. Do not duplicate facts that are obvious from the repository, PRD documents, or git history.
+
+## Current State
+
+- task_01 implemented: `CvData` extended with `scope` (string) and `credentials` (string[]); `isReady`/`TODO_SENTINEL` exported in `src/data/cv.ts`. Real values populated, no `[TODO]` markers yet. Not committed (auto-commit off).
+- task_02 implemented: Timeline filters `role.bullets`, Impact filters `highlights` through `isReady`. Call sites/props unchanged. Not committed.
+- task_04 implemented: `Hero.astro` now accepts an OPTIONAL `scope?: string` and conditionally renders it as a scannable executive line (mono "Scope" eyebrow + text-fg sentence; spans, not a heading, so the single h1 stays). Real pages NOT wired (task_05 owns passing `scope`). AA verified (computed ratios + Lighthouse 1.0, both themes). Not committed.
+- task_05 implemented: `cv.astro` passes `scope` to Hero, places `<Credentials>` after Summary (high) and `<Approach>` after Impact (passing `about`/`talks`); `index.astro` passes `scope` to Hero and adds `<Summary>` after Hero (front-loads exec summary + scope before Impact). `about`/`talks` intentionally still empty (task_06 content), so Approach renders nothing in shipped dist — its wiring was proven via temp-injection (renders impact→approach→work) and reverted. Not committed. (task_03 components already on disk and consumed.)
+- task_07 implemented: added 3 non-featured `work/*.md` entries from documented history — `orsted-agile-scrum-transformation.md` (order 8), `dfds-way-of-working.md` (order 9), `lunar-eid-consolidation.md` (order 10). No code edits; `/projects` groups by company automatically, `[slug].astro` renders pages. No invented metrics (all 3 omit `metrics`). DFDS.com candidate skipped (already covered by `dfds-responsive-web-platform.md`). All gates PASS. Not committed.
+- task_03 verified+completed: `Approach.astro`/`Credentials.astro` (authored ahead of order in task_05/06 runs) confirmed against every requirement — isReady filtering, empty guards, unique anchors, no client JS/contact, AA both themes (steady-state light muted 7.58/fg 17.85, dark 7.37/15.31). All gates PASS. Status set to completed in `_tasks.md`. Not committed.
+- task_06 implemented: content pass in `src/data/cv.ts` only. valueProp/summary lead "Technology executive" (title left truthful as Director of Engineering & AI); added Scalers CTO/CPO network credential; surfaced "5 to 25" (DFDS CX role + a "5 → 25" impact); authored `about` (vision) and `talks` (3 published frameworks). `<Approach>` now renders in shipped dist for the first time. 4 gated `[TODO]` marker tokens open (3 gaps): board/investor cadence, Scrive SLA % after + cost reduction %, budget owned. Not committed.
+- task_08 implemented: created `.compozy/tasks/cv-cto-positioning/content-gaps.md`, a prioritised supply checklist with one-to-one coverage of the 4 seeded `[TODO]` marker tokens in `cv.ts` (one entry each, even though two share the Scrive bullet). Planning artifact only (outside src/public), no contact details. The 2 RENDER-GUARD comment-block `[TODO]` examples (cv.ts:133-134) are excluded as illustrative, not gaps; hiring velocity/retention kept out (no marker yet). All gates PASS. Not committed.
+
+## Shared Decisions
+
+- Title stays truthful (`Director of Engineering & AI`); CTO altitude comes from credentials/remit and copy, never from inflating the present title.
+
+## Shared Learnings
+
+- Published-writing deep URLs (all HTTP 200): `https://carlsendk.github.io/tech-leadership/wiki/operating-model/operating-model-framework`, `.../wiki/engineering-practices`, `.../wiki/engineering-effectiveness`. Source repo: `~/code/private/tech-leadership` (Astro wiki collection). In `talks` items, end the string with the URL and no trailing punctuation (Approach.astro's greedy `https?://[^\s]+` regex would otherwise put the punctuation in the href).
+- `linkinator` over a static `dist` directory does NOT recurse into non-featured `/work/<slug>` pages (only homepage-linked featured ones), so it silently skips them. To verify new non-featured deep links, crawl a LIVE preview: `npx astro preview --port N &` then `npx linkinator http://localhost:N/projects --recurse --skip 'joncarlsen.dk'`.
+- Local playwright is not a project dep; use the Playwright MCP (`browser_navigate` + `browser_evaluate`) for steady-state contrast checks.
+
+- Verification toolchain (no unit-test runner): type-check via `astro check`, `astro build`, plus greps. The isReady contract is verified by importing `src/data/cv.ts` in `node --input-type=module` and asserting both guard branches.
+- Render guard contract (ADR-003): `TODO_SENTINEL = "[TODO"`; `isReady(text)` is `!text.includes(TODO_SENTINEL)`. Spine fields (summary, scope) stay marker-free; draft figures go only in array items, which components filter through `isReady`.
+- Established guard idiom for array-rendering components (reuse in task_03): import `isReady` from `../data/cv.ts`; filter ONCE in frontmatter and render the filtered array (keeps any length/empty guard in sync). String[] → `arr.filter(isReady)`; object items → gate every rendered string field, e.g. `highlights.filter(h => isReady(h.metric) && isReady(h.summary))`.
+- "Ready items unchanged" proof technique: since real content has no markers, the filter is a no-op — save `dist` HTML before the edit and assert byte-identical after. Then prove the guard separately with a temporary `[TODO]` marker (build, grep dist = 0, confirm siblings still render), and remove the marker so `cv.ts` stays clean.
+
+## Open Risks
+
+- Lighthouse a11y on `/` reports a dark-theme `color-contrast` FALSE-POSITIVE (score 0.95, perf still 1.0). Cause: the global `transition: color 0.3s ease` on `body/section/p/h*` (global.css ~143) is caught mid-fade by axe at initial paint — reported colors are transition intermediates, not the steady tokens. Steady-state is AA in both themes (verified via Playwright after the fade settles: dark muted 7.37:1 / fg 15.31:1; light muted 7.58:1 / fg 17.85:1). Pre-existing (pristine pre-task_05 `/` also scored 0.95); not introduced by content/wiring. `/cv` scores a11y 1.0. Future Lighthouse gates on `/`: treat the 0.95 as this known artifact unless steady-state computed ratios fail. Candidate fix (later polish task): suppress the color transition on first paint (`no-transition` class removed after load) so `/` hits 1.0.
+- `npx astro check` over the whole repo CRASHES (SIGABRT/exit 134) on pre-existing committed minified JS in `docs/projekts_files/*.js`, because `tsconfig.json` uses `include: ["**/*"]`. This is NOT caused by any task change (reproduced on pristine master). Workaround used in task_01: transiently set `tsconfig.exclude` to `["dist","docs"]`, run check (project source = 24 files, 0/0), then revert tsconfig so the diff stays scoped. Future tasks' "astro check passes" gate must use this approach until `tsconfig` is fixed to exclude `docs` (out of scope for task_01, which is cv.ts-only). Candidate one-line fix for a later task that owns tsconfig.
+
+## Handoffs
+
+- task_02 (Timeline/Impact) and task_03 (Approach/Credentials) consume `isReady`; task_03 also renders `credentials`; task_04 renders `scope`. The data + guard they depend on are now in place. Note: scope/credentials values are intentionally not rendered yet (no components), so they do not appear in `dist` after task_01.
+- task_05 DONE: scope wired to Hero on both pages; Approach/Credentials placed on `/cv`; summary+scope front-loaded on `/`.
+- task_06 (content): when real `about`/`talks` prose is added to `cv.ts`, `<Approach>` auto-renders after Impact on `/cv` (wiring confirmed, order impact→approach→work). Recast `summary`/`valueProp` flow to both pages (single-sourced). Re-run the dark-theme steady-state contrast check (not raw Lighthouse score) when changing copy.
+- Throwaway verification harness routes to delete before the final production build: `src/pages/a11y-harness*.astro` (task_03) and `src/pages/scope-harness*.astro` (task_04). NOTE: this is NOT task_08 (a renumbering artifact) — task_08 is the content-gaps checklist only and left these in place. They still render `[TODO: link]`/`[TODO: figure]` sentinels into dist; deletion is unowned follow-up for whichever task owns final cleanup.
