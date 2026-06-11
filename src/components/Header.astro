@@ -34,7 +34,7 @@ const headerLinks = cvData.links.filter(
   id="site-header"
   class="sticky top-0 z-40 border-b border-border bg-bg/80 backdrop-blur"
 >
-  <div class="mx-auto flex max-w-2xl items-center gap-4 px-6 py-3">
+  <div class="mx-auto flex max-w-2xl flex-col gap-2 px-6 py-4">
     {
       back && (
         <a
@@ -48,18 +48,19 @@ const headerLinks = cvData.links.filter(
 
     <a
       href="/"
-      class="group mr-auto flex min-w-0 flex-col leading-tight focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      class="group inline-block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
     >
       <span
-        class="truncate font-display text-sm font-semibold tracking-tight text-fg motion-safe:transition-colors group-hover:text-accent"
+        class="font-display text-5xl font-semibold tracking-tight text-fg motion-safe:transition-colors group-hover:text-accent sm:text-6xl"
         >{cvData.name}</span
       >
-      <span class="truncate font-mono text-[0.625rem] uppercase tracking-[0.2em] text-muted"
+      </a>
+
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+      <span class="font-mono text-sm uppercase tracking-[0.2em] text-muted"
         >{cvData.title}</span
       >
-    </a>
-
-    <nav class="flex shrink-0 items-center gap-1" aria-label="Profile links">
+      <nav class="flex shrink-0 items-center gap-1" aria-label="Profile links">
       {
         headerLinks.map((link) => (
           <a
@@ -67,11 +68,11 @@ const headerLinks = cvData.links.filter(
             target="_blank"
             rel="noopener noreferrer"
             aria-label={link.label}
-            class="cv-link inline-flex size-9 items-center justify-center rounded-full text-muted hover:bg-fg/5"
+            class="cv-link inline-flex size-8 items-center justify-center rounded-full text-muted motion-safe:transition-colors hover:bg-fg/5 hover:text-accent"
           >
             {link.label === "LinkedIn" ? (
               <svg
-                class="size-5"
+                class="size-4"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"
@@ -80,7 +81,7 @@ const headerLinks = cvData.links.filter(
               </svg>
             ) : (
               <svg
-                class="size-5"
+                class="size-4"
                 viewBox="0 0 24 24"
                 fill="currentColor"
                 aria-hidden="true"
@@ -93,5 +94,6 @@ const headerLinks = cvData.links.filter(
       }
       <ThemeToggle />
     </nav>
+    </div>
   </div>
 </header>

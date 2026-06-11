@@ -81,7 +81,7 @@
     scroll-behavior: smooth;
     /* Clear the sticky #site-header (≈4rem: py-3 wrapping a size-10 toggle + 1px
        border) so in-page anchor/focus targets are never hidden behind it. */
-    scroll-padding-top: 4.5rem;
+    scroll-padding-top: 5.5rem;
   }
 
   body {
@@ -130,6 +130,12 @@
      uppercase. Canonical eyebrow tier — always text-muted (invariant), so the
      colour is baked in per the style-spec. */
   .cv-eyebrow { @apply font-mono text-xs font-medium uppercase tracking-[0.2em] text-muted; }
+
+  /* Section lead-in (cv-structure): one scannable line under the h2, subordinate
+     to the heading. Body scale (inherited text-base default, like cv-body) and
+     always text-muted (invariant — baked in, like cv-eyebrow/cv-meta). Layout
+     spacing (mt-*) stays in markup where each section renders it. */
+  .cv-lead { @apply max-w-prose leading-relaxed text-muted; }
 
   /* Entry/role/education heading (h3): display face, text-xl, font-semibold,
      tracking-tight. Colour (text-fg) stays in markup. */
@@ -315,5 +321,35 @@ body::before {
     font-size: 0.85em;
     color: #475569;
     word-break: break-all;
+  }
+}
+
+/* Header shrink-on-scroll (ADR-002: pure CSS, no scroll JS). The hero-scale
+   identity bar collapses across the first ~160px of scroll. Scroll-driven
+   animations degrade gracefully: where unsupported, or under reduced motion,
+   the bar simply stays full size. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    #site-header > div {
+      animation: cv-hdr-bar-collapse linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 160px;
+    }
+    @keyframes cv-hdr-bar-collapse {
+      to {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+    }
+    #site-header a[href="/"] span {
+      animation: cv-hdr-name-collapse linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 160px;
+    }
+    @keyframes cv-hdr-name-collapse {
+      to {
+        font-size: 1.75rem;
+      }
+    }
   }
 }
